@@ -22,7 +22,7 @@ define('DB_NAME', '203758-actionist');
 define('DB_USER', '203758_ar56313');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'actionistMikaela2015');
+define('DB_PASSWORD', 'losenord');
 
 /** MySQL hostname */
 define('DB_HOST', 'actionist-203758.mysql.binero.se');
