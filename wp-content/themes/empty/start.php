@@ -24,6 +24,7 @@ get_header(); ?>
 <!DOCTYPE html>
 
 <section id="top" class="fullHeight">
+	<h1>fkdofklödsfklö</h1>
 	<video width="100%" height="100%" autoplay="" muted="" id="video" loop="">
 		<source src="<?php echo get_template_directory_uri(); ?>/images/movie.mp4" type="video/mp4">
 		<source src="<?php echo get_template_directory_uri(); ?>/images/movie.ogv" type="video/ogv">
