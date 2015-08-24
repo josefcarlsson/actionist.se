@@ -86,12 +86,38 @@ nav {
     font-weight: 500;
     font-family: 'Cardo', serif;
     margin-bottom: 5px; }
+  #top #quats span {
+    display: none; }
+  #top #quats .current {
+    display: inline; }
 
 /*************************** presentation ***********************************************/
 #presentation {
   text-align: center;
   padding-top: 40px;
   padding-bottom: 80px; }
+
+/*************************** instagram ***********************************************/
+#instafeed {
+  padding-bottom: 33%;
+  position: relative; }
+  #instafeed .istagramImg {
+    left: 0px;
+    right: 0px;
+    position: absolute;
+    visibility: hidden; }
+    #instafeed .istagramImg .instagramText {
+      visibility: hidden; }
+    #instafeed .istagramImg p {
+      position: absolute;
+      word-break: break-word;
+      top: 0; }
+    #instafeed .istagramImg .instagramText {
+      top: 1.7em; }
+    #instafeed .istagramImg img {
+      width: 100%; }
+  #instafeed .current {
+    visibility: visible; }
 
 /*************************** SECTION***********************************************/
 /*  SECTIONS  */

@@ -98,6 +98,14 @@ nav{
 		font-family: 'Cardo', serif;
 		margin-bottom: 5px;
 	}
+	#quats{
+		span{
+			display: none;
+		}
+		.current{
+			display: inline;
+		}
+	}
 }
 /*************************** presentation ***********************************************/
 #presentation{
@@ -105,6 +113,37 @@ nav{
 	padding-top: 40px;
 	padding-bottom: 80px;
 }
+/*************************** instagram ***********************************************/
+#instafeed{
+	padding-bottom: 33%;
+	position: relative;
+	.istagramImg{
+		left: 0px;
+		right: 0px;
+		position: absolute;
+		visibility: hidden;
+		.instagramText{
+			visibility: hidden
+			}
+		p{
+			position: absolute;
+			word-break: break-word;
+			top:0;
+		}
+		.instagramText{
+			top:1.7em;
+		}
+		img{
+			width: 100%;
+		}
+	}
+	.current{
+		visibility: visible;
+	}
+}
+
+
+
 /*************************** SECTION***********************************************/
 /*  SECTIONS  */
 .fullHeight{
