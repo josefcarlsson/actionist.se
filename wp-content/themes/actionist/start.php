@@ -51,6 +51,7 @@ endif; ?>
 	<div class="verticalWrapper">
 		<div class="withWrapper">
 			<h3><span id="timeOfDay"></span></h3>
+			<h1>Detta är den senaste</h1>
 			<h1><span>Vi är:</span><span id="quats"></span></h1>
 	</div>
 	</div>

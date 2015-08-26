@@ -19,7 +19,7 @@
 define('DB_NAME', 'actionist_v2');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'Josef');
 
 /** MySQL database password */
 define('DB_PASSWORD', 'root');
