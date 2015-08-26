@@ -3,7 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
+<<<<<<< HEAD
 -- Generation Time: Aug 25, 2015 at 03:22 PM
+=======
+-- Generation Time: Aug 25, 2015 at 03:45 PM
+>>>>>>> 45ad057b1d071f5fb429c4897bdb5c0e762bacfc
 -- Server version: 5.5.42
 -- PHP Version: 5.6.7
 
@@ -202,7 +206,11 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (97, 'cron', 'a:5:{i:1440530460;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1440531731;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1440575333;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1440589645;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}s:7:"version";i:2;}', 'yes'),
 (106, 'db_upgraded', '', 'yes'),
 (109, 'auto_core_update_notified', 'a:4:{s:4:"type";s:7:"success";s:5:"email";s:18:"josef@actionist.se";s:7:"version";s:5:"4.2.4";s:9:"timestamp";i:1439883750;}', 'yes'),
+<<<<<<< HEAD
 (110, '_transient_random_seed', '07824986b302541780d7e1236a257e23', 'yes'),
+=======
+(110, '_transient_random_seed', 'f39334dd1a9a1e59ab7c2fd2d0d95f65', 'yes'),
+>>>>>>> 45ad057b1d071f5fb429c4897bdb5c0e762bacfc
 (111, 'auth_key', 'k2E&ACF+=xlY^<Y;N| @2ArgV.Cl#^@InJ1wfvR^nvE|,zB$q]i]}N32PE(:>yBT', 'yes'),
 (112, 'auth_salt', 'C[;<D4aP^O<4iY!i`1pPe2%,e#A{Ei~b!9LR%mHGb2?;a6W7&[b?pTjRrYX(+5rO', 'yes'),
 (113, 'logged_in_key', ' J^A:1l0Zo#J@@vZX$&G<zh=NNIDgc8+<D;[(XS1#92_8uL30)?%<d}j1{XU2g+)', 'yes'),
@@ -672,8 +680,13 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (25, 2, 'admin_color', 'fresh'),
 (26, 2, 'use_ssl', '0'),
 (27, 2, 'show_admin_bar_front', 'true'),
+<<<<<<< HEAD
 (28, 2, 'wp_capabilities', 'a:1:{s:10:"subscriber";b:1;}'),
 (29, 2, 'wp_user_level', '0'),
+=======
+(28, 2, 'wp_capabilities', 'a:1:{s:13:"administrator";b:1;}'),
+(29, 2, 'wp_user_level', '10'),
+>>>>>>> 45ad057b1d071f5fb429c4897bdb5c0e762bacfc
 (30, 2, 'dismissed_wp_pointers', '');
 
 -- --------------------------------------------------------
@@ -701,7 +714,11 @@ CREATE TABLE `wp_users` (
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
 (1, 'Josef', '$P$BSTcSkuAgkXD5DF38UJqeOUF6ckxVt/', 'josef', 'josef@actionist.se', '', '2015-08-18 07:42:11', '', 0, 'Josef'),
+<<<<<<< HEAD
 (2, 'Jorgen', '$P$B7sTHyKNR4nnG2fQwMIE1oILUfKe7R/', 'jorgen', 'jorgen@actionist.se', '', '2015-08-25 13:20:45', '1440508845:$P$BJCkv058eRlO1GVU95QBU9rqmmHaw70', 0, 'Jörgen Hansson');
+=======
+(2, 'Jorgen', '$P$BpdxWtaDMIFi5i6R5.gM6QRZvIpqfT.', 'jorgen', 'jorgen@actionist.se', '', '2015-08-25 13:20:45', '1440508845:$P$BJCkv058eRlO1GVU95QBU9rqmmHaw70', 0, 'Jörgen Hansson');
+>>>>>>> 45ad057b1d071f5fb429c4897bdb5c0e762bacfc
 
 --
 -- Indexes for dumped tables

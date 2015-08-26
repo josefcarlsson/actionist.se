@@ -61,7 +61,7 @@ endif; ?>
 	<h4><?php echo $presentationTopHeader ?></h4>
 	<h1><?php echo $presentationBigHeader ?><br><span class="dott"></span></h1>
 	<div><?php echo $presentationText ?></div>
-	<button><?php echo $presentationButton ?></button>
+	<button class="blue square"><?php echo $presentationButton ?></button>
 </section>
 
 <!------------------------------- case ------------------------------>

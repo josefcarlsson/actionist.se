@@ -1,3 +1,14 @@
+//************
+// Variables
+//************
+
+$background-color: #FFF2EA;
+$red: #ff3200;
+$blue: #001dd9;
+$turquoise: #b3f0e9;
+
+$raleway: 'Raleway', sans-serif;
+
 *{
 	margin:0px;
 	padding:0px;
@@ -7,16 +18,27 @@ html,body{
 	width: 100%;
 	background-color: #FFF2EA;
 }	
+
+body{
+	font-family: 'Raleway', sans-serif;
+	font-size: 17px;
+	line-height: 1.5em;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
 h1{
 	text-transform: uppercase;
 	font-size:36px;
-	font-family: 'Raleway', sans-serif;
+	font-family: $raleway;
 	font-weight: 900;
-	color:#FF2F00;		
+	color: $red;
+	line-height: 1.2em;		
 }
 h3{
 	font-size: 24px;
 	font-weight: 400;
+	line-height: 1.3em;	
 }
 .verticalWrapper{
 	display: table-cell;
@@ -57,6 +79,48 @@ nav{
 		}
 	}
 }
+
+/*************************** BUTTONS ****************************************************/
+
+button.square, a.button.square{
+	background: none;
+	color: $blue;
+	padding: 12px 55px;
+	text-transform: uppercase;
+	font-family: $raleway;
+	font-weight: 600;
+	font-size: 18px;
+	cursor: pointer;
+	position: relative;
+	z-index: 4;
+
+	&.blue{
+		border: 3px solid $blue;
+	}
+
+	&:focus{
+		outline: none;
+	}
+	
+	&:hover{
+		background-size: 30px 30px;
+		  background-image: linear-gradient(
+		    45deg, 
+		    rgba(black, 0.1)  25%, 
+		    transparent       25%, 
+		    transparent       50%, 
+		    rgba(black, 0.1)  50%, 
+		    rgba(black, 0.1)  75%, 
+		    transparent       75%, 
+		    transparent
+		  );  
+	}
+}
+
+
+
+
+
 /***************************TOP SECTION***********************************************/
 #top{
 	position: relative;
@@ -87,7 +151,7 @@ nav{
 			}
 		}
 	h3{
-		color:#FF2F00;
+		color: $red;
 		margin-bottom: 25px;
 	}
 	h1{
