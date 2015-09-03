@@ -18,7 +18,7 @@ get_header(); ?>
 	$presentationBigHeader = get_field('presentationBigHeader');
 	$presentationText = get_field('presentationText');
 	$presentationButton = get_field('presentationButton');
-
+	$test = get_field('test');
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +30,13 @@ get_header(); ?>
 	window.quats= quats
 </script>
 	
+</section>	
 <?php if( have_rows('quats') ): 
 	 while( have_rows('quats') ): the_row(); 
 		 $quat= get_sub_field('quat');?>
 		<script>
 			var obj = {text: '<?php echo $quat ?>'}
 			quats.push(obj);
-			console.log(quats)
 		</script>
 	<?php endwhile;
 endif; ?>
@@ -51,7 +51,6 @@ endif; ?>
 	<div class="verticalWrapper">
 		<div class="withWrapper">
 			<h3><span id="timeOfDay"></span></h3>
-			<h1>Detta är den senaste</h1>
 			<h1><span>Vi är:</span><span id="quats"></span></h1>
 	</div>
 	</div>
@@ -69,14 +68,15 @@ endif; ?>
 
 <section id="case">
 	<?php query_posts( array ( 'category_name' => 'cases', 'posts_per_page' => -1 ) ); ?>
-	<?php if (have_posts()) : ?><?php while (have_posts()) : the_post(); 
+		<?php while (have_posts()) : the_post(); 
 		 if(get_field('showOnStart') == 'Ja') : ?>
 			<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
 				<?php get_template_part( 'content', 'page' );?>		
 			</a>
-		<?php endif;
-			endwhile; 
-	endif; ?>
+			<?php endif;
+		endwhile; 	
+	wp_reset_query();?>
+			
 </section>
 
 <!------------------------------- news ------------------------------>	
@@ -89,7 +89,8 @@ endif; ?>
 					<?php get_template_part( 'content', 'usp' );?>		
 				</a>
 				<?php endwhile; ?>
-	<?php endif; ?>
+	<?php endif; 
+	wp_reset_query();?>
 </section>
 
 <!------------------------------- uspar ------------------------------>
@@ -105,7 +106,9 @@ endif; ?>
 				<?php else : ?>
 			<?php endif; ?>
 		<?php endwhile; ?>
-		<?php endif; ?>
+		<?php endif; 
+	wp_reset_query();?>
+		
 	</div>
 	
 	<div class="span_4_of_12 col instagram" id="instafeed">
@@ -143,14 +146,15 @@ endif; ?>
 </section>
 
 <section id="clients">
-	fdsa
-	<?php if( have_rows('clientsLogos') ): 
-	 while( have_rows('clientsLogos') ): the_row(); 
+		<h3>denna diven</h3>
+<?php if( have_rows('clients') ): ?>
+	<div class="logoWrapper">
+	 <?php while( have_rows('clients') ): the_row(); 
 		 $logo= get_sub_field('logo');?>
-		 	<div class="span_3_of_12 col logo">
-			 	<img src="<?php echo $logo ?>">
-		 	</div>
-		<?php endwhile;
-	endif; ?>		
+
+		 <img src="<?php echo $logo['url'] ?>" class="clientLogo">
+		<?php endwhile;?>
+	</div>
+<?php endif; ?>	
 </section>
 

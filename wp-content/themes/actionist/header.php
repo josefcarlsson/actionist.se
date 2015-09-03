@@ -16,6 +16,7 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/masonry.pkgd.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Cardo:400,400italic,700' rel='stylesheet' type='text/css'>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/instafeed.min.js"></script>
