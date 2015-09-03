@@ -20,21 +20,40 @@ html,body{
 }	
 
 body{
-	font-family: 'Raleway', sans-serif;
+	font-family: $raleway;
 	font-size: 17px;
 	line-height: 1.5em;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-h1{
+p{
+	margin-bottom: 15px;
+}
+
+h1, .heading{
 	text-transform: uppercase;
-	font-size:36px;
+	font-size:42px;
 	font-family: $raleway;
 	font-weight: 900;
 	color: $red;
-	line-height: 1.2em;		
+	line-height: 1.3em;
+	margin-bottom: 15px;	
 }
+
+.preheading{
+	font-family: 'Cardo', 'serif';
+	font-weight: 700;
+	display: inline-block;
+	font-size: 24px;
+
+	&.underline{
+		border-bottom: 1px solid $red;
+		padding-bottom: 5px;
+		margin-bottom: 30px;
+	}
+}
+
 h3{
 	font-size: 24px;
 	font-weight: 400;
@@ -49,6 +68,17 @@ h3{
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.dot{
+	background: $red;
+	width: 11px;
+	height: 11px;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	border-radius: 100px;
+	display: inline-block;
+}
+
 /*************************** MENU ****************************************************/
 nav{
 	position: absolute;
@@ -57,20 +87,53 @@ nav{
 	z-index: 20;
 	width: 100%;
 	height:100px;
+	text-align: right;
+	padding-right: 25px;
+
+	a{
+		color: #000;
+		text-decoration: none;
+	}
+	
 	img{
 		margin-top: 20px;
 		height:60px;
 		display: inline-block;
+		float: left;
 	}
-	ul{
+	ul.mainnav{
 		display: inline-block;
-		width: calc(100% - 400px);
+		//width: calc(100% - 400px);
 		margin-bottom: 20px;
-		vertical-align: bottom;
+		vertical-align: middle;
 		text-align: right;
+		font-weight: 700;
+		margin-top: 27px;
+		text-transform: uppercase;
+		
 		li{
 			width: auto;
 			display: inline-block;
+			padding: 10px 16px;
+			position: relative;
+
+			&:after{
+				display: inline-block;
+				background-color: black;
+				border-radius: 100px;
+				content: '';
+				width: 5px;
+				height: 5px;
+				position: absolute;
+				top: 50%;
+				margin-top: -3px;
+				right: -5px;
+			}
+
+			&:last-child:after{
+				display: none;
+			}
+
 			.dott{
 				margin-left: 10px;
 				display: inline-block;
@@ -79,6 +142,28 @@ nav{
 				border-radius: 100px;
 				background-color: black;
 			}		
+		}
+	}
+
+	ul.social{
+		margin-bottom: 20px;
+		vertical-align: middle;
+		text-align: right;
+		font-weight: 700;
+		margin-top: 29px;
+		display: inline-block;
+		padding-right: 40px;
+		li{
+			display: inline-block;
+			padding: 5px;
+
+			a{
+				display: block;
+				width: 30px;
+				height: 30px;
+				background-color: black;
+				border-radius: 100px;
+			}
 		}
 	}
 }
@@ -183,7 +268,22 @@ button.square, a.button.square{
 	text-align: center;
 	padding-top: 40px;
 	padding-bottom: 80px;
+	max-width: 830px;
+
+	.heading{
+		margin-bottom: 25px;
+	}
+
+	.dot{
+		margin-bottom: 25px;
+	}
+
+	button{
+		margin-top: 35px;
+	}
 }
+
+
 /*************************** case ***********************************************/
 
 #case{

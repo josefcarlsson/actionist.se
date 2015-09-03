@@ -58,8 +58,9 @@ endif; ?>
 
 <!------------------------------- presentation ------------------------------>
 <section id="presentation" class="presentation withWrapper">
-	<h4><?php echo $presentationTopHeader ?></h4>
-	<h1><?php echo $presentationBigHeader ?><br><span class="dott"></span></h1>
+	<span class="preheading underline"><?php echo $presentationTopHeader ?></span>
+	<h2 class="heading"><?php echo $presentationBigHeader ?></h2>
+	<span class="dot"></span>
 	<div><?php echo $presentationText ?></div>
 	<button class="blue square"><?php echo $presentationButton ?></button>
 </section>

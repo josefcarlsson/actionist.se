@@ -29,10 +29,14 @@
 <!------------------------------- MENU ------------------------------>
 <nav>
 	<img src="<?php echo get_template_directory_uri(); ?>/images/actionist.png" alt="actionist">
-	<ul>
-		<li>JOBB</li>
-		<li>OM OSS</li>
-		<li>KONTAKTA OSS</li>
-		<li><span class="dott"></span><span class="dott"></span></li>
+	<ul class="mainnav">
+		<li><a href="#">Jobb</a></li>
+		<li><a href="#">Om oss</a></li>
+		<li><a href="#">Kontakt</a></li>
+	</ul>
+
+	<ul class="social">
+		<li class="linkedin"><a href="#"></a></li>
+		<li class="instagram"><a href="#"></a></li>
 	</ul>
 </nav>
