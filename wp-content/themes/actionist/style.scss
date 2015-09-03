@@ -104,16 +104,16 @@ button.square, a.button.square{
 	
 	&:hover{
 		background-size: 30px 30px;
+		background-repeat: repeat;
 		  background-image: linear-gradient(
-		    45deg, 
-		    rgba(black, 0.1)  25%, 
-		    transparent       25%, 
-		    transparent       50%, 
-		    rgba(black, 0.1)  50%, 
-		    rgba(black, 0.1)  75%, 
-		    transparent       75%, 
-		    transparent
+		    45deg,
+			  #606dbc,
+			  #606dbc 10px,
+			  #465298 10px,
+			  #465298 20px
 		  );  
+
+		animation: barberpole 0.5s linear infinite;
 	}
 }
 
