@@ -51,7 +51,10 @@ h3{
 }
 /*************************** MENU ****************************************************/
 nav{
+	position: absolute;
+    top: calc(100% - 100px);
 	background-color: #ffffff;
+	z-index: 20;
 	width: 100%;
 	height:100px;
 	img{
@@ -78,6 +81,10 @@ nav{
 			}		
 		}
 	}
+}
+.menuActive{
+	position: fixed;
+	top:0;
 }
 
 /*************************** BUTTONS ****************************************************/
@@ -177,6 +184,17 @@ button.square, a.button.square{
 	padding-top: 40px;
 	padding-bottom: 80px;
 }
+/*************************** case ***********************************************/
+
+#case{
+	width: 100%;
+	overflow: hidden;
+	.case{
+		
+	}
+}
+
+
 /*************************** instagram ***********************************************/
 #instafeed{
 	padding-bottom: 33%;
@@ -206,10 +224,15 @@ button.square, a.button.square{
 	}
 }
 
-
-
+/***************************clients************************************************/
+.logoWrapper{
+	width: 100%;
+	.clientLogo{
+		width: calc(25% - 10px);
+		margin-bottom: 10px;
+	}
+}
 /*************************** SECTION***********************************************/
-/*  SECTIONS  */
 .fullHeight{
 	height: 100vh;
 }

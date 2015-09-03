@@ -19,7 +19,7 @@
 	<div class="case">
 		<img src="<?php echo $casePresentationimg['url'] ?>">
 		<h3><?php echo $caseCustomer ?></h3>
-		<h1><?php the_title( '<h1 class="entry-title">', '</h1>' ); ?></div>
+		<h1><?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		<div class="presentationText"><?php the_content(); ?></div>
 		<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">Läs mer här</a>
 		<button> se alla casen </button>

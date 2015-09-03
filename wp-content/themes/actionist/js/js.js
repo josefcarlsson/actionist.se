@@ -1,11 +1,42 @@
   $(document).ready(function(){
   // functions that runs on load
   setGreatingFrase();
-  startInstagramFeed()
-  changeQuats()
+  startInstagramFeed();
+  changeQuats();
+  menuScroll();
+  setTimeout(function(){ 
+	   masonryGrid()
+	  }, 100);
+
 
  });
  
+$( window ).scroll(function() {
+   var scrollTop = $(window).scrollTop()
+   menuScroll(scrollTop);
+});
+
+//stick the menu to top
+function menuScroll(scrollTop){
+	var menuTop = $(window).height() - $('nav').height()
+	if(menuTop <= scrollTop){	
+		$('nav').addClass('menuActive')
+	}
+	else{
+		$('nav').removeClass('menuActive')
+	}	
+}
+
+//client logo grid
+ function masonryGrid(){
+		var container = document.querySelector('.logoWrapper');
+
+			    var msnry = new Masonry( container, {
+			      	itemSelector : '.clientLogo',
+				    gutter:5,
+				    isFitWidth: true
+				    });
+ }
 //quat top on startpage 
 function changeQuats(){
 	$.each( quats, function( i, quats ) {
