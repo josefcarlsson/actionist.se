@@ -52,12 +52,13 @@ endif; ?>
 		<div class="withWrapper">
 			<h3><span id="timeOfDay"></span></h3>
 			<h1><span>Vi är:</span><span id="quats"></span></h1>
-	</div>
+			<button class="exit-start-view">Ta en titt</button>
+		</div>
 	</div>
 </section>
 
 <!------------------------------- presentation ------------------------------>
-<section id="presentation" class="presentation withWrapper">
+<section id="presentation" class="presentation withWrapper preanimation">
 	<span class="preheading underline"><?php echo $presentationTopHeader ?></span>
 	<h2 class="heading"><?php echo $presentationBigHeader ?></h2>
 	<span class="dot"></span>
