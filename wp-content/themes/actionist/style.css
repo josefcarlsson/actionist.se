@@ -206,9 +206,22 @@ button.square, a.button.square {
     margin-top: 35px; }
 
 /*************************** case ***********************************************/
-#case {
+.caseSection {
   width: 100%;
-  overflow: hidden; }
+  overflow-x: hidden; }
+  .caseSection #caseWrapper {
+    width: 400%; }
+    .caseSection #caseWrapper .caseNavigation {
+      position: absolute;
+      z-index: 10; }
+    .caseSection #caseWrapper .left {
+      left: 0px; }
+    .caseSection #caseWrapper .right {
+      right: 0px; }
+    .caseSection #caseWrapper .case {
+      vertical-align: top;
+      width: 90vw;
+      display: inline-block; }
 
 /*************************** instagram ***********************************************/
 #instafeed {

@@ -1,16 +1,37 @@
   $(document).ready(function(){
+  //Variables
+  var caseLocation = 0
+
   // functions that runs on load
   setGreatingFrase();
   startInstagramFeed();
   changeQuats();
   menuScroll();
+  caseSlider()
   setTimeout(function(){ 
 	   masonryGrid()
 	  }, 100);
-
+	  
+	
+	$('.left').click(function(){
+		var windowWidth = ($(window).width() - 300);
+		caseLocation = caseLocation - windowWidth
+		alert(windowWidth)
+		$('.case').css({
+			marginLeft:caseLocation
+		})
+	})
+	
+	$('.right').click(function(){
+		var windowWidth = ($(window).width() - 300);
+		caseLocation = caseLocation + 100
+		$('.case').css({
+			marginLeft:caseLocation
+		})
+	})
 
  });
- 
+
 $( window ).scroll(function() {
    var scrollTop = $(window).scrollTop()
    menuScroll(scrollTop);
@@ -102,3 +123,12 @@ function setGreatingFrase(){
 	  }
 	  
   }
+  
+function caseSlider(){
+	var cases = 1
+	$(".case").each(function() {
+		 $(this).addClass('"'+cases+'"');
+
+		 cases++
+	})
+}

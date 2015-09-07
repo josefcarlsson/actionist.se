@@ -286,14 +286,28 @@ button.square, a.button.square{
 
 /*************************** case ***********************************************/
 
-#case{
+.caseSection{
 	width: 100%;
-	overflow: hidden;
-	.case{
-		
+	overflow-x: hidden;
+	#caseWrapper{
+		width: 400%;
+		.caseNavigation{
+			position: absolute;
+			z-index: 10;
+		}
+		.left{
+			left: 0px;
+		}
+		.right{
+			right:0px;
+		}
+		.case{
+			vertical-align: top;
+			width: 90vw;
+			display: inline-block;
+		}
 	}
 }
-
 
 /*************************** instagram ***********************************************/
 #instafeed{
@@ -401,6 +415,7 @@ button.square, a.button.square{
 .span_1_of_12 {
   	width: 8.333%;
 }
+
 
 /*  GO FULL WIDTH BELOW 480 PIXELS */
 @media only screen and (max-width: 480px) {

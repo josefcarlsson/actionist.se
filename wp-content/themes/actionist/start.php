@@ -67,17 +67,24 @@ endif; ?>
 
 <!------------------------------- case ------------------------------>
 
-<section id="case">
-	<?php query_posts( array ( 'category_name' => 'cases', 'posts_per_page' => -1 ) ); ?>
-		<?php while (have_posts()) : the_post(); 
-		 if(get_field('showOnStart') == 'Ja') : ?>
-			<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
-				<?php get_template_part( 'content', 'page' );?>		
-			</a>
-			<?php endif;
-		endwhile; 	
-	wp_reset_query();?>
-			
+<section class="caseSection">
+	<div id="caseWrapper">
+		<button class="left caseNavigation">LEFT</button>
+		<button class="right caseNavigation">RIGHT</button>
+		<ul>
+		<?php query_posts( array ( 'category_name' => 'cases', 'posts_per_page' => -1 ) ); ?>
+			<?php while (have_posts()) : the_post(); 
+			 if(get_field('showOnStart') == 'Ja') : ?>
+				<li class="case">
+					<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
+						<?php get_template_part( 'content', 'page' );?>		
+					</a>
+				</li>
+				<?php endif;
+			endwhile;?>
+		<?php wp_reset_query();?>
+		</ul>
+	</div>			
 </section>
 
 <!------------------------------- news ------------------------------>	
