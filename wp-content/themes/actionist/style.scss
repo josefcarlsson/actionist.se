@@ -56,6 +56,8 @@ h1, .heading{
 	font-weight: 700;
 	display: inline-block;
 	font-size: 24px;
+	line-height: 1.3em;
+	margin-bottom: 5px;
 
 	&.underline{
 		border-bottom: 1px solid $red;
@@ -73,10 +75,11 @@ h3{
 	display: table-cell;
 	vertical-align: middle;
 }
-.withWrapper{
+.widthWrapper{
 	max-width: 1024px;
 	margin-left: auto;
 	margin-right: auto;
+	padding: 0 20px;
 }
 
 .dot{
@@ -326,16 +329,16 @@ button.square, a.button.square{
 
 	    &.animation{
 		    -webkit-animation-name: dotGrow;
-		    -webkit-animation-duration: .4s;
+		    -webkit-animation-duration: .5s;
 		    -webkit-animation-iteration-count: 1;
-		    -webkit-animation-timing-function: easeInOutCubic;
-		    -webkit-animation-delay: 1.5s;
+		    -webkit-animation-timing-function: cubic-bezier(.17,1.67,.55,1.7);
+		    -webkit-animation-delay: 1.4s;
 		    -webkit-animation-fill-mode: forwards;
 		    animation-name: dotGrow;
-		    animation-duration: .4s;
+		    animation-duration: .5s;
 		    animation-iteration-count: 1;
-		    animation-timing-function: easeInOutCubic;
-		    animation-delay: 1.5s;
+		    animation-timing-function: cubic-bezier(.17,1.67,.55,1.7);
+		    animation-delay: 1.4s;
 		    animation-fill-mode: forwards;
 	    }
 	}
@@ -362,14 +365,14 @@ button.square, a.button.square{
 @-webkit-keyframes dotGrow {
     from { -webkit-transform: scale(0.3); opacity:0;}
     10% { opacity: 1;}
-    50% { -webkit-transform: scale(1.8); opacity: 1;}
+    50% { -webkit-transform: scale(2.3); opacity: 1;}
     to { -webkit-transform: scale(1);opacity: 1;}
 }
 
 @keyframes dotGrow {
     from { transform: scale(0.3); opacity:0;}
     10% { opacity: 1;}
-    50% { transform: scale(1.8);opacity: 1;}
+    50% { transform: scale(2.3);opacity: 1;}
     to { transform: scale(1);opacity: 1;}
 }
 
@@ -410,6 +413,23 @@ button.square, a.button.square{
 	}
 	.current{
 		visibility: visible;
+	}
+}
+
+/***************************news************************************************/
+#news{
+	text-align: center;
+	padding-top: 70px;
+	padding-bottom: 70px;
+
+	article{
+		width: 55%;
+		display: inline-block;
+		padding: 0 5%;
+	}
+
+	.heading{
+		margin-bottom: 30px;
 	}
 }
 

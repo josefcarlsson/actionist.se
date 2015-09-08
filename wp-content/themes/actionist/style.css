@@ -35,7 +35,9 @@ h1, .heading {
   font-family: 'Cardo', 'serif';
   font-weight: 700;
   display: inline-block;
-  font-size: 24px; }
+  font-size: 24px;
+  line-height: 1.3em;
+  margin-bottom: 5px; }
   .preheading.underline {
     border-bottom: 1px solid #ff3200;
     padding-bottom: 5px;
@@ -50,10 +52,11 @@ h3 {
   display: table-cell;
   vertical-align: middle; }
 
-.withWrapper {
+.widthWrapper {
   max-width: 1024px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  padding: 0 20px; }
 
 .dot {
   background: #ff3200;
@@ -234,16 +237,16 @@ button.square, a.button.square {
     opacity: 0; }
     #presentation .dot.animation {
       -webkit-animation-name: dotGrow;
-      -webkit-animation-duration: .4s;
+      -webkit-animation-duration: .5s;
       -webkit-animation-iteration-count: 1;
-      -webkit-animation-timing-function: easeInOutCubic;
-      -webkit-animation-delay: 1.5s;
+      -webkit-animation-timing-function: cubic-bezier(0.17, 1.67, 0.55, 1.7);
+      -webkit-animation-delay: 1.4s;
       -webkit-animation-fill-mode: forwards;
       animation-name: dotGrow;
-      animation-duration: .4s;
+      animation-duration: .5s;
       animation-iteration-count: 1;
-      animation-timing-function: easeInOutCubic;
-      animation-delay: 1.5s;
+      animation-timing-function: cubic-bezier(0.17, 1.67, 0.55, 1.7);
+      animation-delay: 1.4s;
       animation-fill-mode: forwards; }
   #presentation button {
     margin-top: 35px;
@@ -263,7 +266,7 @@ button.square, a.button.square {
   10% {
     opacity: 1; }
   50% {
-    -webkit-transform: scale(1.8);
+    -webkit-transform: scale(2.3);
     opacity: 1; }
   to {
     -webkit-transform: scale(1);
@@ -275,7 +278,7 @@ button.square, a.button.square {
   10% {
     opacity: 1; }
   50% {
-    transform: scale(1.8);
+    transform: scale(2.3);
     opacity: 1; }
   to {
     transform: scale(1);
@@ -306,6 +309,18 @@ button.square, a.button.square {
       width: 100%; }
   #instafeed .current {
     visibility: visible; }
+
+/***************************news************************************************/
+#news {
+  text-align: center;
+  padding-top: 70px;
+  padding-bottom: 70px; }
+  #news article {
+    width: 55%;
+    display: inline-block;
+    padding: 0 5%; }
+  #news .heading {
+    margin-bottom: 30px; }
 
 /***************************clients************************************************/
 .logoWrapper {
