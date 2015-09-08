@@ -1,45 +1,116 @@
+
   $(document).ready(function(){
   //Variables
-  var caseLocation = 0
+  var caseVisable = 1
+  var numberOfCase = 1
+  var isStartPage = false,
+  animationPresentationDone = false;
+
+$(document).ready(function(){
 
   // functions that runs on load
   setGreatingFrase();
   startInstagramFeed();
   changeQuats();
   menuScroll();
-  caseSlider()
+  caseSlider(numberOfCase)
   setTimeout(function(){ 
 	   masonryGrid()
 	  }, 100);
 	  
 	
-	$('.left').click(function(){
-		var windowWidth = ($(window).width() - 300);
-		caseLocation = caseLocation - windowWidth
-		alert(windowWidth)
-		$('.case').css({
-			marginLeft:caseLocation
-		})
+$('.left').click(function(){
+		var windowWidth = ($(window).width() - 50);
+		var prev = $('.visable').attr('id');
+		var lastCase= JSON.parse($('.case:last-child').attr('id'));
+		var next = JSON.parse(prev) + 1
+		
+		if($('.visable').attr('id') == lastCase){
+			
+		}
+		else{
+			$(".case").each(function() {
+				if($(this).attr('id') == 1){
+					console.log('fds')
+					$(this).css({
+						left: '-=' + (windowWidth - 100)
+					})
+				}
+				else{
+					$(this).css({
+						left: '-='+windowWidth
+					})
+				}
+
+				$('#'+prev).removeClass('visable');
+				$('#'+next).addClass('visable');
+			})	
+		}
 	})
 	
-	$('.right').click(function(){
-		var windowWidth = ($(window).width() - 300);
-		caseLocation = caseLocation + 100
-		$('.case').css({
-			marginLeft:caseLocation
-		})
-	})
+$('.right').click(function(){
+		var windowWidth = ($(window).width() - 50);
+		var prev = $('.visable').attr('id');
+		var firstCase= JSON.parse($('.case:first-child').attr('id'));
+		var next = JSON.parse(prev) - 1
 
+		if($('.visable').attr('id') == firstCase){}
+		else{
+			$(".case").each(function() {
+				$(this).css({
+					left: '+='+windowWidth
+				})
+				$('#'+prev).removeClass('visable');
+				$('#'+next).addClass('visable');
+			})	
+			}
+	})
+	
+	
  });
+
+
+  	if($('body.home').length > 0){
+  		isStartPage = true;
+  		resetStartPage();
+  		$presentationStartPage = $('.home').find('#presentation');
+  		$('button.exit-start-view').on('click', function(e){
+  			$('body').css('overflow', 'auto');
+  			goToByScroll('nav');
+  			setTimeout(function(){
+  				$('#presentation').removeClass('preanimation');
+       			$('#presentation').find('.dot').addClass('animation');
+  			}, 400);
+  		});
+	}
+ });
+
+function goToByScroll(div){
+    var offset = $(div).offset();
+    var scrolltoY = offset.top;
+
+    $('html,body').animate({ scrollTop: scrolltoY }, 500);
+} 
+
+function resetStartPage(){
+	goToByScroll('body');
+	setTimeout(function(){
+		$('#presentation').addClass('preanimation');
+	}, 500)
+}
 
 $( window ).scroll(function() {
    var scrollTop = $(window).scrollTop()
    menuScroll(scrollTop);
+   
+   /*if(isStartPage && !animationPresentationDone){
+   		presentationAnimation(scrollTop);
+   }*/
 });
 
 //stick the menu to top
 function menuScroll(scrollTop){
-	var menuTop = $(window).height() - $('nav').height()
+	var menuTop = $(window).height();
 	if(menuTop <= scrollTop){	
 		$('nav').addClass('menuActive')
 	}
@@ -48,15 +119,28 @@ function menuScroll(scrollTop){
 	}	
 }
 
+/*function presentationAnimation(scrollTop){
+	var hT = $('#presentation').offset().top,
+       wH = $(window).height(),
+       hH = wH * 0.50;
+       wS = $(this).scrollTop();
+   if (wS > (hT+hH-wH)){
+       $('#presentation').removeClass('preanimation');
+       $('#presentation').removeClass('preanimation');
+		animationPresentationDone = true;
+		console.log('yes');
+   }
+}*/
+
 //client logo grid
  function masonryGrid(){
 		var container = document.querySelector('.logoWrapper');
 
-			    var msnry = new Masonry( container, {
-			      	itemSelector : '.clientLogo',
-				    gutter:5,
-				    isFitWidth: true
-				    });
+	    var msnry = new Masonry( container, {
+	      	itemSelector : '.clientLogo',
+		    gutter:5,
+		    isFitWidth: true
+		});
  }
 //quat top on startpage 
 function changeQuats(){
@@ -124,11 +208,16 @@ function setGreatingFrase(){
 	  
   }
   
-function caseSlider(){
-	var cases = 1
+function caseSlider(numberOfCase){
+	var caseLocation = 0
 	$(".case").each(function() {
-		 $(this).addClass('"'+cases+'"');
-
-		 cases++
+		 $(this).attr('id',numberOfCase);
+		 $(this).css({
+			 left:caseLocation,
+		 })
+		 caseLocation = caseLocation + ($(window).width() - 50);
+		
+		 numberOfCase++
 	})
+	$('#1').addClass('visable')
 }

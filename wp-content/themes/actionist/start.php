@@ -52,12 +52,13 @@ endif; ?>
 		<div class="withWrapper">
 			<h3><span id="timeOfDay"></span></h3>
 			<h1><span>Vi är:</span><span id="quats"></span></h1>
-	</div>
+			<button class="exit-start-view">Ta en titt</button>
+		</div>
 	</div>
 </section>
 
 <!------------------------------- presentation ------------------------------>
-<section id="presentation" class="presentation withWrapper">
+<section id="presentation" class="presentation withWrapper preanimation">
 	<span class="preheading underline"><?php echo $presentationTopHeader ?></span>
 	<h2 class="heading"><?php echo $presentationBigHeader ?></h2>
 	<span class="dot"></span>
@@ -69,13 +70,13 @@ endif; ?>
 
 <section class="caseSection">
 	<div id="caseWrapper">
-		<button class="left caseNavigation">LEFT</button>
-		<button class="right caseNavigation">RIGHT</button>
 		<ul>
 		<?php query_posts( array ( 'category_name' => 'cases', 'posts_per_page' => -1 ) ); ?>
 			<?php while (have_posts()) : the_post(); 
 			 if(get_field('showOnStart') == 'Ja') : ?>
 				<li class="case">
+					<button class="left caseNavigation">LEFT</button>
+					<button class="right caseNavigation">RIGHT</button>
 					<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
 						<?php get_template_part( 'content', 'page' );?>		
 					</a>
@@ -123,33 +124,8 @@ endif; ?>
 	</div>
 	
 	<div class="span_4_of_12 col spotify">
-		<h2>Spotify</h2>
-		<?php 
-			$username = 'femhundratolv';
-			$scrobbler_url = "http://ws.audioscrobbler.com/2.0/user/" . $username . "/recenttracks";
-			
-			if ($scrobbler_xml = file_get_contents($scrobbler_url)) {
-			       $scrobbler_data = simplexml_load_string($scrobbler_xml);        
-			       $i=0;
-			       echo '<ul>';
-			       foreach ($scrobbler_data->track as $track) {
-			          $string = '<li>';
-			          if($track->image[3]){
-			              $string .= '<div class="cover"><img width="300" height="300" class="cover" src="' . $track->image[3] . '" /></div>';
-			              }
-			          else{
-			          $string .= '<div class="cover"><img width="300" height="300" class="cover" src="fdsfds" /></div>';
-			          }
-			               $string .= '<p><span class="title">' . $track->artist . '</span><br />' . $track->name . '</p>';
-			               $string .= '<p>Played: ' . $track->date . '</p>';
-			               $string .= '</li>';
-			               echo $string;
-			               $i++;
-			if($i==1) break;
-			       }
-			       echo '</ul>';
-			}
-		?>
+		<?php get_sidebar();?>
+		<?php dynamic_sidebar( 'spotify' );?>
 	</div>
 </section>
 

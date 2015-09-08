@@ -27,6 +27,7 @@
 	<![endif]-->
 	<?php wp_head(); ?>
 </head>
+<body <?php body_class(); ?>>
 <!------------------------------- MENU ------------------------------>
 <nav>
 	<img src="<?php echo get_template_directory_uri(); ?>/images/actionist.png" alt="actionist">
