@@ -24,28 +24,32 @@ $('.left').click(function(){
 		var prev = $('.visable').attr('id');
 		var lastCase= JSON.parse($('.case:last-child').attr('id'));
 		var next = JSON.parse(prev) + 1
-		
-		if($('.visable').attr('id') == lastCase){
-			
-		}
-		else{
-			$(".case").each(function() {
-				if($(this).attr('id') == 1){
-					console.log('fds')
+		switch (JSON.parse(next)) {
+		    case 2:
+				$(".case").each(function() {
 					$(this).css({
-						left: '-=' + (windowWidth - 100)
+						left: '-='+(windowWidth - 30)
 					})
-				}
-				else{
+				})
+		        break;
+		    case lastCase:
+		    	console.log('last')
+				$(".case").each(function() {
 					$(this).css({
-						left: '-='+windowWidth
+						left: '-='+(windowWidth - 60)
 					})
-				}
-
-				$('#'+prev).removeClass('visable');
-				$('#'+next).addClass('visable');
-			})	
-		}
+				})
+		        break;
+		    default:
+			 	$(".case").each(function() {
+					$(this).css({
+						left: '-=' + windowWidth
+						})
+					})	
+			    break;
+		};
+			$('#'+prev).removeClass('visable');
+			$('#'+next).addClass('visable');
 	})
 	
 $('.right').click(function(){
@@ -54,16 +58,36 @@ $('.right').click(function(){
 		var firstCase= JSON.parse($('.case:first-child').attr('id'));
 		var next = JSON.parse(prev) - 1
 
-		if($('.visable').attr('id') == firstCase){}
+		if($('.visable').attr('id') == firstCase){
+			
+		}
 		else{
-			$(".case").each(function() {
-				$(this).css({
-					left: '+='+windowWidth
-				})
+			if($('.visable').attr('id') == 1){
+				console.log('first')
+				$(".case").each(function() {
+					$(this).css({
+						left: '-='+(windowWidth - 30)
+					})
+				})	
+			}
+			if($('.visable').attr('id') == (lastCase - 1)){
+				console.log('last')
+				$(".case").each(function() {
+					$(this).css({
+						left: '-='+(windowWidth - 60)
+					})
+				})	
+			}
+			else{
+				$(".case").each(function() {
+					$(this).css({
+						left: '-='+windowWidth
+					})
+				})	
 				$('#'+prev).removeClass('visable');
 				$('#'+next).addClass('visable');
-			})	
 			}
+		};
 	})
 	
 	
