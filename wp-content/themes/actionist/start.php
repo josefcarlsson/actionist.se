@@ -68,31 +68,43 @@ endif; ?>
 
 <!------------------------------- case ------------------------------>
 
-<section id="case">
-	<?php query_posts( array ( 'category_name' => 'cases', 'posts_per_page' => -1 ) ); ?>
-		<?php while (have_posts()) : the_post(); 
-		 if(get_field('showOnStart') == 'Ja') : ?>
-			<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
-				<?php get_template_part( 'content', 'page' );?>		
-			</a>
-			<?php endif;
-		endwhile; 	
-	wp_reset_query();?>
-			
+<section class="caseSection">
+	<div id="caseWrapper">
+		<ul>
+		<?php query_posts( array ( 'category_name' => 'cases', 'posts_per_page' => -1 ) ); ?>
+			<?php while (have_posts()) : the_post(); 
+			 if(get_field('showOnStart') == 'Ja') : ?>
+				<li class="case">
+					<button class="left caseNavigation">LEFT</button>
+					<button class="right caseNavigation">RIGHT</button>
+					<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
+						<?php get_template_part( 'content', 'page' );?>		
+					</a>
+				</li>
+				<?php endif;
+			endwhile;?>
+		<?php wp_reset_query();?>
+		</ul>
+	</div>			
 </section>
 
 <!------------------------------- news ------------------------------>	
 <section id="news">
 	<span class="preheading">Ha koll på</span>
 	<h2 class="heading">Livet på Actionist</h2>
-	<?php query_posts( array ( 'category_name' => 'news', 'posts_per_page' => -1 ) ); ?>
-		<?php if (have_posts()) : ?><?php while (have_posts()) : the_post(); 	?>	
-				<!--<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">-->
-					<?php get_template_part( 'content', 'news' );?>		
-				
-				<?php endwhile; ?>
-	<?php endif; 
-	wp_reset_query();?>
+	<div class="newsoverflow">
+		<div class="newsholder">
+		<?php query_posts( array ( 'category_name' => 'news', 'posts_per_page' => -1 ) ); ?>
+			<?php if (have_posts()) : ?><?php while (have_posts()) : the_post(); 	?>	
+					<!--<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">-->
+						<?php get_template_part( 'content', 'news' );?>		
+					
+					<?php endwhile; ?>
+		<?php endif; 
+		wp_reset_query();?>
+		</div>
+	</div>
+	<input type="range" min="0" max="0" step="1" class="newsdragger">
 </section>
 
 <!------------------------------- uspar ------------------------------>
@@ -115,36 +127,13 @@ endif; ?>
 	</div>
 	
 	<div class="span_4_of_12 col instagram" id="instafeed">
+	<h3>#actionist</h3>
 	</div>
 	
 	<div class="span_4_of_12 col spotify">
-		<h2>Spotify</h2>
-		<?php 
-			$username = 'femhundratolv';
-			$scrobbler_url = "http://ws.audioscrobbler.com/2.0/user/" . $username . "/recenttracks";
-			
-			if ($scrobbler_xml = file_get_contents($scrobbler_url)) {
-			       $scrobbler_data = simplexml_load_string($scrobbler_xml);        
-			       $i=0;
-			       echo '<ul>';
-			       foreach ($scrobbler_data->track as $track) {
-			          $string = '<li>';
-			          if($track->image[3]){
-			              $string .= '<div class="cover"><img width="300" height="300" class="cover" src="' . $track->image[3] . '" /></div>';
-			              }
-			          else{
-			          $string .= '<div class="cover"><img width="300" height="300" class="cover" src="fdsfds" /></div>';
-			          }
-			               $string .= '<p><span class="title">' . $track->artist . '</span><br />' . $track->name . '</p>';
-			               $string .= '<p>Played: ' . $track->date . '</p>';
-			               $string .= '</li>';
-			               echo $string;
-			               $i++;
-			if($i==1) break;
-			       }
-			       echo '</ul>';
-			}
-		?>
+		<h3>Senast spelat på kontoret</h3>
+		<?php get_sidebar();?>
+		<?php dynamic_sidebar( 'spotify' );?>
 	</div>
 </section>
 
