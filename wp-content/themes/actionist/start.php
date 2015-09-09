@@ -49,7 +49,7 @@ endif; ?>
 		  Your browser does not support the video tag.
 	</video>
 	<div class="verticalWrapper">
-		<div class="withWrapper">
+		<div class="widthWrapper">
 			<h3><span id="timeOfDay"></span></h3>
 			<h1><span>Vi är:</span><span id="quats"></span></h1>
 			<button class="exit-start-view">Ta en titt</button>
@@ -58,7 +58,7 @@ endif; ?>
 </section>
 
 <!------------------------------- presentation ------------------------------>
-<section id="presentation" class="presentation withWrapper preanimation">
+<section id="presentation" class="presentation widthWrapper preanimation">
 	<span class="preheading underline"><?php echo $presentationTopHeader ?></span>
 	<h2 class="heading"><?php echo $presentationBigHeader ?></h2>
 	<span class="dot"></span>
@@ -90,21 +90,27 @@ endif; ?>
 
 <!------------------------------- news ------------------------------>	
 <section id="news">
-	<h3>Ha koll på</h3>
-	<h1>Livet på Actionsit</h1>
-	<?php query_posts( array ( 'category_name' => 'news', 'posts_per_page' => -1 ) ); ?>
-		<?php if (have_posts()) : ?><?php while (have_posts()) : the_post(); 	?>	
-				<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
-					<?php get_template_part( 'content', 'usp' );?>		
-				</a>
-				<?php endwhile; ?>
-	<?php endif; 
-	wp_reset_query();?>
+	<span class="preheading">Ha koll på</span>
+	<h2 class="heading">Livet på Actionist</h2>
+	<div class="newsoverflow">
+		<div class="newsholder">
+		<?php query_posts( array ( 'category_name' => 'news', 'posts_per_page' => -1 ) ); ?>
+			<?php if (have_posts()) : ?><?php while (have_posts()) : the_post(); 	?>	
+					<!--<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">-->
+						<?php get_template_part( 'content', 'news' );?>		
+					
+					<?php endwhile; ?>
+		<?php endif; 
+		wp_reset_query();?>
+		</div>
+	</div>
+	<input type="range" min="0" max="0" step="1" class="newsdragger">
 </section>
 
 <!------------------------------- uspar ------------------------------>
 <section id="uspar" class="group section">
 	<div class="uspNewsWrapper col span_4_of_12">
+		<h3>Nyhet</h3>
 		<?php query_posts( array ( 'category_name' => 'news', 'posts_per_page' => -1 ) ); ?>
 			<?php if (have_posts()) : 
 				 while (have_posts()) : the_post(); 	?>	
@@ -121,24 +127,29 @@ endif; ?>
 	</div>
 	
 	<div class="span_4_of_12 col instagram" id="instafeed">
+	<h3>#actionist</h3>
 	</div>
 	
 	<div class="span_4_of_12 col spotify">
+		<h3>Senast spelat på kontoret</h3>
 		<?php get_sidebar();?>
 		<?php dynamic_sidebar( 'spotify' );?>
 	</div>
 </section>
 
 <section id="clients">
-		<h3>denna diven</h3>
-<?php if( have_rows('clients') ): ?>
-	<div class="logoWrapper">
-	 <?php while( have_rows('clients') ): the_row(); 
-		 $logo= get_sub_field('logo');?>
+	<div class="widthWrapper">
 
-		 <img src="<?php echo $logo['url'] ?>" class="clientLogo">
-		<?php endwhile;?>
+		<h3>Våra kunder</h3>
+	<?php if( have_rows('clients') ): ?>
+		<div class="logoWrapper">
+		 <?php while( have_rows('clients') ): the_row(); 
+			 $logo= get_sub_field('logo');?>
+
+			 <img src="<?php echo $logo['url'] ?>" class="clientLogo">
+			<?php endwhile;?>
+		</div>
+	<?php endif; ?>	
 	</div>
-<?php endif; ?>	
 </section>
 
