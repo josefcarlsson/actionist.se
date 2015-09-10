@@ -4,7 +4,10 @@
   var caseVisable = 1
   var numberOfCase = 1
   var isStartPage = false,
-  animationPresentationDone = false;	  
+  animationPresentationDone = false;
+
+  var $newsOverflowControl = $('.newsoverflow');
+  var $newsBlock = $('.newsholder');  
 	
 $('.left').click(function(){
 		var windowWidth = ($(window).width() - 50);
@@ -77,8 +80,9 @@ $('.right').click(function(){
 	
 	
 
-
+//Kör bara på startsidan
   	if($('body.home').length > 0){
+  		var 
   		isStartPage = true;
   		//resetStartPage();
   		$presentationStartPage = $('.home').find('#presentation');
@@ -90,6 +94,10 @@ $('.right').click(function(){
        			$('#presentation').find('.dot').addClass('animation');
   			}, 400);
   		});
+
+  		$('body').on('pan-x', '.rangeslider__handle', function(){
+			$newsBlock.removeClass('animate');
+		});
 
   		//Ta bort när startsidan ska kontrolleras med scroll – dublett av ovan
   		setTimeout(function(){
@@ -150,8 +158,6 @@ function menuScroll(scrollTop){
 //News rotator
 //////////////////
  //News variables
-var $newsOverflowControl = $('.newsoverflow');
-var $newsBlock = $('.newsholder');
 var newsCount = 0;
 var padding = 0.1; //percent
 var newsWidth = 0.6; //percent
@@ -171,21 +177,63 @@ function initNews(){
 		var $this = $(this);
 		leftPositionIndex.push(scrollToX - endSpace);
 		scrollToX = scrollToX + newsItemWidth + newsItemPadding;
+		console.log();
 		$this.width(newsItemWidth).css('left', (previousLeft + newsItemPadding));
 		previousLeft = previousLeft + newsItemWidth + newsItemPadding;
 		thisNewsNumber++;
 	});
 	console.log(leftPositionIndex);
 	$newsBlock.width(previousLeft + endSpace);
-	console.log("Newsblock width: " + (newsItemWidth));
-	$('input[type="range"]').attr('max',previousLeft - newsItemWidth - newsItemPadding - newsItemPadding - newsItemWidth - endSpace).rangeslider({polyfill: false, onSlide: function(position, value) {adjustNews(value)},});
-	setTimeout(function(){
-		$('input[type="range"]').val(200).change();
-	}, 1200);
+	var max = previousLeft - newsItemWidth - newsItemPadding - newsItemPadding - newsItemWidth - endSpace;
+	$('input[type="range"]').attr('value', max).attr('max',max).rangeslider({polyfill: false, onSlide: function(position, value) {adjustNews(value)}, onSlideEnd: function(position, value) {snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPadding)}});
+	adjustNews(leftPositionIndex[newsCount - 1] - newsItemWidth - newsItemPadding);
+	$('.rangeslider__handle').hammer().bind("pan", function(){
+		$newsBlock.removeClass('animate');
+		$('.rangeslider__handle').removeClass('animate');
+		$('.rangeslider__fill').removeClass('animate');
+		console.log('remove');
+	});
 }
 
 function adjustNews(value){
+	$newsBlock.addClass('animate');
 	$newsBlock.css('left', 0 - value + 'px');
+}
+
+function snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPadding){
+	if($('.newsholder').hasClass('animate')){
+		console.log('filmstaden');
+	}
+	console.log('animatttion');
+	var newsOnTheLeft = 0;
+
+	for(var i = 0; i < newsCount; i++){
+		if(value > leftPositionIndex[i]){
+			newsOnTheLeft = i;
+		}
+	}
+
+	var goLeft = leftPositionIndex[newsOnTheLeft];
+	var goRight = leftPositionIndex[newsOnTheLeft+1];
+
+	var goLeftDifference = value - goLeft;
+	var goRightDifference = goRight - value;
+
+	setTimeout(function(){
+		$('.newsholder').addClass('animate');
+		$('.rangeslider__handle').addClass('animate');
+		$('.rangeslider__fill').addClass('animate');
+		console.log('vinka');
+		if (goLeftDifference > goRightDifference){
+			$('input[type="range"]').val(goRight).change();
+			adjustNews(goRight);
+		} else{
+			$('input[type="range"]').val(goLeft).change();
+			adjustNews(goLeft);
+		}
+	}, 100);
+
+	console.log('Value: ' + value + ', Left: ' + goLeftDifference + ", right: " + goRightDifference);
 }
 
 //client logo grid
