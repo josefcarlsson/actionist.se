@@ -14,9 +14,13 @@
 		$caseText = get_field( "text" );
 		$caseColor = get_field( "caseColor" );
 	?>
+<li class="case" style="background-color:<?php echo $caseColor ?>">
+					<button class="left caseNavigation" style="background-color:<?php echo $caseColor ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow.png" alt="arrow"/></button>
+					<button class="right caseNavigation" style="background-color:<?php echo $caseColor ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow.png" alt="arrow"/></button>
+					<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
 
-	<div class="caseContent" style="background-color:<?php echo $caseColor ?>">
-		<div class="img" style="background-image: url(<?php echo $casePresentationimg['url']?>)"></div>
+	<div class="caseContent group section">
+		<img src="<?php echo $casePresentationimg['url']?>" class="img">
 		<h3><?php echo $caseCustomer ?></h3>
 		<h1><?php the_title( '<h1 class="entry-title">- ', '</h1>' ); ?></h1>
 		<div class="presentationText col span_4_of_12">
@@ -37,3 +41,5 @@
 			<?php endwhile;?>
 		
 		</div><!-- .entry-content -->
+					</a>
+				</li>

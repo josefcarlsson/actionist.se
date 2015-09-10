@@ -64,6 +64,12 @@ h3 {
   border-radius: 100px;
   display: inline-block; }
 
+button {
+  cursor: pointer; }
+
+button:focus {
+  outline: none; }
+
 /*************************** MENU ****************************************************/
 nav {
   position: absolute;
@@ -280,67 +286,86 @@ button.square, a.button.square {
 /*************************** case ***********************************************/
 .caseSection {
   width: 100%;
-  height: calc(100vh - 100px);
-  overflow-x: hidden;
-  position: relative; }
+  position: relative;
+  overflow-x: hidden; }
   .caseSection #caseWrapper {
     width: 100000%; }
     .caseSection #caseWrapper .caseNavigation {
+      top: calc(50% - 60px);
       position: absolute;
-      z-index: 10; }
+      z-index: 10;
+      height: 120px;
+      width: 50px;
+      border: none; }
+      .caseSection #caseWrapper .caseNavigation img {
+        width: 60%; }
     .caseSection #caseWrapper .left {
-      left: 0px;
-      top: calc(50% - 20px); }
+      left: -50px; }
+      .caseSection #caseWrapper .left img {
+        margin-left: 20%; }
     .caseSection #caseWrapper .right {
-      right: 0px; }
+      right: -50px; }
+      .caseSection #caseWrapper .right img {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+        margin-right: 20%; }
     .caseSection #caseWrapper .case {
+      -webkit-box-shadow: 3px 4px 15px -4px black;
+      -moz-box-shadow: 3px 4px 15px -4px black;
+      box-shadow: 3px 4px 15px -4px black;
       -webkit-transition: all 0.6s cubic-bezier(0.44, 0.88, 0.85, 1.11);
       -moz-transition: all 0.6s cubic-bezier(0.44, 0.88, 0.85, 1.11);
       transition: all 0.6s cubic-bezier(0.44, 0.88, 0.85, 1.11);
-      position: absolute;
       vertical-align: top;
-      padding-right: 10px;
-      width: calc(100vw - 60px);
-      display: inline-block; }
+      margin-right: 10px;
+      padding: 20px;
+      width: calc(100vw - 100px);
+      display: inline-block;
+      position: absolute; }
       .caseSection #caseWrapper .case a {
         text-decoration: none; }
-      .caseSection #caseWrapper .case .caseContent {
-        padding: 20px;
-        height: calc(100vh - 140px); }
-        .caseSection #caseWrapper .case .caseContent .resultStat {
-          text-align: center; }
-          .caseSection #caseWrapper .case .caseContent .resultStat img {
-            display: inline-block;
-            height: 1em; }
-          .caseSection #caseWrapper .case .caseContent .resultStat h3 {
-            display: inline; }
-        .caseSection #caseWrapper .case .caseContent .presentationText div {
-          display: -webkit-box;
-          max-width: 100%;
-          height: 91px;
-          margin: 0 auto;
-          font-size: 16px;
-          line-height: 1.5em;
-          -webkit-line-clamp: 4;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          margin-bottom: 20px; }
-        .caseSection #caseWrapper .case .caseContent .presentationText .readMore::after {
-          content: " >";
-          font-weight: 800; }
-        .caseSection #caseWrapper .case .caseContent h3 {
-          padding-top: 10px; }
-        .caseSection #caseWrapper .case .caseContent .img {
-          height: 60vh;
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center center;
-          width: 100%; }
-    .caseSection #caseWrapper .visable .right {
-      display: none; }
-    .caseSection #caseWrapper .visable .left {
-      display: none; }
+      .caseSection #caseWrapper .case .caseContent .resultStat {
+        text-align: center; }
+        .caseSection #caseWrapper .case .caseContent .resultStat img {
+          display: inline-block;
+          height: 1em; }
+        .caseSection #caseWrapper .case .caseContent .resultStat h3 {
+          display: inline; }
+      .caseSection #caseWrapper .case .caseContent .presentationText div {
+        display: -webkit-box;
+        max-width: 100%;
+        height: 91px;
+        margin: 0 auto;
+        font-size: 16px;
+        line-height: 1.5em;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 20px; }
+      .caseSection #caseWrapper .case .caseContent .presentationText .readMore::after {
+        content: " >";
+        font-weight: 800; }
+      .caseSection #caseWrapper .case .caseContent h3 {
+        padding-top: 10px; }
+      .caseSection #caseWrapper .case .caseContent .img {
+        display: block;
+        height: auto;
+        width: 100%; }
+    .caseSection #caseWrapper .visable {
+      -webkit-transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+      -moz-transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+      transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+      margin-bottom: 20px;
+      position: relative; }
+      .caseSection #caseWrapper .visable .right {
+        display: none; }
+      .caseSection #caseWrapper .visable .left {
+        display: none; }
 
 /*************************** instagram ***********************************************/
 #instafeed {

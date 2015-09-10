@@ -23,7 +23,7 @@ $('.left').click(function(){
 		    	console.log('last')
 				$(".case").each(function() {
 					$(this).css({
-						left: '-='+(windowWidth - 60)
+						left: '-='+(windowWidth - 30)
 					})
 				})
 		        break;
@@ -42,39 +42,37 @@ $('.left').click(function(){
 $('.right').click(function(){
 		var windowWidth = ($(window).width() - 50);
 		var prev = $('.visable').attr('id');
-		var firstCase= JSON.parse($('.case:first-child').attr('id'));
+		var lastCase= JSON.parse($('.case:last-child').attr('id') - 1);
 		var next = JSON.parse(prev) - 1
-
-		if($('.visable').attr('id') == firstCase){
-			
-		}
-		else{
-			if($('.visable').attr('id') == 1){
-				console.log('first')
+		console.log(lastCase + 'next' +next)
+		switch (JSON.parse(next)) {
+		    case 1:
+		  		  console.log('first')
 				$(".case").each(function() {
 					$(this).css({
-						left: '-='+(windowWidth - 30)
+						left: '+='+(windowWidth - 30)
 					})
-				})	
-			}
-			if($('.visable').attr('id') == (lastCase - 1)){
-				console.log('last')
+				})
+		        break;
+		    case lastCase:
+		    	console.log('last')
 				$(".case").each(function() {
 					$(this).css({
-						left: '-='+(windowWidth - 60)
+						left: '+='+(windowWidth - 30)
 					})
-				})	
-			}
-			else{
-				$(".case").each(function() {
+				})
+		        break;
+		    default:
+		    	console.log('else')
+			 	$(".case").each(function() {
 					$(this).css({
-						left: '-='+windowWidth
-					})
-				})	
-				$('#'+prev).removeClass('visable');
-				$('#'+next).addClass('visable');
-			}
+						left: '+=' + windowWidth
+						})
+					})	
+			    break;
 		};
+			$('#'+prev).removeClass('visable');
+			$('#'+next).addClass('visable');
 	})
 	
 	
@@ -113,7 +111,20 @@ function resetStartPage(){
 		$('#presentation').addClass('preanimation');
 	}, 500)
 }
-
+$( window).resize(function(){
+	var caseLocation = 0
+	$(".case").each(function() {
+		 $(this).css({
+			 left:caseLocation,
+		 })
+		 caseLocation = caseLocation + ($(window).width() - 50);
+		
+		 numberOfCase++
+	})
+		$('.case').removeClass('visable')
+	$('#1').addClass('visable')
+		
+})
 $( window ).scroll(function() {
    var scrollTop = $(window).scrollTop()
    menuScroll(scrollTop);
@@ -187,24 +198,81 @@ function adjustNews(value){
 		    isFitWidth: true
 		});
  }
+ var letterToDelete = 1
 //quat top on startpage 
-function changeQuats(){
 	$.each( quats, function( i, quats ) {
 		  $('#quats').append('<span>'+quats.text+'</span>')
 		});
-	
-	var activeQuat = $('#quats span');
+		var activeQuat = $('#quats span');
 	activeQuat.first().addClass('current');
-	 setInterval(function(){
-    var next = activeQuat.filter('.current').removeClass('current').next('span');
 
+var text="This text will be written one by one.";
+var numberOfLetters = text.length - 2
+var delay=300;
+var elem = $(".current");
+console.log(numberOfLetters)
+
+//text- string
+//elem - jQuery element where text is to be attached
+//delay - the delay in each text
+var addTextByDelay = function(text,elem,delay,numberOfLetters){
+    if(!elem){
+        elem = $("body");
+    }
+    if(!delay){
+        delay = 300;
+    }
+    if(text.length >0){
+        //append first character
+        alert(text)
+        elem.append(text[35]);
+        setTimeout(
+            function(){
+                //Slice text by 1 character and call function again                
+                addTextByDelay(text.slice(-1),elem,delay);            
+             },delay                 
+            );
+    }
+}
+
+addTextByDelay(text,elem,delay);
+/*
+function changeQuats(){
+    var str =  $('#quats .current').text()
+    var prevStr = str
+    var n = str.length;
+	setTimeout(function(){ 
+	 var letter = setInterval(function(){
+		if(letterToDelete <= n){
+			console.log(letterToDelete)
+			removeLetter(str);	
+		}
+		else{
+			letterToDelete = 1
+			clearInterval(letter);
+			addLetter(activeQuat, prevStr)
+		}		
+	}, 200);
+	},1000)
+	
+ }
+ 
+ function removeLetter(str){
+	 var removeWord = str.substring(0,str.length - letterToDelete);
+	 $('#quats .current').text(removeWord)
+	 letterToDelete++
+	 return letterToDelete
+ }
+ function addLetter(activeQuat, prevStr){
+	$('#quats .current').text(prevStr);
+	var next = activeQuat.filter('#quats .current').removeClass('current').next('span');
     if (next.length === 0) {
         next = activeQuat.first();
     }
-
-    next.addClass('current');
-    }, 3000);
-}
+  	next.addClass('current');
+  	changeQuats()
+ }
+ */
 //instagram
 function startInstagramFeed(){
  	var feed = new Instafeed({
@@ -253,7 +321,7 @@ function setGreatingFrase(){
 	  
   }
   
-function caseSlider(numberOfCase){
+function caseSlider(){
 	var caseLocation = 0
 	$(".case").each(function() {
 		 $(this).attr('id',numberOfCase);

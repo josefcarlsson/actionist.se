@@ -74,13 +74,7 @@ endif; ?>
 		<?php query_posts( array ( 'category_name' => 'cases', 'posts_per_page' => -1 ) ); ?>
 			<?php while (have_posts()) : the_post(); 
 			 if(get_field('showOnStart') == 'Ja') : ?>
-				<li class="case">
-					<button class="left caseNavigation">LEFT</button>
-					<button class="right caseNavigation">RIGHT</button>
-					<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
-						<?php get_template_part( 'content', 'page' );?>		
-					</a>
-				</li>
+			 						<?php get_template_part( 'content', 'page' );?>		
 				<?php endif;
 			endwhile;?>
 		<?php wp_reset_query();?>
