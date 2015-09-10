@@ -98,13 +98,12 @@ endif; ?>
 			<?php if (have_posts()) : ?><?php while (have_posts()) : the_post(); 	?>	
 					<!--<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">-->
 						<?php get_template_part( 'content', 'news' );?>		
-					
 					<?php endwhile; ?>
 		<?php endif; 
 		wp_reset_query();?>
 		</div>
 	</div>
-	<input type="range" min="0" max="0" step="1" class="newsdragger">
+	<input type="range" min="0" max="0" step="1" value="1" class="newsdragger">
 </section>
 
 <!------------------------------- uspar ------------------------------>
