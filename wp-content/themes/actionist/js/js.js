@@ -272,7 +272,6 @@ var addTextByDelay = function(text,elem,delay,numberOfLetters){
     }
     if(text.length >0){
         //append first character
-        alert(text)
         elem.append(text[35]);
         setTimeout(
             function(){
