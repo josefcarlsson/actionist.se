@@ -25,7 +25,7 @@ h1, .heading {
   font-family: "Raleway", sans-serif;
   font-weight: 900;
   color: #ff3200;
-  line-height: 1.3em;
+  line-height: 1.2em;
   margin-bottom: 15px; }
 
 .preheading {
@@ -522,18 +522,33 @@ button.square, a.button.square {
       vertical-align: top;
       -webkit-transition: all 500ms ease-out;
       transition: all 500ms ease-out; }
+      @media only screen and (max-width: 1024px) {
+        #contact .weareactionist li {
+          width: 28.33%; } }
+      @media only screen and (max-width: 650px) {
+        #contact .weareactionist li {
+          width: 45%; } }
+      @media only screen and (max-width: 400px) {
+        #contact .weareactionist li {
+          width: 95%; }
+          #contact .weareactionist li h2 {
+            font-size: 20px;
+            line-height: 1.2em; }
+          #contact .weareactionist li .title {
+            font-size: 15px;
+            line-height: 1.3em; } }
       #contact .weareactionist li img {
         width: 100%;
         margin-bottom: 5px; }
     #contact .weareactionist h2 {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 900;
       line-height: 1.2em;
       margin-bottom: 2px;
       text-transform: uppercase; }
     #contact .weareactionist .title {
       text-transform: uppercase;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 700;
       line-height: 1.3em; }
     #contact .weareactionist .email, #contact .weareactionist .telephone {
