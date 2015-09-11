@@ -10,6 +10,6 @@
 
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<h4><?php the_title( '<h1 class="entry-title">', '</h1>' ); ?></h4>
+		<h3><?php the_title(); ?></h4>
 		<!--<div class="presentationText"><?php the_content(); ?></div>-->
 </article><!-- #post-## -->

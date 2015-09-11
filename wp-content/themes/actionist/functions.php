@@ -79,12 +79,37 @@ function twentyfifteen_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 825, 510, true );
+	add_image_size('portrait', 400, 550, true);
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu',      'twentyfifteen' ),
 		'social'  => __( 'Social Links Menu', 'twentyfifteen' ),
 	) );
+
+	function actionist_nav()
+	{
+		wp_nav_menu(
+		array(
+			'theme_location'  => 'header-menu',
+			'menu'            => '',
+			'container'       => 'div',
+			'container_class' => 'menu-{menu slug}-container',
+			'container_id'    => '',
+			'menu_class'      => 'menu',
+			'menu_id'         => '',
+			'echo'            => true,
+			'fallback_cb'     => 'wp_page_menu',
+			'before'          => '',
+			'after'           => '',
+			'link_before'     => '',
+			'link_after'      => '',
+			'items_wrap'      => '<ul>%3$s</ul>',
+			'depth'           => 0,
+			'walker'          => ''
+			)
+		);
+	}
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -258,6 +283,77 @@ function twentyfifteen_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'twentyfifteen_scripts' );
 
+
+
+
+
+
+// Create 1 Custom Post type for a Demo, called HTML5-Blank
+function create_post_type_actionist()
+{
+    register_post_type('Personal', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Employees', 'employees'), // Rename these to suit
+            'singular_name' => __('Employee', 'employees'),
+            'add_new' => __('Add', 'employees'),
+            'add_new_item' => __('Add employee', 'employees'),
+            'edit' => __('Edit', 'employees'),
+            'edit_item' => __('Edit employee', 'employees'),
+            'new_item' => __('New employee', 'employees'),
+            'view' => __('View', 'employees'),
+            'view_item' => __('View employee', 'employees'),
+            'search_items' => __('Search employees', 'employees'),
+            'not_found' => __('Employee not found', 'employees'),
+            'not_found_in_trash' => __('Employee not found in trash (I looked, promise)', 'employees')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'editor'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+        'taxonomies' => array(
+            'post_tag',
+            'category'
+        ) // Add Category and Post Tags support
+    ));
+
+register_post_type('case', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Case', 'case'), // Rename these to suit
+            'singular_name' => __('Case', 'case'),
+            'add_new' => __('Add', 'case'),
+            'add_new_item' => __('Add case', 'case'),
+            'edit' => __('Edit', 'case'),
+            'edit_item' => __('Edit case', 'case'),
+            'new_item' => __('New case', 'case'),
+            'view' => __('View', 'case'),
+            'view_item' => __('View case', 'case'),
+            'search_items' => __('Search case', 'case'),
+            'not_found' => __('Case not found', 'case'),
+            'not_found_in_trash' => __('Case not found in trash', 'case')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'editor'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+        'taxonomies' => array(
+            'post_tag',
+            'category'
+        ) // Add Category and Post Tags support
+    ));
+}
+
+
+
 /**
  * Add featured image as background image to post navigation elements.
  *
@@ -299,6 +395,7 @@ function twentyfifteen_post_nav_background() {
 	wp_add_inline_style( 'twentyfifteen-style', $css );
 }
 add_action( 'wp_enqueue_scripts', 'twentyfifteen_post_nav_background' );
+add_action('init', 'create_post_type_actionist');
 
 /**
  * Display descriptions in main navigation.
@@ -353,3 +450,7 @@ require get_template_directory() . '/inc/template-tags.php';
  * @since Twenty Fifteen 1.0
  */
 require get_template_directory() . '/inc/customizer.php';
+
+function remove_width_and_height_attribute( $html ) {
+   return preg_replace( '/(height|width)="\d*"\s/', "", $html );
+}

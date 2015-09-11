@@ -23,7 +23,6 @@ $('.left').click(function(){
 				})
 		        break;
 		    case lastCase:
-		    	console.log('last')
 				$(".case").each(function() {
 					$(this).css({
 						left: '-='+(windowWidth - 30)
@@ -47,10 +46,8 @@ $('.right').click(function(){
 		var prev = $('.visable').attr('id');
 		var lastCase= JSON.parse($('.case:last-child').attr('id') - 1);
 		var next = JSON.parse(prev) - 1
-		console.log(lastCase + 'next' +next)
 		switch (JSON.parse(next)) {
 		    case 1:
-		  		  console.log('first')
 				$(".case").each(function() {
 					$(this).css({
 						left: '+='+(windowWidth - 30)
@@ -58,7 +55,6 @@ $('.right').click(function(){
 				})
 		        break;
 		    case lastCase:
-		    	console.log('last')
 				$(".case").each(function() {
 					$(this).css({
 						left: '+='+(windowWidth - 30)
@@ -66,7 +62,6 @@ $('.right').click(function(){
 				})
 		        break;
 		    default:
-		    	console.log('else')
 			 	$(".case").each(function() {
 					$(this).css({
 						left: '+=' + windowWidth
@@ -77,12 +72,9 @@ $('.right').click(function(){
 			$('#'+prev).removeClass('visable');
 			$('#'+next).addClass('visable');
 	})
-	
-	
 
 //Kör bara på startsidan
   	if($('body.home').length > 0){
-  		var 
   		isStartPage = true;
   		//resetStartPage();
   		$presentationStartPage = $('.home').find('#presentation');
@@ -104,6 +96,27 @@ $('.right').click(function(){
   				$('#presentation').removeClass('preanimation');
        			$('#presentation').find('.dot').addClass('animation');
   			}, 400);
+	}
+
+//Kör bara på kontakt
+  	if($('body.page-id-71').length > 0){
+  		setTimeout(function(){
+  				$('#contact').removeClass('preanimation');
+       			//$('#contact').find('.dot').addClass('animation');
+  			}, 400);
+
+  		var employeeAnimTime = 300;
+
+  		$('.weareactionist').find('li').each(function(){
+  			console.log('preanim');
+  			var $this = $(this);
+  			setTimeout(function(){
+  				$this.removeClass('preanimation');
+  				console.log('now');
+       			//$('#contact').find('.dot').addClass('animation');
+  			}, employeeAnimTime);
+  			employeeAnimTime += 100;
+  		});
 	}
 
 function goToByScroll(div){
@@ -130,7 +143,9 @@ $( window).resize(function(){
 		 numberOfCase++
 	})
 		$('.case').removeClass('visable')
-	$('#1').addClass('visable')
+	$('#1').addClass('visable');
+
+	initNews();
 		
 })
 $( window ).scroll(function() {
@@ -168,7 +183,6 @@ function initNews(){
 	var newsItemWidth = windowWidth * newsWidth;
 	var newsItemPadding = windowWidth * padding;
 	var endSpace = windowWidth * (0.5 - (newsWidth/2) - padding);
-	var newsItemTotalWidth = newsItemWidth + (newsItemPadding * 1);
 	var thisNewsNumber = 0;
 	var leftPositionIndex = [];
 	var previousLeft = endSpace;
@@ -177,21 +191,23 @@ function initNews(){
 		var $this = $(this);
 		leftPositionIndex.push(scrollToX - endSpace);
 		scrollToX = scrollToX + newsItemWidth + newsItemPadding;
-		console.log();
 		$this.width(newsItemWidth).css('left', (previousLeft + newsItemPadding));
 		previousLeft = previousLeft + newsItemWidth + newsItemPadding;
 		thisNewsNumber++;
 	});
-	console.log(leftPositionIndex);
+
+
+	//console.log(leftPositionIndex);
 	$newsBlock.width(previousLeft + endSpace);
 	var max = previousLeft - newsItemWidth - newsItemPadding - newsItemPadding - newsItemWidth - endSpace;
+	$('input[type="range"]').rangeslider('destroy');
 	$('input[type="range"]').attr('value', max).attr('max',max).rangeslider({polyfill: false, onSlide: function(position, value) {adjustNews(value)}, onSlideEnd: function(position, value) {snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPadding)}});
+	$('input[type="range"]').val(max).change();
 	adjustNews(leftPositionIndex[newsCount - 1] - newsItemWidth - newsItemPadding);
 	$('.rangeslider__handle').hammer().bind("pan", function(){
 		$newsBlock.removeClass('animate');
 		$('.rangeslider__handle').removeClass('animate');
 		$('.rangeslider__fill').removeClass('animate');
-		console.log('remove');
 	});
 }
 
@@ -201,10 +217,6 @@ function adjustNews(value){
 }
 
 function snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPadding){
-	if($('.newsholder').hasClass('animate')){
-		console.log('filmstaden');
-	}
-	console.log('animatttion');
 	var newsOnTheLeft = 0;
 
 	for(var i = 0; i < newsCount; i++){
@@ -223,7 +235,6 @@ function snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPa
 		$('.newsholder').addClass('animate');
 		$('.rangeslider__handle').addClass('animate');
 		$('.rangeslider__fill').addClass('animate');
-		console.log('vinka');
 		if (goLeftDifference > goRightDifference){
 			$('input[type="range"]').val(goRight).change();
 			adjustNews(goRight);
@@ -232,8 +243,6 @@ function snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPa
 			adjustNews(goLeft);
 		}
 	}, 100);
-
-	console.log('Value: ' + value + ', Left: ' + goLeftDifference + ", right: " + goRightDifference);
 }
 
 //client logo grid
@@ -258,7 +267,6 @@ var text="This text will be written one by one.";
 var numberOfLetters = text.length - 2
 var delay=300;
 var elem = $(".current");
-console.log(numberOfLetters)
 
 //text- string
 //elem - jQuery element where text is to be attached
@@ -283,7 +291,7 @@ var addTextByDelay = function(text,elem,delay,numberOfLetters){
 }
 
 addTextByDelay(text,elem,delay);
-/*
+
 function changeQuats(){
     var str =  $('#quats .current').text()
     var prevStr = str
@@ -291,7 +299,6 @@ function changeQuats(){
 	setTimeout(function(){ 
 	 var letter = setInterval(function(){
 		if(letterToDelete <= n){
-			console.log(letterToDelete)
 			removeLetter(str);	
 		}
 		else{
@@ -319,7 +326,8 @@ function changeQuats(){
   	next.addClass('current');
   	changeQuats()
  }
- */
+ 
+
 //instagram
 function startInstagramFeed(){
  	var feed = new Instafeed({

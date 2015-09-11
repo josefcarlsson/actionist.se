@@ -35,9 +35,7 @@
 <nav>
 	<img src="<?php echo get_template_directory_uri(); ?>/images/actionist.png" alt="actionist">
 	<ul class="mainnav">
-		<li><a href="#">Jobb</a></li>
-		<li><a href="#">Om oss</a></li>
-		<li><a href="#">Kontakt</a></li>
+		<?php wp_nav_menu(); ?>
 	</ul>
 
 	<ul class="social">
