@@ -18,7 +18,6 @@ get_header(); ?>
 	$presentationBigHeader = get_field('presentationBigHeader');
 	$presentationText = get_field('presentationText');
 	$presentationButton = get_field('presentationButton');
-	$test = get_field('test');
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +34,7 @@ get_header(); ?>
 	 while( have_rows('quats') ): the_row(); 
 		 $quat= get_sub_field('quat');?>
 		<script>
-			var obj = {text: '<?php echo $quat ?>'}
+			var obj = "<?php echo $quat ?>";
 			quats.push(obj);
 		</script>
 	<?php endwhile;
@@ -43,6 +42,7 @@ endif; ?>
 
 
 <section id="top" class="fullHeight">
+	<button class="exit-start-view">Ta en titt</button>
 	<video width="100%" height="100%" autoplay="" muted="" id="video" loop="">
 		<source src="<?php echo get_template_directory_uri(); ?>/images/movie.mp4" type="video/mp4">
 		<source src="<?php echo get_template_directory_uri(); ?>/images/movie.ogv" type="video/ogv">
@@ -52,7 +52,6 @@ endif; ?>
 		<div class="widthWrapper">
 			<h3><span id="timeOfDay"></span></h3>
 			<h1><span>Vi är:</span><span id="quats"></span></h1>
-			<button class="exit-start-view">Ta en titt</button>
 		</div>
 	</div>
 </section>
@@ -137,12 +136,18 @@ endif; ?>
 	<?php if( have_rows('clients') ): ?>
 		<div class="logoWrapper">
 		 <?php while( have_rows('clients') ): the_row(); 
-			 $logo= get_sub_field('logo');?>
-
-			 <img src="<?php echo $logo['url'] ?>" class="clientLogo">
+			 $logo= get_sub_field('logo');
+			 $class = get_sub_field('clientsize');
+			 ?>
+			 <div class="gutter-sizer"></div>
+			 <div class="grid-sizer"></div>
+			 <div class="clientLogo <?php echo $class ?>" style="background-image:url(<?php echo $logo['url'] ?>)">
+				 <img src="<?php echo $logo['url'] ?>"></div>
 			<?php endwhile;?>
 		</div>
 	<?php endif; ?>	
 	</div>
 </section>
-
+<?php
+get_footer();
+?>

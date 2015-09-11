@@ -4,10 +4,7 @@
   var caseVisable = 1
   var numberOfCase = 1
   var isStartPage = false,
-  animationPresentationDone = false;
-
-  var $newsOverflowControl = $('.newsoverflow');
-  var $newsBlock = $('.newsholder');  
+  animationPresentationDone = false;	  
 	
 $('.left').click(function(){
 		var windowWidth = ($(window).width() - 50);
@@ -80,9 +77,8 @@ $('.right').click(function(){
 	
 	
 
-//Kör bara på startsidan
+
   	if($('body.home').length > 0){
-  		var 
   		isStartPage = true;
   		//resetStartPage();
   		$presentationStartPage = $('.home').find('#presentation');
@@ -94,10 +90,6 @@ $('.right').click(function(){
        			$('#presentation').find('.dot').addClass('animation');
   			}, 400);
   		});
-
-  		$('body').on('pan-x', '.rangeslider__handle', function(){
-			$newsBlock.removeClass('animate');
-		});
 
   		//Ta bort när startsidan ska kontrolleras med scroll – dublett av ovan
   		setTimeout(function(){
@@ -158,6 +150,8 @@ function menuScroll(scrollTop){
 //News rotator
 //////////////////
  //News variables
+var $newsOverflowControl = $('.newsoverflow');
+var $newsBlock = $('.newsholder');
 var newsCount = 0;
 var padding = 0.1; //percent
 var newsWidth = 0.6; //percent
@@ -177,121 +171,88 @@ function initNews(){
 		var $this = $(this);
 		leftPositionIndex.push(scrollToX - endSpace);
 		scrollToX = scrollToX + newsItemWidth + newsItemPadding;
-		console.log();
 		$this.width(newsItemWidth).css('left', (previousLeft + newsItemPadding));
 		previousLeft = previousLeft + newsItemWidth + newsItemPadding;
 		thisNewsNumber++;
 	});
 	console.log(leftPositionIndex);
 	$newsBlock.width(previousLeft + endSpace);
-	var max = previousLeft - newsItemWidth - newsItemPadding - newsItemPadding - newsItemWidth - endSpace;
-	$('input[type="range"]').attr('value', max).attr('max',max).rangeslider({polyfill: false, onSlide: function(position, value) {adjustNews(value)}, onSlideEnd: function(position, value) {snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPadding)}});
-	adjustNews(leftPositionIndex[newsCount - 1] - newsItemWidth - newsItemPadding);
-	$('.rangeslider__handle').hammer().bind("pan", function(){
-		$newsBlock.removeClass('animate');
-		$('.rangeslider__handle').removeClass('animate');
-		$('.rangeslider__fill').removeClass('animate');
-		console.log('remove');
-	});
+	console.log("Newsblock width: " + (newsItemWidth));
+	$('input[type="range"]').attr('max',previousLeft - newsItemWidth - newsItemPadding - newsItemPadding - newsItemWidth - endSpace).rangeslider({polyfill: false, onSlide: function(position, value) {adjustNews(value)},});
+	setTimeout(function(){
+		$('input[type="range"]').val(200).change();
+	}, 1200);
 }
 
 function adjustNews(value){
-	$newsBlock.addClass('animate');
 	$newsBlock.css('left', 0 - value + 'px');
-}
-
-function snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPadding){
-	if($('.newsholder').hasClass('animate')){
-		console.log('filmstaden');
-	}
-	console.log('animatttion');
-	var newsOnTheLeft = 0;
-
-	for(var i = 0; i < newsCount; i++){
-		if(value > leftPositionIndex[i]){
-			newsOnTheLeft = i;
-		}
-	}
-
-	var goLeft = leftPositionIndex[newsOnTheLeft];
-	var goRight = leftPositionIndex[newsOnTheLeft+1];
-
-	var goLeftDifference = value - goLeft;
-	var goRightDifference = goRight - value;
-
-	setTimeout(function(){
-		$('.newsholder').addClass('animate');
-		$('.rangeslider__handle').addClass('animate');
-		$('.rangeslider__fill').addClass('animate');
-		console.log('vinka');
-		if (goLeftDifference > goRightDifference){
-			$('input[type="range"]').val(goRight).change();
-			adjustNews(goRight);
-		} else{
-			$('input[type="range"]').val(goLeft).change();
-			adjustNews(goLeft);
-		}
-	}, 100);
-
-	console.log('Value: ' + value + ', Left: ' + goLeftDifference + ", right: " + goRightDifference);
 }
 
 //client logo grid
  function masonryGrid(){
+	 alert()
 		var container = document.querySelector('.logoWrapper');
 
 	    var msnry = new Masonry( container, {
 	      	itemSelector : '.clientLogo',
-		    gutter:5,
-		    isFitWidth: true
+		  	columnWidth: '.grid-sizer',
+		  	gutter: '.gutter-sizer',
+		  	percentPosition: true,
 		});
  }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  var letterToDelete = 1
 //quat top on startpage 
-	$.each( quats, function( i, quats ) {
-		  $('#quats').append('<span>'+quats.text+'</span>')
-		});
-		var activeQuat = $('#quats span');
-	activeQuat.first().addClass('current');
+var elementQuat = $('#quats');
+var activeStr = 0
+var letterState = 0
+var numberOfquat = 0
+var currentLetter = 0
+var letterGo = 0
+var letterPause = 0
+changeQuats()
 
-var text="This text will be written one by one.";
-var numberOfLetters = text.length - 2
-var delay=300;
-var elem = $(".current");
-console.log(numberOfLetters)
-
-//text- string
-//elem - jQuery element where text is to be attached
-//delay - the delay in each text
-var addTextByDelay = function(text,elem,delay,numberOfLetters){
-    if(!elem){
-        elem = $("body");
-    }
-    if(!delay){
-        delay = 300;
-    }
-    if(text.length >0){
-        //append first character
-        elem.append(text[35]);
-        setTimeout(
-            function(){
-                //Slice text by 1 character and call function again                
-                addTextByDelay(text.slice(-1),elem,delay);            
-             },delay                 
-            );
-    }
-}
-
-addTextByDelay(text,elem,delay);
-/*
 function changeQuats(){
-    var str =  $('#quats .current').text()
-    var prevStr = str
-    var n = str.length;
-	setTimeout(function(){ 
 	 var letter = setInterval(function(){
-		if(letterToDelete <= n){
-			console.log(letterToDelete)
+			if(letterGo == 0){
+				letterGo = 1
+				for (i = 0; i < quats.length; i++) { 
+			    	var str = quats[numberOfquat]
+				}
+				numberOfquat++
+				if(numberOfquat >= quats.length){
+					numberOfquat = 0;
+				}
+				activeStr = str
+			}
+			else{
+				if(letterState == 0){
+					addLetter(activeStr)
+				}
+				else{
+					if(letterPause == 1){
+						clearInterval(letter);
+						setTimeout(function(){ 
+							changeQuats()
+						}, 2000);
+					}
+					removeLetter(activeStr)
+				}
+			}
+		}, 50);
+	
+ }
+ 
+/* 
+     var n = str.length;
+ if(letterToDelete <= n){
 			removeLetter(str);	
 		}
 		else{
@@ -299,27 +260,34 @@ function changeQuats(){
 			clearInterval(letter);
 			addLetter(activeQuat, prevStr)
 		}		
-	}, 200);
-	},1000)
-	
+
+ 
+  $('#quats').append('<span>'+quats.text+'</span>')*/
+
+ function removeLetter(str){
+	 letterPause = 0
+	 var removeWord = str.substring(0,str.length - letterToDelete);
+	 $('#quats').text(removeWord)
+	 letterToDelete++
+	 if(removeWord == ""){
+		 letterState = 0
+		 letterGo = 0
+		 currentLetter = 0
+		 letterToDelete = 0
+	 }
  }
  
- function removeLetter(str){
-	 var removeWord = str.substring(0,str.length - letterToDelete);
-	 $('#quats .current').text(removeWord)
-	 letterToDelete++
-	 return letterToDelete
+ function addLetter(str){
+	var contentArray = str.split("")
+	if(currentLetter < contentArray.length) {
+		elementQuat.text(elementQuat.text() + contentArray[currentLetter]);
+		currentLetter++
+	   }
+	else{
+		letterPause = 1
+	    letterState = 1
+		}
  }
- function addLetter(activeQuat, prevStr){
-	$('#quats .current').text(prevStr);
-	var next = activeQuat.filter('#quats .current').removeClass('current').next('span');
-    if (next.length === 0) {
-        next = activeQuat.first();
-    }
-  	next.addClass('current');
-  	changeQuats()
- }
- */
 //instagram
 function startInstagramFeed(){
  	var feed = new Instafeed({
@@ -385,7 +353,6 @@ function caseSlider(){
   // functions that runs on load
   setGreatingFrase();
   startInstagramFeed();
-  changeQuats();
   initNews();
   menuScroll();
   caseSlider(numberOfCase);

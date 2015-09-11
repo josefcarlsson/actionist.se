@@ -9,18 +9,33 @@
  * @since Twenty Fifteen 1.0
  */
 ?>
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<?php
-				/**
-				 * Fires before the Twenty Fifteen footer text for footer customization.
-				 *
-				 * @since Twenty Fifteen 1.0
-				 */
-				do_action( 'twentyfifteen_credits' );
-			?>
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentyfifteen' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentyfifteen' ), 'WordPress' ); ?></a>
-		</div><!-- .site-info -->
+<?php 
+	/*variables*/
+	$mail = get_field('mail');
+	$phone = get_field('phone');
+	$postadress = get_field('postadress');
+	$besoksadress = get_field('besoksadress');
+?>
+	<footer class="site-footer group" role="contentinfo">
+		<div class="col span_3_of_12">
+			<h4>Hör av dig till oss,</h4>
+			<a href="mailto:<?php echo $mail ?>?Subject=Hejsan" target="_top"><?php echo $mail ?></a>
+			<p><?php echo $phone ?></p>
+		</div>
+		<div class="col span_3_of_12">
+			<h4>Postadress</h4>
+			<p><?php echo $postadress ?></p>
+		</div>
+		<div class="col span_3_of_12">
+			<h4>Besöksadress</h4>
+			<p><?php echo $besoksadress ?></p>
+		</div>
+		<div class="col span_3_of_12">
+			<ul class="social">
+				<li class="linkedin"><a href="#"></a></li>
+				<li class="instagram"><a href="#"></a></li>
+			</ul>
+		</div>
 	</footer><!-- .site-footer -->
 
 </div><!-- .site -->
