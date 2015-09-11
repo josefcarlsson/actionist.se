@@ -35,7 +35,11 @@
 <nav>
 	<img src="<?php echo get_template_directory_uri(); ?>/images/actionist.png" alt="actionist">
 	<ul class="mainnav">
+<<<<<<< HEAD
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'menu_id' => 'primary-menu' ) ); ?>
+=======
+		<?php wp_nav_menu(); ?>
+>>>>>>> cb97d4c149d62810d944fb64634e3de66bf6cc58
 	</ul>
 
 	<ul class="social">

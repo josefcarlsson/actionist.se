@@ -87,7 +87,7 @@ endif; ?>
 	<h2 class="heading">Livet på Actionist</h2>
 	<div class="newsoverflow">
 		<div class="newsholder">
-		<?php query_posts( array ( 'category_name' => 'news', 'posts_per_page' => -1 ) ); ?>
+		<?php query_posts( array ( 'category_name' => 'news', 'posts_per_page' => -1, 'orderby' => 'date', 'order' => 'asc' ) ); ?>
 			<?php if (have_posts()) : ?><?php while (have_posts()) : the_post(); 	?>	
 					<!--<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">-->
 						<?php get_template_part( 'content', 'news' );?>		
@@ -102,7 +102,7 @@ endif; ?>
 <!------------------------------- uspar ------------------------------>
 <section id="uspar" class="group section">
 	<div class="uspNewsWrapper col span_4_of_12">
-		<h3>Nyhet</h3>
+		<h2>Nyhet</h2>
 		<?php query_posts( array ( 'category_name' => 'news', 'posts_per_page' => -1 ) ); ?>
 			<?php if (have_posts()) : 
 				 while (have_posts()) : the_post(); 	?>	
@@ -119,11 +119,11 @@ endif; ?>
 	</div>
 	
 	<div class="span_4_of_12 col instagram" id="instafeed">
-	<h3>#actionist</h3>
+	<h2>#actionist</h2>
 	</div>
 	
 	<div class="span_4_of_12 col spotify">
-		<h3>Senast spelat på kontoret</h3>
+		<div class="bluebox"><h2>Spelas på kontoret</h2></div>
 		<?php get_sidebar();?>
 		<?php dynamic_sidebar( 'spotify' );?>
 	</div>
@@ -132,7 +132,7 @@ endif; ?>
 <section id="clients">
 	<div class="widthWrapper">
 
-		<h3>Våra kunder</h3>
+		<h2 class="heading">Våra kunder</h2>
 	<?php if( have_rows('clients') ): ?>
 		<div class="logoWrapper">
 		 <?php while( have_rows('clients') ): the_row(); 

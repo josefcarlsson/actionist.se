@@ -25,7 +25,7 @@ h1, .heading {
   font-family: "Raleway", sans-serif;
   font-weight: 900;
   color: #ff3200;
-  line-height: 1.3em;
+  line-height: 1.2em;
   margin-bottom: 15px; }
 
 .preheading {
@@ -55,6 +55,12 @@ h3 {
   margin-right: auto;
   padding: 0 20px; }
 
+.regSection {
+  text-align: center;
+  padding-top: 170px;
+  padding-bottom: 80px;
+  max-width: 830px; }
+
 .dot {
   background: #ff3200;
   width: 11px;
@@ -71,11 +77,14 @@ button:focus {
   outline: none; }
 
 /*************************** MENU ****************************************************/
+.home nav {
+  top: calc(100%); }
+
 nav {
   position: absolute;
-  top: calc(100%);
   background-color: #ffffff;
   z-index: 20;
+  top: 0px;
   width: 100%;
   height: 100px;
   text-align: right;
@@ -523,16 +532,50 @@ button.square, a.button.square {
 
 #uspar .col {
   position: relative; }
-#uspar h3 {
+#uspar .uspNewsWrapper {
+  background: #b3f0e9;
+  padding-bottom: 33.333333%; }
+  #uspar .uspNewsWrapper h3 {
+    position: absolute;
+    max-width: 100%;
+    padding: 30px;
+    font-size: 3vmin;
+    color: #000;
+    font-weight: 900;
+    left: 0;
+    top: 76px;
+    text-transform: uppercase; }
+#uspar h2 {
   position: absolute;
   background: #001dd9;
   font-size: 30px;
   font-weight: 900;
   z-index: 2;
   color: #fff;
+  display: inline;
   top: 25px;
-  left: 25px;
-  display: inline; }
+  left: 32px;
+  padding: 1px 9px;
+  line-height: 1.4em;
+  white-space: pre-wrap;
+  line-height: 1.3em;
+  padding-left: 0px;
+  box-shadow: -8px 0 0 #001dd9; }
+#uspar .bluebox {
+  position: absolute;
+  top: 25px;
+  left: 32px;
+  z-index: 2; }
+  #uspar .bluebox h2 {
+    position: static;
+    top: auto;
+    left: auto; }
+#uspar #lastfmlive_recent_tracks {
+  overflow: hidden; }
+  #uspar #lastfmlive_recent_tracks .lastfmlive_song_info {
+    position: absolute;
+    bottom: -100px;
+    left: 0; }
 
 /***************************clients************************************************/
 .logoWrapper {
@@ -560,6 +603,83 @@ button.square, a.button.square {
     width: calc(17.5%); }
   .logoWrapper .superWide {
     width: calc(25%); }
+
+/************* Contact page ***************/
+#contact {
+  padding-top: 120px; }
+  #contact .preheading {
+    -webkit-transition: all 700ms ease-out 0.2s;
+    transition: all 700ms ease-out .2s; }
+  #contact .heading {
+    -webkit-transition: all 700ms ease-out 0.5s;
+    transition: all 700ms ease-out .5s; }
+  #contact .intro p {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 70px;
+    -webkit-transition: all 700ms ease-out 0.7s;
+    transition: all 700ms ease-out .7s; }
+  #contact .weareactionist {
+    list-style-type: none;
+    text-align: left; }
+    #contact .weareactionist li {
+      display: inline-block;
+      width: 20%;
+      padding: 0 2.5% 30px;
+      text-align: left;
+      vertical-align: top;
+      -webkit-transition: all 500ms ease-out;
+      transition: all 500ms ease-out; }
+      @media only screen and (max-width: 1024px) {
+        #contact .weareactionist li {
+          width: 28.33%; } }
+      @media only screen and (max-width: 650px) {
+        #contact .weareactionist li {
+          width: 45%; } }
+      @media only screen and (max-width: 400px) {
+        #contact .weareactionist li {
+          width: 95%; }
+          #contact .weareactionist li h2 {
+            font-size: 20px;
+            line-height: 1.2em; }
+          #contact .weareactionist li .title {
+            font-size: 15px;
+            line-height: 1.3em; } }
+      #contact .weareactionist li img {
+        width: 100%;
+        margin-bottom: 5px; }
+    #contact .weareactionist h2 {
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.2em;
+      margin-bottom: 2px;
+      text-transform: uppercase; }
+    #contact .weareactionist .title {
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.3em; }
+    #contact .weareactionist .email, #contact .weareactionist .telephone {
+      font-family: 'Cardo', 'serif';
+      display: block; }
+
+.js #contact.preanimation .preheading, .js #contact.preanimation .heading, .js #contact.preanimation .intro p {
+  opacity: 0;
+  -webkit-transform: translate(0px, -10px);
+  /* Safari */
+  transform: translate(0px, -10px); }
+
+.js #contact .weareactionist li.preanimation {
+  opacity: 0;
+  -webkit-transform: translate(10px, 0px);
+  /* Safari */
+  transform: translate(10px, 0px);
+  -ms-transform: scale(1.3);
+  /* IE 9 */
+  -webkit-transform: scale(1.3);
+  /* Safari */
+  transform: scale(1.3); }
 
 /*************************** SECTION***********************************************/
 .fullHeight {
