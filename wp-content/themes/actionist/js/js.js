@@ -4,7 +4,10 @@
   var caseVisable = 1
   var numberOfCase = 1
   var isStartPage = false,
-  animationPresentationDone = false;	  
+  animationPresentationDone = false;	
+
+  var $newsOverflowControl = $('.newsoverflow');
+  var $newsBlock = $('.newsholder');    
 	
 $('.left').click(function(){
 		var windowWidth = ($(window).width() - 50);
@@ -166,8 +169,6 @@ function menuScroll(scrollTop){
 //News rotator
 //////////////////
  //News variables
-var $newsOverflowControl = $('.newsoverflow');
-var $newsBlock = $('.newsholder');
 var newsCount = 0;
 var padding = 0.1; //percent
 var newsWidth = 0.6; //percent
@@ -194,13 +195,6 @@ function initNews(){
 
 	//console.log(leftPositionIndex);
 	$newsBlock.width(previousLeft + endSpace);
-<<<<<<< HEAD
-	console.log("Newsblock width: " + (newsItemWidth));
-	$('input[type="range"]').attr('max',previousLeft - newsItemWidth - newsItemPadding - newsItemPadding - newsItemWidth - endSpace).rangeslider({polyfill: false, onSlide: function(position, value) {adjustNews(value)},});
-	setTimeout(function(){
-		$('input[type="range"]').val(200).change();
-	}, 1200);
-=======
 	var max = previousLeft - newsItemWidth - newsItemPadding - newsItemPadding - newsItemWidth - endSpace;
 	$('input[type="range"]').rangeslider('destroy');
 	$('input[type="range"]').attr('value', max).attr('max',max).rangeslider({polyfill: false, onSlide: function(position, value) {adjustNews(value)}, onSlideEnd: function(position, value) {snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPadding)}});
@@ -211,15 +205,13 @@ function initNews(){
 		$('.rangeslider__handle').removeClass('animate');
 		$('.rangeslider__fill').removeClass('animate');
 	});
->>>>>>> cb97d4c149d62810d944fb64634e3de66bf6cc58
 }
 
 function adjustNews(value){
+	$newsBlock.addClass('animate');
 	$newsBlock.css('left', 0 - value + 'px');
 }
 
-<<<<<<< HEAD
-=======
 function snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPadding){
 	var newsOnTheLeft = 0;
 
@@ -249,7 +241,6 @@ function snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPa
 	}, 100);
 }
 
->>>>>>> cb97d4c149d62810d944fb64634e3de66bf6cc58
 //client logo grid
  function masonryGrid(){
 	 alert()
@@ -272,7 +263,7 @@ function snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPa
  
  var letterToDelete = 1
 //quat top on startpage 
-<<<<<<< HEAD
+
 var elementQuat = $('#quats');
 var activeStr = 0
 var letterState = 0
@@ -282,7 +273,7 @@ var letterGo = 0
 var letterPause = 0
 changeQuats()
 
-=======
+
 	$.each( quats, function( i, quats ) {
 		  $('#quats').append('<span>'+quats.text+'</span>')
 		});
@@ -318,10 +309,10 @@ var addTextByDelay = function(text,elem,delay,numberOfLetters){
 
 addTextByDelay(text,elem,delay);
 
->>>>>>> cb97d4c149d62810d944fb64634e3de66bf6cc58
+
 function changeQuats(){
 	 var letter = setInterval(function(){
-<<<<<<< HEAD
+
 			if(letterGo == 0){
 				letterGo = 1
 				for (i = 0; i < quats.length; i++) { 
@@ -392,11 +383,8 @@ function changeQuats(){
 	    letterState = 1
 		}
  }
-<<<<<<< HEAD
-=======
- 
 
->>>>>>> cb97d4c149d62810d944fb64634e3de66bf6cc58
+
 //instagram
 function startInstagramFeed(){
  	var feed = new Instafeed({
