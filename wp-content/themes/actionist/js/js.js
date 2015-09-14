@@ -243,7 +243,6 @@ function snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPa
 
 //client logo grid
  function masonryGrid(){
-	 alert()
 		var container = document.querySelector('.logoWrapper');
 
 	    var msnry = new Masonry( container, {
@@ -271,43 +270,6 @@ var numberOfquat = 0
 var currentLetter = 0
 var letterGo = 0
 var letterPause = 0
-changeQuats()
-
-
-	$.each( quats, function( i, quats ) {
-		  $('#quats').append('<span>'+quats.text+'</span>')
-		});
-		var activeQuat = $('#quats span');
-	activeQuat.first().addClass('current');
-
-var text="This text will be written one by one.";
-var numberOfLetters = text.length - 2
-var delay=300;
-var elem = $(".current");
-
-//text- string
-//elem - jQuery element where text is to be attached
-//delay - the delay in each text
-var addTextByDelay = function(text,elem,delay,numberOfLetters){
-    if(!elem){
-        elem = $("body");
-    }
-    if(!delay){
-        delay = 300;
-    }
-    if(text.length >0){
-        //append first character
-        elem.append(text[35]);
-        setTimeout(
-            function(){
-                //Slice text by 1 character and call function again                
-                addTextByDelay(text.slice(-1),elem,delay);            
-             },delay                 
-            );
-    }
-}
-
-addTextByDelay(text,elem,delay);
 
 
 function changeQuats(){
@@ -327,6 +289,7 @@ function changeQuats(){
 			else{
 				if(letterState == 0){
 					addLetter(activeStr)
+					
 				}
 				else{
 					if(letterPause == 1){
@@ -455,5 +418,6 @@ function caseSlider(){
   caseSlider(numberOfCase);
   setTimeout(function(){ 
 	   masonryGrid()
+	   changeQuats()
 	}, 100);
  });
