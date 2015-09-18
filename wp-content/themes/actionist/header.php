@@ -16,6 +16,7 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.fitvids.js"></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/masonry.pkgd.min.js"></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/hammer.min.js"></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.hammer.js"></script>
@@ -24,6 +25,7 @@
 	<script src="<?php echo get_template_directory_uri(); ?>/js/instafeed.min.js"></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/rangeslider.min.js"></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/js.js"></script>
+	<script src="http://www.youtube.com/player_api?enablejsapi=1&version=3"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 	<!--[if lt IE 9]>
 	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5.js"></script>

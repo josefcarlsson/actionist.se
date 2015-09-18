@@ -26,7 +26,157 @@ get_header(); ?>
 
 <script>
 	var quats = []
+	var monday =[]
+	var thuesday =[]
+	var wednessday =[]
+	var thursday =[]
+	var friday =[]
+	var saturday =[]
+	var sunday =[]
+	var special =[]
 	window.quats= quats
+
+ //youtube script
+ </script>
+ <?php if( have_rows('monday') ): 
+	 while( have_rows('monday') ): the_row(); 
+		 $id= get_sub_field('id');?>
+		<script>
+			var obj = "<?php echo $id ?>";
+			monday.push(obj);
+		</script>
+	<?php endwhile;
+endif; ?>
+ <?php if( have_rows('thuesday') ): 
+	 while( have_rows('thuesday') ): the_row(); 
+		 $id= get_sub_field('id');?>
+		<script>
+			var obj = "<?php echo $id ?>";
+			thuesday.push(obj);
+		</script>
+	<?php endwhile;
+endif; ?>
+ <?php if( have_rows('wednessday') ): 
+	 while( have_rows('wednessday') ): the_row(); 
+		 $id= get_sub_field('id');?>
+		<script>
+			var obj = "<?php echo $id ?>";
+			wednessday.push(obj);
+		</script>
+	<?php endwhile;
+endif; ?>
+ <?php if( have_rows('thursday') ): 
+	 while( have_rows('thursday') ): the_row(); 
+		 $id= get_sub_field('id');?>
+		<script>
+			var obj = "<?php echo $id ?>";
+			thursday.push(obj);
+		</script>
+	<?php endwhile;
+endif; ?>
+ <?php if( have_rows('friday') ): 
+	 while( have_rows('friday') ): the_row(); 
+		 $id= get_sub_field('id');?>
+		<script>
+			var obj = "<?php echo $id ?>";
+			friday.push(obj);
+		</script>
+	<?php endwhile;
+endif; ?>
+ <?php if( have_rows('saturday') ): 
+	 while( have_rows('saturday') ): the_row(); 
+		 $id= get_sub_field('id');?>
+		<script>
+			var obj = "<?php echo $id ?>";
+			saturday.push(obj);
+		</script>
+	<?php endwhile;
+endif; ?>
+ <?php if( have_rows('sunday') ): 
+	 while( have_rows('sunday') ): the_row(); 
+		 $id= get_sub_field('id');?>
+		<script>
+			var obj = "<?php echo $id ?>";
+			sunday.push(obj);
+		</script>
+	<?php endwhile;
+endif; ?>
+ <?php if( have_rows('special') ): 
+	 while( have_rows('special') ): the_row(); 
+		 $id= get_sub_field('id');?>
+		<script>
+			var obj = "<?php echo $id ?>";
+			special.push(obj);
+		</script>
+	<?php endwhile;
+endif; ?>
+<script>
+	var d = new Date();
+    var n = d.getDay()
+	switch (n) {
+		    case 1:
+				var videoId = monday[Math.floor(Math.random() * monday.length)];
+		        break;
+		    case 2:
+				var videoId = thuesday[Math.floor(Math.random() * thuesday.length)];
+		        break;
+		    case 3:
+				var videoId = wednessday[Math.floor(Math.random() * wednessday.length)];
+		        break;
+		    case 4:
+				var videoId = thursday[Math.floor(Math.random() * thursday.length)];
+		        break;
+		    case 5:
+		    	var videoId = friday[Math.floor(Math.random() * friday.length)];
+		        break;
+		    case 6:
+				var videoId = saturday[Math.floor(Math.random() * saturday.length)];
+		        break;
+		   	case 7:
+				var videoId = sunday[Math.floor(Math.random() * sunday.length)];
+		        break;
+		    default:
+				var videoId = special[Math.floor(Math.random() * special.length)];
+			    break;
+		};
+		
+</script>
+<script>
+var tag = document.createElement('script');
+tag.src = "//www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+
+onYouTubeIframeAPIReady = function () {
+    player = new YT.Player('player', {
+        videoId: videoId,	  // youtube video id
+        playerVars: {
+            'autoplay': 1,
+            'rel': 0,
+            'controls': 0, 
+            'showinfo': 0,
+            'autohide':1,
+            'loop' : 1,
+            'playlist': videoId
+        },
+        events: {
+            'onReady': onPlayerReady
+        }
+        
+    });
+}
+	 function onPlayerReady(event) {
+	 	$("#playerWrapper").fitVids();
+        event.target.mute();
+        if($('#playerWrapper').height() <= $(window).height()){
+	     	var ratio = $('#playerWrapper').width()/$('#playerWrapper').height()
+	        $('#playerWrapper').css({
+		        width:($(window).height() * ratio)
+	        })
+        }
+      }
 </script>
 	
 </section>	
@@ -42,12 +192,15 @@ endif; ?>
 
 
 <section id="top" class="fullHeight">
+	<div id="playerWrapper">
+		<div id="player"></div>
+	</div>
 	<button class="exit-start-view">Ta en titt</button>
-	<video width="100%" height="100%" autoplay="" muted="" id="video" loop="">
+	<!--<video width="100%" height="100%" autoplay="" muted="" id="video" loop="">
 		<source src="<?php echo get_template_directory_uri(); ?>/images/movie.mp4" type="video/mp4">
 		<source src="<?php echo get_template_directory_uri(); ?>/images/movie.ogv" type="video/ogv">
 		  Your browser does not support the video tag.
-	</video>
+	</video>-->
 	<div class="verticalWrapper">
 		<div class="widthWrapper">
 			<h3><span id="timeOfDay"></span></h3>
@@ -68,10 +221,12 @@ endif; ?>
 <!------------------------------- case ------------------------------>
 
 <section class="caseSection">
+	<div class="caseFadeLeft caseFade"></div>
+	<div class="caseFadeRight caseFade"></div>
 	<div id="caseWrapper">
 		<ul>
-		<?php query_posts( array ( 'category_name' => 'cases', 'posts_per_page' => -1 ) ); ?>
-			<?php while (have_posts()) : the_post(); 
+		<?php $loop = new WP_Query( array( 'post_type' => 'case', 'posts_per_page' => -1 ) ); ?>
+		<?php while ( $loop->have_posts() ) : $loop->the_post(); 
 			 if(get_field('showOnStart') == 'Ja') : ?>
 			 						<?php get_template_part( 'content', 'page' );?>		
 				<?php endif;
