@@ -221,8 +221,6 @@ endif; ?>
 <!------------------------------- case ------------------------------>
 
 <section class="caseSection">
-	<div class="caseFadeLeft caseFade"></div>
-	<div class="caseFadeRight caseFade"></div>
 	<div id="caseWrapper">
 		<ul>
 		<?php $loop = new WP_Query( array( 'post_type' => 'case', 'posts_per_page' => -1 ) ); ?>
