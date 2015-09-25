@@ -1,5 +1,6 @@
 
   $(document).ready(function(){
+
   //Variables
   var caseVisable = 1
   var numberOfCase = 1
@@ -8,9 +9,46 @@
 
   var $newsOverflowControl = $('.newsoverflow');
   var $newsBlock = $('.newsholder');    
+  var project_overview = []
+
+  var currentMousePos = { x: -1, y: -1 };
+  
+  $(document).mousemove(function(event) {
+      currentMousePos.x = event.pageX;
+      currentMousePos.y = event.pageY;
+	  var mouseX = currentMousePos.x - ($(window).width()/2)
+	  var mouseY = currentMousePos.y - ($(window).height()/2)
+		for (i = 0; i < project_overview.length; i++) { 
+			var Xperspective = (mouseX - project_overview[i].x) /140
+			var Yperspective = (mouseY - project_overview[i].y) /-140
+	    	$('#'+project_overview[i].id).css({
+		    	  transform: 'rotateX('+ Yperspective +'deg)rotateY('+ Xperspective +'deg)',
+
+	    	})
+		}
+   });
+var casePreviewClass = 1
+$(".case_preview_wrapper").each(function() {
+		$(this).attr('id',casePreviewClass)
+		var left = $(this).offset().left
+		var right = $(this).offset().left + $(this).width()
+		var xCenter = (left + right)/2 
+		
+		var top = $(this).offset().top
+		var bottom = $(this).offset().top + $(this).width()
+		var yCenter = (top + bottom)/2 
+		
+		var yPosition = yCenter - ($(window).height()/2)
+		var xPosition = xCenter - ($(window).width()/2)
+		console.log(xPosition)
+		var obj = {id:casePreviewClass, x:xPosition, y:yPosition};
+		project_overview.push(obj);
+		casePreviewClass ++
+	})
+
 	
 $('.left').click(function(){
-		var windowWidth = ($(window).width() - 50);
+		var windowWidth = ($('.case').width() + 30);
 		var prev = $('.visable').attr('id');
 		var lastCase= JSON.parse($('.case:last-child').attr('id'));
 		var next = JSON.parse(prev) + 1
@@ -18,14 +56,14 @@ $('.left').click(function(){
 		    case 2:
 				$(".case").each(function() {
 					$(this).css({
-						left: '-='+(windowWidth - 30)
+						left: '-='+(windowWidth)
 					})
 				})
 		        break;
 		    case lastCase:
 				$(".case").each(function() {
 					$(this).css({
-						left: '-='+(windowWidth - 30)
+						left: '-='+(windowWidth)
 					})
 				})
 		        break;
@@ -42,7 +80,7 @@ $('.left').click(function(){
 	})
 	
 $('.right').click(function(){
-		var windowWidth = ($(window).width() - 50);
+		var windowWidth = ($('.case').width() + 30);
 		var prev = $('.visable').attr('id');
 		var lastCase= JSON.parse($('.case:last-child').attr('id') - 1);
 		var next = JSON.parse(prev) - 1
@@ -50,14 +88,14 @@ $('.right').click(function(){
 		    case 1:
 				$(".case").each(function() {
 					$(this).css({
-						left: '+='+(windowWidth - 30)
+						left: '+='+(windowWidth)
 					})
 				})
 		        break;
 		    case lastCase:
 				$(".case").each(function() {
 					$(this).css({
-						left: '+='+(windowWidth - 30)
+						left: '+='+(windowWidth)
 					})
 				})
 		        break;
@@ -129,6 +167,9 @@ function resetStartPage(){
 	}, 500)
 }
 $( window).resize(function(){
+	
+	  fitVidHeight()
+	          
 	var caseLocation = 0
 	$(".case").each(function() {
 		 $(this).css({
@@ -397,27 +438,37 @@ function setGreatingFrase(){
   }
   
 function caseSlider(){
-	var caseLocation = 0
+	var caseLocation = (($(window).width()/2) - ($('.case').width()/2))
 	$(".case").each(function() {
 		 $(this).attr('id',numberOfCase);
 		 $(this).css({
 			 left:caseLocation,
 		 })
-		 caseLocation = caseLocation + ($(window).width() - 50);
-		
+		 caseLocation = caseLocation + ($('.case').width() + 35);
 		 numberOfCase++
 	})
 	$('#1').addClass('visable')
 }
+function fitVidHeight(){
+		 if($('#playerWrapper').width() <= $(window).width()){
+	           $('#playerWrapper').css({
+		        	width:$(window).width()
+	        	})
+	       		        	          }
+
+}
+
 
   // functions that runs on load
-  setGreatingFrase();
-  startInstagramFeed();
-  initNews();
-  menuScroll();
-  caseSlider(numberOfCase);
-  setTimeout(function(){ 
-	   masonryGrid()
-	   changeQuats()
-	}, 100);
+  	  menuScroll();
+  if(typeof quats !== 'undefined'){
+	  setGreatingFrase();
+	  startInstagramFeed();
+	  initNews();
+	  caseSlider(numberOfCase);
+	  setTimeout(function(){ 
+		   masonryGrid()
+		   changeQuats()
+		}, 100);
+	}
  });
