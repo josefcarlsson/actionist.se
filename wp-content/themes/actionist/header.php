@@ -35,13 +35,15 @@
 <body <?php body_class(); ?>>
 <!------------------------------- MENU ------------------------------>
 <nav>
-	<img src="<?php echo get_template_directory_uri(); ?>/images/actionist.png" alt="actionist">
-	<ul class="mainnav">
+	<div class="navWrapper">
+		<img src="<?php echo get_template_directory_uri(); ?>/images/actionist.png" alt="actionist">
+		<ul class="mainnav">
 		<?php wp_nav_menu(); ?>
-	</ul>
-
-	<ul class="social">
-		<li class="linkedin"><a href="#"></a></li>
-		<li class="instagram"><a href="#"></a></li>
-	</ul>
+		</ul>
+	
+		<ul class="social">
+			<li class="linkedin"><a href="#"></a></li>
+			<li class="instagram"><a href="#"></a></li>
+		</ul>
+	</div>
 </nav>
