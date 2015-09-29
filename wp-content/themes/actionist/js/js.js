@@ -133,7 +133,7 @@ $('.right').click(function(){
 	}
 
 //Kör bara på kontakt
-  	if($('body.page-id-71').length > 0){
+  	if($('body.page-id-100').length > 0){
   		setTimeout(function(){
   				$('#contact').removeClass('preanimation');
        			//$('#contact').find('.dot').addClass('animation');
@@ -150,6 +150,14 @@ $('.right').click(function(){
        			//$('#contact').find('.dot').addClass('animation');
   			}, employeeAnimTime);
   			employeeAnimTime += 100;
+  		});
+	}
+
+	if($('.lastfmlive_recently_played').length > 0){
+  		$(this).find('img').each(function(){
+  			if($(this).attr('src') === 'http://cdn.last.fm/flatness/catalogue/noimage/2/default_artist_small.png'){
+  				$('.lastfmlive_recently_played').addClass('noimage');
+  			}
   		});
 	}
 
@@ -217,6 +225,10 @@ var newsWidth = 0.6; //percent
 function initNews(){
 	newsCount = $('.post.category-news').length;
 	var windowWidth = $(window).width();
+	if(windowWidth > 1300){
+		windowWidth = 1300;
+	}
+	var maxHeightNews = 0;
 	var newsItemWidth = windowWidth * newsWidth;
 	var newsItemPadding = windowWidth * padding;
 	var endSpace = windowWidth * (0.5 - (newsWidth/2) - padding);
@@ -224,19 +236,22 @@ function initNews(){
 	var leftPositionIndex = [];
 	var previousLeft = endSpace;
 	var scrollToX = endSpace;
-	$('.post.category-news').each(function(){
+	$('.newsoverflow .post.category-news').each(function(){
 		var $this = $(this);
 		leftPositionIndex.push(scrollToX - endSpace);
 		scrollToX = scrollToX + newsItemWidth + newsItemPadding;
 		$this.width(newsItemWidth).css('left', (previousLeft + newsItemPadding));
 		previousLeft = previousLeft + newsItemWidth + newsItemPadding;
 		thisNewsNumber++;
+
+		if($this.height() > maxHeightNews){
+			maxHeightNews = $this.height();
+		}
 	});
 
-
-	//console.log(leftPositionIndex);
 	$newsBlock.width(previousLeft + endSpace);
-	var max = previousLeft - newsItemWidth - newsItemPadding - newsItemPadding - newsItemWidth - endSpace;
+	$newsOverflowControl.height(maxHeightNews + 40);
+	var max = previousLeft - newsItemWidth - newsItemPadding - endSpace;
 	$('input[type="range"]').rangeslider('destroy');
 	$('input[type="range"]').attr('value', max).attr('max',max).rangeslider({polyfill: false, onSlide: function(position, value) {adjustNews(value)}, onSlideEnd: function(position, value) {snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPadding)}});
 	$('input[type="range"]').val(max).change();
