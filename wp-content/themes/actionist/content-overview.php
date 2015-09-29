@@ -28,7 +28,7 @@
 				<h3><?php echo $caseCustomer ?></h3>
 				<?php the_title( '<h1 class="entry-title">- ', '</h1>' ); ?>
 				<div class="summary"><?php the_content(); ?></div>
-				<a href="<?php the_permalink() ?>" class="link">Se hela caset</a>
+				<a href="<?php the_permalink() ?>" class="link readMore">Se hela caset</a>
 			</div>
 		</div>
 		</a>
