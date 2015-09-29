@@ -59,6 +59,7 @@ get_header();
 		<span class="telephone"><?php the_field('telefon-folk'); ?></span>
 		</li><?php endif; ?>
 		</ul>
-		<?php get_footer(); ?>
 </section>
+
+<?php get_footer(); ?>
 

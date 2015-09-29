@@ -240,7 +240,7 @@ endif; ?>
 	<h2 class="heading">Livet på Actionist</h2>
 	<div class="newsoverflow">
 		<div class="newsholder">
-		<?php query_posts( array ( 'category_name' => 'news', 'posts_per_page' => -1, 'orderby' => 'date', 'order' => 'asc' ) ); ?>
+		<?php query_posts( array ( 'posts_per_page' => -1, 'orderby' => 'date', 'order' => 'asc' ) ); ?>
 			<?php if (have_posts()) : ?><?php while (have_posts()) : the_post(); 	?>	
 					<!--<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">-->
 						<?php get_template_part( 'content', 'news' );?>		
