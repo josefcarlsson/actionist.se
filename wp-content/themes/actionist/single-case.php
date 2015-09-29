@@ -17,35 +17,33 @@ get_header();
 		
 ?>
 <script src="<?php echo get_template_directory_uri(); ?>/js/case.js"></script>
-<script>
-	var videos= []
-</script>
-<main id="main" class="site-main" role="main">
+
+<main id="main" class="site-main case-detail" role="main">
 	
 		<?php
 		// Start the loop.
 		while ( have_posts() ) : the_post();?>
 
-	<div class="caseContent group section">
-	
-	<div class="col span_12_of_12">
-		
-		<?php if( $video ): ?>
+	<?php if( $video ):?>		
+		<div id="topvideo" class="topArea">
+			<video controls>
+			  <source src="<?php echo $video?>" type="video/mp4">
+				  Your browser does not support HTML5 video.
+				</video>
 			</div>
-			
-									
-
-			<div id="topvideo" class="topArea"></div>
 		<?php else: ?>
+	<div class="col span_12_of_12">
 			<img src="<?php echo $casePresentationimg['url']?>"class="topArea">
 		<?php endif; ?>
 	</div>
-	<div class="col span_6_of_12">
+	
+	<div class="caseContent group section">
+		<div class="col span_6_of_12">
 			<h3><?php echo $caseCustomer ?></h3>
 			<h1><?php the_title( '<h1 class="entry-title">- ', '</h1>' ); ?></h1>
 			<div><?php the_content(); ?></div>
-	</div>
-	<div class="col span_6_of_12">
+		</div>
+		<div class="col span_6_of_12">
 			<?php while( have_rows('result') ): the_row(); ?>
 			<div class="resultStat col span_2_of_12">
 			<?php
@@ -54,8 +52,9 @@ get_header();
 				$text = get_sub_field('text');
 				?>
 				<img src="<?php echo $img['url'] ?>">
-				<h3><?php echo $number ?></h3>
-				<p><?php echo $text ?></p>
+					<h3><?php echo $number ?></h3>
+					<p><?php echo $text ?></p>
+				
 			</div>
 			<?php endwhile;?>
 		
@@ -63,6 +62,7 @@ get_header();
 		<?php 
 			endwhile;
 		?>
+	</div>
 	<?php if( have_rows('sectionWrapper') ):
 		$numberSections	
 		?>
@@ -70,28 +70,26 @@ get_header();
 				$numberSections = $numberSections + 1;
 
 				if( have_rows('wrapper') ):
-				$count;
-				$elem ?>
-					<div class="group section">
+				$count; ?>
+					<div class="group section caseDetail">
 					<?php while( have_rows('wrapper') ): the_row();
 							$count = $count +1;
-							$text = get_sub_field('text');
-							$elem = $elem +1;
-							
-							?>
-							<div class="<?php echo $numberSections ?>content col" id="<?php echo $elem ?>">
-								<?php echo $text ?>
+							$text = get_sub_field('text');?>
+							<div class="<?php echo $numberSections ?>content caseDetailContent col">
+								<?php
+									if (strpos($text, '<video ') !== false) {
+									   preg_match('#<video[^>]+>(.+?)</video>#ims', $text, $result);
+									   print $result[0];
+									}	
+									elseif(strpos($text, '<img ') !== false) {
+									   preg_match_all('/<img[^>]+>/i',$text, $result); 
+									   print $result[0][0];
+									}
+									else
+										echo $text
+								?>
 							</div>
-								<script type="text/javascript">
-									
-								var html = document.getElementById("<?php echo $elem ?>").innerHTML
-								var content = $('#'+<?php echo $elem ?> +' p').text()
-								if(content.length > 5 && content.length  < 30){
-									var obj = {element: "<?php echo $elem ?>", id:"'"+content+"'" };
-									videos.push(obj);
-								    }
-								</script>
-									
+																
 					<?php endwhile; 
 				?>
 				<script>
@@ -106,7 +104,30 @@ get_header();
 						$('.'+<?php echo $numberSections?>+'content').addClass('span_12_of_12');
 						break;
 						}
-					
+						
+					$( ".caseWrapper" ).each(function( index ) {
+						console.log($(this).text())
+						 if ($(this).find('img').length > 0) {
+							    $(this).children().css({
+								   visibility:'hidden'
+							    })
+							    $(this).find('img').css({
+								    visibility: 'visible'
+							    })
+							}
+						 if ($(this).find('.wp-video').length > 0) {
+							    $(this).children().css({
+								    visibility:'hidden'
+							    })
+							     $(this).find('img').css({
+								    visibility: 'hidden'
+							    })
+							    $(this).find('.wp-video').css({
+								    visibility: 'visible'
+							    })
+							}
+					});
+				
 				</script>
 				<?php
 				 $count = 0;
@@ -120,51 +141,15 @@ get_header();
 		
 	<?php endif; //if( get_sub_field('items') ): ?>
 	</div>
-<script>
-	console.log(videos)
-	var tag = document.createElement('script');
-	tag.src = "https://www.youtube.com/iframe_api";
-	var firstScriptTag = document.getElementsByTagName('script')[0];
-	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-	var player<?php echo $elem ?>;
-	var elem = '<?php echo $elem ?>'
-	
-	function onYouTubeIframeAPIReady() {
-		$.each(videos, function( key, video ) {
-		  alert( video.element );
-		  alert( video.id );
-		})
-									  	player7 = new YT.Player('7', {
-									  	height: '390',
-									  	width: '640',
-									  	videoId: 'WER9wIxjdaE',
-									  		});
-									  	player8 = new YT.Player('8', {
-									  	height: '390',
-									  	width: '640',
-									  	videoId: 'WER9wIxjdaE',
-									  		});
-									  	player9 = new YT.Player('9', {
-									  	height: '390',
-									  	width: '640',
-									  	videoId: '<?php echo $video ?>',
-									  		});
-										}
-						
-	function onPlayerReady(event) {
-			event.target.playVideo();
-			}
-						
-	 var done = false;
-	function onPlayerStateChange(event) {
-		if (event.data == YT.PlayerState.PLAYING && !done) {
-			setTimeout(stopVideo, 6000);
-			done = true;
-			}
-		}
-	function stopVideo() {
-			player.stopVideo();
-			}
-</script>
-		</main><!-- .site-main -->
+	<div class="moreCaseHeader section"><h1>Fler case, kolla hit!</h1></div>
+	<div class="group case_section caseDetailLoadMore section">
+			<?php $loop = new WP_Query( array( 'post_type' => 'case', 'posts_per_page' => -1 ) ); ?>
+		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+			 <?php get_template_part( 'content', 'overview' );?>		
+		<?php 
+			endwhile;?>
+		<?php wp_reset_query();?>
+	</div>
+	<button id="loadMoreCase" class="blue square">Ladda fler</button>	
+	</main><!-- .site-main -->
 <?php get_footer(); ?>

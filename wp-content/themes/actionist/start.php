@@ -277,7 +277,7 @@ endif; ?>
 	
 	<div class="span_4_of_12 col spotify">
 		<div class="bluebox"><h2>Spelas på kontoret</h2></div>
-		<?php get_sidebar();?>
+		
 		<?php dynamic_sidebar( 'spotify' );?>
 	</div>
 </section>

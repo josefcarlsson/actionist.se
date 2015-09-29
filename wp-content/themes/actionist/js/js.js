@@ -153,6 +153,7 @@ $('.right').click(function(){
   		});
 	}
 
+
 	if($('.lastfmlive_recently_played').length > 0){
   		$(this).find('img').each(function(){
   			if($(this).attr('src') === 'http://cdn.last.fm/flatness/catalogue/noimage/2/default_artist_small.png'){
@@ -160,6 +161,67 @@ $('.right').click(function(){
   			}
   		});
 	}
+
+var numberClicked = 1
+$('#loadMoreCase').click(function(){
+	var numberOfLoadedCase = 0
+	if($(window).width() > 1300){
+		var time = 0.1
+		$(".case_preview").each(function() {
+			console.log(numberOfLoadedCase+'s'+(numberClicked * 4))
+			if(numberOfLoadedCase >= (numberClicked * 4) && numberOfLoadedCase <= ((2*(numberClicked)) * 4)){
+				$(this).css({
+					'-webkit-transition-delay': (time/5)+'s',
+					'-moz-transition-delay': (time/5)+'s',
+					'-ms-transition-delay': (time/5)+'s',
+					'-o-transition-delay': (time/5)+'s',
+					'transition-delay':(time/5)+'s'
+					})
+					$(this).addClass('visableCase');	
+					time++	
+			}
+			numberOfLoadedCase++
+		})
+	}
+	if($(window).width() < 1300 && $(window).width() > 768){
+			var time = 0.1
+			$(".case_preview").each(function() {
+				console.log(numberOfLoadedCase+'s'+(numberClicked * 3))
+				if(numberOfLoadedCase >= (numberClicked * 3) && numberOfLoadedCase < ((2*(numberClicked)) * 3)){
+					$(this).css({
+						'-webkit-transition-delay': (time/5)+'s',
+						'-moz-transition-delay': (time/5)+'s',
+						'-ms-transition-delay': (time/5)+'s',
+						'-o-transition-delay': (time/5)+'s',
+						'transition-delay':(time/5)+'s'
+						})
+						$(this).addClass('visableCase');	
+						time++	
+				}
+				numberOfLoadedCase++
+			})
+		}
+	if($(window).width() < 768){
+			var time = 0.1
+			$(".case_preview").each(function() {
+				console.log(numberOfLoadedCase+'s'+(numberClicked * 2))
+				if(numberOfLoadedCase >= (numberClicked * 2) && numberOfLoadedCase < ((2*(numberClicked)) * 2)){
+					$(this).css({
+						'-webkit-transition-delay': (time/5)+'s',
+						'-moz-transition-delay': (time/5)+'s',
+						'-ms-transition-delay': (time/5)+'s',
+						'-o-transition-delay': (time/5)+'s',
+						'transition-delay':(time/5)+'s'
+						})
+						$(this).addClass('visableCase');	
+						time++	
+				}
+				numberOfLoadedCase++
+			})
+		}
+
+	numberClicked++
+})
 
 function goToByScroll(div){
     var offset = $(div).offset();
@@ -204,6 +266,7 @@ $( window ).scroll(function() {
 
 //stick the menu to top
 function menuScroll(scrollTop){
+	console.log('ds')
 	var menuTop = $(window).height();
 	if(menuTop <= scrollTop){	
 		$('nav').addClass('menuActive')
