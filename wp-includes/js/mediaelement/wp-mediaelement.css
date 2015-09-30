@@ -9,8 +9,11 @@
 .mejs-container,
 .mejs-embed,
 .mejs-embed body,
-.mejs-container .mejs-controls {
-	background: #222;
+.mejs-container {
+	background: rgba(0,0,0,1);
+}
+.mejs-controls{
+	background: rgba(0,0,0,0.3);
 }
 
 .mejs-controls a.mejs-horizontal-volume-slider {
@@ -19,11 +22,11 @@
 
 .mejs-controls .mejs-time-rail .mejs-time-loaded,
 .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
-	background: #fff;
+	background: #FFF2EA;
 }
 
 .mejs-controls .mejs-time-rail .mejs-time-current {
-	background: #0073aa;
+	background: #FF2E00;
 }
 
 .mejs-controls .mejs-time-rail .mejs-time-total,

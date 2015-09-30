@@ -17,7 +17,7 @@ get_header();
 		
 ?>
 <script src="<?php echo get_template_directory_uri(); ?>/js/case.js"></script>
-
+topvideo
 <main id="main" class="site-main case-detail" role="main">
 	
 		<?php
@@ -26,11 +26,19 @@ get_header();
 
 	<?php if( $video ):?>		
 		<div id="topvideo" class="topArea">
-			<video controls>
-			  <source src="<?php echo $video?>" type="video/mp4">
-				  Your browser does not support HTML5 video.
-				</video>
-			</div>
+								<?php
+									if (strpos($video, '<video ') !== false) {
+									   preg_match('#<video[^>]+>(.+?)</video>#ims', $video, $result);
+									   print $result[0];
+									}	
+									elseif(strpos($video, '<img ') !== false) {
+									   preg_match_all('!http://.+\.(?:jpe?g|png|gif)!Ui' ,$video, $result);
+									   preg_match_all('/<img[^>]+>/i',$video, $resultFrame); ?>
+									   <div class="image" style="background-image:url(<?php echo $result[0][0];?>)"><?php echo $resultFrame[0][0]; ?></div><?php
+									}
+									else
+										echo $video
+								?>
 		<?php else: ?>
 	<div class="col span_12_of_12">
 			<img src="<?php echo $casePresentationimg['url']?>"class="topArea">
@@ -40,24 +48,26 @@ get_header();
 	<div class="caseContent group section">
 		<div class="col span_6_of_12">
 			<h3><?php echo $caseCustomer ?></h3>
-			<h1><?php the_title( '<h1 class="entry-title">- ', '</h1>' ); ?></h1>
+			<?php the_title( '<h1 class="entry-title">- ', '</h1>' ); ?>
 			<div><?php the_content(); ?></div>
 		</div>
 		<div class="col span_6_of_12">
+			<div class="resultWrapper">
 			<?php while( have_rows('result') ): the_row(); ?>
-			<div class="resultStat col span_2_of_12">
-			<?php
-				$number = get_sub_field('number');
-				$img = get_sub_field('image');
-				$text = get_sub_field('text');
-				?>
-				<img src="<?php echo $img['url'] ?>">
-					<h3><?php echo $number ?></h3>
-					<p><?php echo $text ?></p>
-				
-			</div>
+				<div class="resultStat col span_2_of_12">
+				<?php
+					$number = get_sub_field('number');
+					$img = get_sub_field('image');
+					$text = get_sub_field('text');
+					?>
+					<img src="<?php echo $img['url'] ?>">
+						<h3><?php echo $number ?></h3>
+						<p><?php echo $text ?></p>
+					
+				</div>
+
 			<?php endwhile;?>
-		
+			</div>		
 		</div>
 		<?php 
 			endwhile;
@@ -85,9 +95,12 @@ get_header();
 									   preg_match_all('/<img[^>]+>/i',$text, $result); 
 									   print $result[0][0];
 									}
-									else
-										echo $text
-								?>
+									else{
+										print "<div class='text'>".$text."</div>";
+									}
+										?>
+										
+										
 							</div>
 																
 					<?php endwhile; 

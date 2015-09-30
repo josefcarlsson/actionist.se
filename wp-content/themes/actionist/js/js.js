@@ -23,8 +23,10 @@
 			var Yperspective = (mouseY - project_overview[i].y) /-140
 	    	$('#'+project_overview[i].id).css({
 		    	  transform: 'rotateX('+ Yperspective +'deg)rotateY('+ Xperspective +'deg)',
-
-	    	})
+		    	   MozTransform: 'rotateX('+ Yperspective +'deg)rotateY('+ Xperspective +'deg)',
+				   WebkitTransform: 'rotateX('+ (Yperspective/2) +'deg)rotateY('+ (Xperspective/2) +'deg)',
+				   msTransform: 'rotateX('+ Yperspective +'deg)rotateY('+ Xperspective +'deg)'
+		  	    	})
 		}
    });
 var casePreviewClass = 1
