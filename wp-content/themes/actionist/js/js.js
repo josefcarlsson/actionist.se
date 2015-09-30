@@ -286,11 +286,12 @@ var padding = 0.1; //percent
 var newsWidth = 0.6; //percent
 
 function initNews(){
-	newsCount = $('.post.category-news').length;
+	newsCount = $('.newsoverflow .post').length;
 	var windowWidth = $(window).width();
 	if(windowWidth > 1300){
 		windowWidth = 1300;
 	}
+
 	var maxHeightNews = 0;
 	var newsItemWidth = windowWidth * newsWidth;
 	var newsItemPadding = windowWidth * padding;
@@ -299,7 +300,7 @@ function initNews(){
 	var leftPositionIndex = [];
 	var previousLeft = endSpace;
 	var scrollToX = endSpace;
-	$('.newsoverflow .post.category-news').each(function(){
+	$('.newsoverflow .post').each(function(){
 		var $this = $(this);
 		leftPositionIndex.push(scrollToX - endSpace);
 		scrollToX = scrollToX + newsItemWidth + newsItemPadding;

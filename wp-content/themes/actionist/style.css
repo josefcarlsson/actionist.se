@@ -122,11 +122,13 @@ h3 {
   margin-right: auto;
   padding: 0 20px; }
 
-.regSection {
+.thinWrapper {
   text-align: center;
-  padding-top: 170px;
-  padding-bottom: 80px;
-  max-width: 830px; }
+  max-width: 830px;
+  margin: 0 auto; }
+
+.centercontent {
+  text-align: center; }
 
 .dot {
   background: #ff3200;
@@ -150,6 +152,13 @@ button:focus {
 .home .menuActive {
   position: fixed;
   top: 0; }
+
+#logo {
+  width: 188px;
+  height: 27px;
+  margin-left: 50px;
+  margin-top: 35px;
+  display: inline-block; }
 
 nav {
   position: absolute;
@@ -768,6 +777,9 @@ button.square, a.button.square {
     left: 0; }
 
 /***************************clients************************************************/
+#clients {
+  padding-top: 50px; }
+
 .logoWrapper {
   width: 100%;
   /* 2 columns */ }
@@ -888,7 +900,11 @@ button.square, a.button.square {
 
 /************* Contact page ***************/
 #contact {
-  padding-top: 120px; }
+  padding-top: 120px;
+  max-width: 1000px; }
+  #contact .thinWrapper {
+    padding-top: 20px;
+    padding-bottom: 20px; }
   #contact .preheading {
     -webkit-transition: all 700ms ease-out 0.2s;
     transition: all 700ms ease-out .2s; }
@@ -905,14 +921,20 @@ button.square, a.button.square {
   #contact .weareactionist {
     list-style-type: none;
     text-align: left; }
+    #contact .weareactionist a {
+      color: #000;
+      text-decoration: none; }
+      #contact .weareactionist a:hover {
+        text-decoration: underline; }
     #contact .weareactionist li {
       display: inline-block;
-      width: 20%;
-      padding: 0 2.5% 30px;
+      width: 22.8%;
+      padding: 0 1.1% 30px;
       text-align: left;
       vertical-align: top;
       -webkit-transition: all 500ms ease-out;
-      transition: all 500ms ease-out; }
+      transition: all 500ms ease-out;
+      font-size: 17px; }
       @media only screen and (max-width: 1024px) {
         #contact .weareactionist li {
           width: 28.33%; } }
