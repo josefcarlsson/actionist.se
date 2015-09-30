@@ -16,13 +16,14 @@ get_header();
 ?>
 
 <!------------------------------- presentation ------------------------------>
-<section id="contact" class="regSection widthWrapper preanimsation">
+<section id="contact" class="section preanimation">
+	<div class="thinWrapper centercontent">
 	<?php if(get_field('pre-heading')): ?>
 		<span class="preheading underline"><?php the_field('pre-heading'); ?></span>
 	<?php endif; ?>
 	<h1 class="heading"><?php the_field('rubrik'); ?></h1>
 	<div class="intro"><?php the_field('textstycke'); ?></div>
-
+</div>
 	<ul class="weareactionist">
 		<?php $loop = new WP_Query( array( 'post_type' => 'Personal', 'posts_per_page' => -1 ) ); ?>
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?><li class="preanimation">
@@ -38,7 +39,7 @@ get_header();
 					}?>
 					<?php the_title('<h2>', '</h2>'); ?>
 					<p class="title"><?php the_field('titel'); ?></p>
-					<span class="email"><?php the_field('email'); ?></span>
+					<a href="mailto:<?php the_field('email'); ?>" class="email"><?php the_field('email'); ?></a>
 					<span class="telephone"><?php the_field('telefon'); ?></span>
 		</li><?php endwhile; wp_reset_query(); ?><!--
 		--><?php if(get_field('visa-vi-soker-folk')): ?>
@@ -55,7 +56,7 @@ get_header();
 					}?>
 		<h2><?php the_field('rubrik-folk'); ?></h2>
 		<p class="title">&nbsp;</p>
-		<span class="email"><?php the_field('email-folk'); ?></span>
+		<a href="mailto:<?php the_field('email'); ?>" class="email"><?php the_field('email-folk'); ?></a>
 		<span class="telephone"><?php the_field('telefon-folk'); ?></span>
 		</li><?php endif; ?>
 		</ul>

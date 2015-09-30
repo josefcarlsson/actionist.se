@@ -256,13 +256,15 @@ endif; ?>
 <section id="uspar" class="group section">
 	<div class="uspNewsWrapper col span_4_of_12">
 		<h2>Nyhet</h2>
-		<?php query_posts( array ( 'category_name' => 'news', 'posts_per_page' => -1 ) ); ?>
+		<?php query_posts( array ( 'posts_per_page' => -1 ) ); ?>
+			<?php $count = 0; ?>
 			<?php if (have_posts()) : 
 				 while (have_posts()) : the_post(); 	?>	
-				<?php if(get_field('showOnStart') != 'Ja') : ?>
+				<?php if(get_field('showOnStart') != 'Ja' && $count < 1): ?>
 					<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
 						<?php get_template_part( 'content', 'usp' );?>		
 					</a>
+					<?php $count++; ?>
 				<?php else : ?>
 			<?php endif; ?>
 		<?php endwhile; ?>
@@ -282,8 +284,8 @@ endif; ?>
 	</div>
 </section>
 
-<section id="clients">
-	<div class="widthWrapper">
+<section id="clients" class="section">
+	
 
 		<h2 class="heading">Våra kunder</h2>
 	<?php if( have_rows('clients') ): ?>
@@ -299,7 +301,7 @@ endif; ?>
 			<?php endwhile;?>
 		</div>
 	<?php endif; ?>	
-	</div>
+	
 </section>
 <?php
 get_footer();
