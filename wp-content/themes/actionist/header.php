@@ -36,7 +36,7 @@
 <!------------------------------- MENU ------------------------------>
 <nav>
 	<div class="navWrapper">
-		<img src="<?php echo get_template_directory_uri(); ?>/images/actionistlogo.png" alt="actionist" id="logo">
+		<a href="<?php print get_home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/actionistlogo.png" alt="actionist" id="logo"></a>
 		<ul class="mainnav">
 		<?php wp_nav_menu(); ?>
 		</ul>

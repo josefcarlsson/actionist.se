@@ -18,12 +18,13 @@ get_header();
 <!------------------------------- presentation ------------------------------>
 <section id="contact" class="section preanimation">
 	<div class="thinWrapper centercontent">
-	<?php if(get_field('pre-heading')): ?>
-		<span class="preheading underline"><?php the_field('pre-heading'); ?></span>
-	<?php endif; ?>
-	<h1 class="heading"><?php the_field('rubrik'); ?></h1>
-	<div class="intro"><?php the_field('textstycke'); ?></div>
-</div>
+		<?php if(get_field('pre-heading')): ?>
+			<span class="preheading underline"><?php the_field('pre-heading'); ?></span>
+		<?php endif; ?>
+		<h1 class="heading"><?php the_field('rubrik'); ?></h1>
+		<div class="intro"><?php the_field('textstycke'); ?></div>
+	</div>
+
 	<ul class="weareactionist">
 		<?php $loop = new WP_Query( array( 'post_type' => 'Personal', 'posts_per_page' => -1 ) ); ?>
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?><li class="preanimation">
@@ -59,8 +60,10 @@ get_header();
 		<a href="mailto:<?php the_field('email'); ?>" class="email"><?php the_field('email-folk'); ?></a>
 		<span class="telephone"><?php the_field('telefon-folk'); ?></span>
 		</li><?php endif; ?>
-		</ul>
+	</ul>
+	<?php the_field('karta'); ?>
 </section>
+
 
 <?php get_footer(); ?>
 
