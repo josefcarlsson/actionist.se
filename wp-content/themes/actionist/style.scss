@@ -126,7 +126,13 @@ h1, .heading{
 	line-height: 1.2em;
 	margin-bottom: 15px;	
 }
-
+.entry-title{
+	color:black;
+}
+h3{
+	font-family: $raleway;
+	font-weight: 900;
+}
 .preheading{
 	font-family: 'Cardo', 'serif';
 	font-weight: 700;
@@ -181,6 +187,13 @@ button{
 	cursor: pointer;
 }
 button:focus{
+	outline:none;
+}
+.text{
+	padding-left: 10%;
+	padding-right: 10%;
+}
+video:focus{
 	outline:none;
 }
 /*************************** MENU ****************************************************/
@@ -701,20 +714,6 @@ button.square, a.button.square{
 					    text-overflow: ellipsis;
 					    margin-bottom: 20px;
 					}
-					.readMore::after{
-						content:" >";
-						font-weight: 800;
-					}
-					.readMore:hover:after{
-						-webkit-transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
-						-moz-transition: all  0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
-						transition: all  0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
-						font-weight: 500;
-						-webkit-animation: pushRight 0.5s infinite alternate ease-out; /* Safari 4+ */
-					  	-moz-animation:    pushRight 0.5s infinite alternate ease-out; /* Fx 5+ */
-					  	-o-animation:      pushRight 0.5s infinite alternate ease-out; /* Opera 12+ */
-					    animation:         pushRight 0.5s infinite alternate ease-out;
-					}
 				}
 				h3{
 					padding-top: 10px;
@@ -743,6 +742,20 @@ button.square, a.button.square{
 	
 	}
 }
+.readMore::after{
+	content:" >";
+	font-weight: 800;
+	}
+.readMore:hover:after{
+	-webkit-transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+	-moz-transition: all  0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+	transition: all  0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+	font-weight: 500;
+	-webkit-animation: pushRight 0.5s infinite alternate ease-out; /* Safari 4+ */
+  	-moz-animation:    pushRight 0.5s infinite alternate ease-out; /* Fx 5+ */
+  	-o-animation:      pushRight 0.5s infinite alternate ease-out; /* Opera 12+ */
+    animation:         pushRight 0.5s infinite alternate ease-out;
+	}
 #p1{
 			-webkit-transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
 		-moz-transition: all  0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
@@ -1000,6 +1013,7 @@ button.square, a.button.square{
 
 /************* Case detail ****************/
 #topvideo{
+	max-height: 80vh;
 	video{
 		width: 100%;
 		}
@@ -1012,39 +1026,63 @@ button.square, a.button.square{
 .caseContent{
 	text-align: left;
 	padding-bottom: $paddingBottom;
-	.resultStat{
-		float: right;
-		width: calc(50% - 80px);
-		margin-right: 20px;
-		img{
-			display: inline;
-			vertical-align: middle;
-			height:2em;
+	.resultWrapper{
+		float: left;
+		.resultStat{
+			float: right;
+			min-width: 200px;
+			width: calc(50% - 80px);
+			img{
+				display: inline;
+				vertical-align: middle;
+				height:2em;
+			}
+			h3{
+				font-size: 30px;
+				font-weight: 900;
+				display: inline;
+				vertical-align: middle;
+			}
+			p{
+				margin-top: 5px;
+				padding-top: 5px;
+				border-top:4px solid #FF2E00;
+			}
 		}
-		h3{
-			font-size: 30px;
-			font-weight: 400;
-			display: inline;
-			vertical-align: middle;
-		}
-		p{
-			margin-top: 5px;
-			padding-top: 5px;
-			border-top:4px solid #FF2E00;
+		.resultStat:nth-child(2n +2){
+			margin-right: 12%;
 		}
 	}
 }
+@media only screen and (max-width: 1000px) {
+.caseContent{
+	.resultWrapper{
+		.resultStat{
+			float: none;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.resultStat:nth-child(2n +2){
+			margin-right: 0%;
+			margin-left: auto;
+			margin-right: auto;
+			}	
+	}
+}
+}
+@media only screen and (max-width: 480px) {
+.caseContent{
+	.resultWrapper{
+		.resultStat{
+			width: 100%;
+		}
+	}
+}
+}
 .caseDetail{
 	text-align: left;
-	.span_4_of_12{
-		width: calc(33% - 9px);
-	}
-	.span_6_of_12{
-		width: calc(50% - 10px);
-	}
 	.caseDetailContent{
-			padding-left: 20px;
-			padding-top: 20px;
+		padding-top: 5%;
 			img{
 				width: 100%;
 				z-index: 1;
@@ -1063,9 +1101,8 @@ button.square, a.button.square{
 .moreCaseHeader{
 		margin-top: 50px;
 		display: block;
-		background-color: white;
 		h1{
-			line-height: 120px;
+			height: 120px;
 			margin-bottom: 0px;
 			margin-top: 0px;
 			padding:0px;
@@ -1258,13 +1295,31 @@ button.square, a.button.square{
 
 /*************************** CASE OVERVIEW ***********************************************/
 .topArea{
-	min-height: 50vh;
 	width: 100%;
+	position: relative;
+	overflow: hidden;
+	.image{
+	    top: 0;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    max-height: 80vh;
+		background-size: cover;
+		background-position: center center;
+		img{
+			opacity: 0;
+			width: 100%;
+			height: auto;
+		}
+	}
 }
 /*************************** CASE OVERVIEW ***********************************************/
 .case_section{
+	margin-left: 1.6%;
+	margin-right: 1.6%;
 	text-align: center;
 	.ingress{
+		margin-top: 100px;
 		span{
 			border-bottom: #FF2F00 solid 1px;
 			font-family: 'Cardo', serif;
@@ -1275,22 +1330,23 @@ button.square, a.button.square{
 		margin-bottom: 60px;
 	}
 	.case_preview{
+		margin: 0px;
 		position: relative;
-		padding-bottom: 31.4%;
-		width: 31.4%;
+		padding-bottom: 32.2%;
+		width: 32.2%;
 		margin-bottom: 1.6%;
 		margin-right: 1.6%;
-		-webkit-perspective: 150px; /* Chrome, Safari, Opera */
-		-webkit-perspective-origin: 10% 10%; /* Chrome, Safari, Opera */
+		-webkit-perspective: 400px; /* Chrome, Safari, Opera */
+		-webkit-perspective-origin: 40% 40%; /* Chrome, Safari, Opera */
 		perspective: 400px;
 		perspective-origin: 40% 40%;
 		overflow: hidden;
 		.case_preview_wrapper{
 			position: absolute;
-			width: 126%;
-			height: 126%;
-			top:-13%;
-			left:-13%;
+			width: 110%;
+			height: 110%;
+			top:-5%;
+			left:-5%;
 			background-size: 100% 100%;
 			background-position: center center;
 			-webkit-transition: all 0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
@@ -1302,10 +1358,11 @@ button.square, a.button.square{
 
 		}
 		.preview_wrapper{
-			top:0px;
-			left:0px;
-			right:0px;
-			bottom:0px;	
+			-webkit-transform: translateZ(4px);
+			top:-1px;
+			left:-1px;
+			right:-1px;
+			bottom:-1px;	
 			position: absolute;
 			opacity: 0;
 			-webkit-transition: all 0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
@@ -1329,12 +1386,12 @@ button.square, a.button.square{
 					transition: all  0.4s cubic-bezier(0.44, 0.88, 0.85, 1.11);
 					margin-bottom: 0px;
 					margin-top: 0px;
-					font-size: 40px;
+					font-size: 30px;
 					margin-left: -10px;
 					opacity: 0;
 				}
 				h3{
-					font-size: 30px;
+					font-size: 20px;
 					color:#FF2F00;
 					font-family: 'Cardo', serif;
 				}
@@ -1380,27 +1437,42 @@ button.square, a.button.square{
 }
 @media only screen and (min-width: 1300px) {
 .case_section{
+	margin-left: auto;
+	margin-right: auto;
 	.span_4_of_12 {
-	  	width: 25%;
+	  	width:23.6%;
 	}
 	.case_preview{
-		padding-bottom: 25%;
+		padding-bottom: 23.6%;
+	}
+	.case_preview:nth-child(3n + 3){
+		margin-right: 1.6%;
+	}
+	.case_preview:nth-child(4n + 4){
+		margin-right: 0px;
 	}
 }
 }
+@media only screen and (min-width: 768px) {;
+			.case_preview:nth-child(3n + 3){
+		margin-right: 0px;
+	}
+	}
 @media only screen and (max-width: 768px) {
 .case_section{
+	margin-left: 1.6%;
+	margin-right: 1.6%;
 	.span_4_of_12 {
-	  	width: 50%;
+	  	width: 49.2%;
 	}
 	.case_preview{
-		padding-bottom: 50%;
+		padding-bottom: 49.2%;
 		.preview_wrapper{
 			position: absolute;
-			top:0;
-			bottom:0;
-			left:0;
-			right:0;
+			top:-1;
+			bottom:-1;
+			left:-1;
+			right:-1px;
 			.preview_content{
 				a{
 				width: 100%;
@@ -1427,8 +1499,11 @@ button.square, a.button.square{
 			}
 			}
 		}
-		
 	}
+	.case_preview:nth-child(2n + 2){
+		margin-right: 0px;
+	}
+
 }
 @media only screen and (max-width: 320px) {
 	.case_section{
@@ -1436,6 +1511,7 @@ button.square, a.button.square{
 		  	width: 100%;
 		}
 		.case_preview{
+			margin-right: 0%;
 			padding-bottom: 100%;
 		}
 	}
@@ -1587,4 +1663,18 @@ input[type="range"]:focus + .rangeslider .rangeslider__handle {
   -moz-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
   -webkit-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
   box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+}
+
+/*************** video player *********************/
+.mejs-container{
+	max-height: 80vh;
+	.mejs-poster{
+		background-size: cover;
+	}
+	.mejs-controls{
+	
+	}
+}
+.mejs-container:focus{
+	outline: none;
 }
