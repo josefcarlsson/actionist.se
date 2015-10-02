@@ -2,14 +2,34 @@
 	$paddingBottom: 40px;
 
 
+.page{
+	padding-top: 100px;
 
+	&.home{
+		padding-top: 0px;
+	}
+
+	.topimage{
+		img{
+			width: 100%;
+		}
+
+		max-height: 80vh;
+		overflow: hidden;
+		margin-bottom: 80px;
+	}
+}
+
+.maxwidth{
+	max-width: 1300px;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 .section {
-	max-width: 1300px;
 	clear: both;
 	padding: 0px 1.6%;
 	margin: 0px auto;
-	max-width: 1300px;
 }
 /*  COLUMN SETUP  */
 .col {
@@ -199,7 +219,7 @@ video:focus{
 /*************************** MENU ****************************************************/
 .home nav{
 	top: calc(100%);
-	
+	position: absolute;	
 }
 .home .menuActive{
 	position: fixed;
@@ -215,7 +235,7 @@ video:focus{
 }
 
 nav{
-	position: absolute;
+	position: fixed;
 	z-index: 20;
 	top: 0px;
 	width: 100%;
@@ -517,11 +537,15 @@ button.square, a.button.square{
   100% { opacity: 0; }
 }
 /*************************** presentation ***********************************************/
-#presentation{
+.introtext{
 	text-align: center;
-	padding-top: 170px;
-	padding-bottom: 80px;
 	max-width: 830px;
+	margin: 0 auto;
+
+	&#presentation{
+		padding-top: 170px;
+		padding-bottom: 80px;
+	}
 
 	.preheading{
 		-webkit-transition: all 700ms ease-out.3s;
@@ -568,7 +592,7 @@ button.square, a.button.square{
 	}
 }
 
-.js #presentation.preanimation{
+.js .introtext.preanimation{
 	.preheading, .heading, p, button{
 		opacity: 0;
 		-webkit-transform: translate(0px,-10px); /* Safari */
@@ -1292,6 +1316,32 @@ button.square, a.button.square{
 			transform: scale(1.3);
 	}
 }
+
+
+/*************************** ABOUT ***********************************************/
+#about-tools{
+	margin-top: 120px;
+
+	ul{
+		padding-top: 30px;
+		
+		li{
+			text-align: left;
+
+			img{
+				margin-bottom: 40px;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
 
 /*************************** CASE OVERVIEW ***********************************************/
 .topArea{

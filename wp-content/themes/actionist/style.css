@@ -1,10 +1,24 @@
 /* variables */
-.section {
+.page {
+  padding-top: 100px; }
+  .page.home {
+    padding-top: 0px; }
+  .page .topimage {
+    max-height: 80vh;
+    overflow: hidden;
+    margin-bottom: 80px; }
+    .page .topimage img {
+      width: 100%; }
+
+.maxwidth {
   max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.section {
   clear: both;
   padding: 0px 1.6%;
-  margin: 0px auto;
-  max-width: 1300px; }
+  margin: 0px auto; }
 
 /*  COLUMN SETUP  */
 .col {
@@ -161,7 +175,8 @@ video:focus {
 
 /*************************** MENU ****************************************************/
 .home nav {
-  top: calc(100%); }
+  top: calc(100%);
+  position: absolute; }
 
 .home .menuActive {
   position: fixed;
@@ -175,7 +190,7 @@ video:focus {
   display: inline-block; }
 
 nav {
-  position: absolute;
+  position: fixed;
   z-index: 20;
   top: 0px;
   width: 100%;
@@ -423,27 +438,29 @@ button.square, a.button.square {
   100% {
     opacity: 0; } }
 /*************************** presentation ***********************************************/
-#presentation {
+.introtext {
   text-align: center;
-  padding-top: 170px;
-  padding-bottom: 80px;
-  max-width: 830px; }
-  #presentation .preheading {
+  max-width: 830px;
+  margin: 0 auto; }
+  .introtext#presentation {
+    padding-top: 170px;
+    padding-bottom: 80px; }
+  .introtext .preheading {
     -webkit-transition: all 700ms ease-out 0.3s;
     transition: all 700ms ease-out .3s; }
-  #presentation .heading {
+  .introtext .heading {
     margin-bottom: 25px;
     -webkit-transition: all 700ms ease-out 0.5s;
     transition: all 700ms ease-out .5s; }
-  #presentation p {
+  .introtext p {
     -webkit-transition: all 700ms ease-out 0.7s;
     transition: all 700ms ease-out .7s; }
-  #presentation .dot {
+  .introtext .dot {
     margin-bottom: 25px;
     -webkit-transition: all 700ms ease-out 0s;
     transition: all 700ms ease-out 0s;
     opacity: 0; }
-    #presentation .dot.animation {
+    .introtext .dot.animation {
       -webkit-animation-name: dotGrow;
       -webkit-animation-duration: .5s;
       -webkit-animation-iteration-count: 1;
@@ -456,12 +473,12 @@ button.square, a.button.square {
       animation-timing-function: cubic-bezier(0.17, 1.67, 0.55, 1.7);
       animation-delay: 1.4s;
       animation-fill-mode: forwards; }
-  #presentation button {
+  .introtext button {
     margin-top: 35px;
     -webkit-transition: -webkit-transform 700ms ease-out 1s, background-position 400ms ease-out, opacity 700ms ease-out 1s;
     transition: transform 700ms ease-out 1s, background-position 400ms ease-out, opacity 700ms ease-out 1s; }
 
-.js #presentation.preanimation .preheading, .js #presentation.preanimation .heading, .js #presentation.preanimation p, .js #presentation.preanimation button {
+.js .introtext.preanimation .preheading, .js .introtext.preanimation .heading, .js .introtext.preanimation p, .js .introtext.preanimation button {
   opacity: 0;
   -webkit-transform: translate(0px, -10px);
   /* Safari */
@@ -1020,6 +1037,16 @@ button.square, a.button.square {
   -webkit-transform: scale(1.3);
   /* Safari */
   transform: scale(1.3); }
+
+/*************************** ABOUT ***********************************************/
+#about-tools {
+  margin-top: 120px; }
+  #about-tools ul {
+    padding-top: 30px; }
+    #about-tools ul li {
+      text-align: left; }
+      #about-tools ul li img {
+        margin-bottom: 40px; }
 
 /*************************** CASE OVERVIEW ***********************************************/
 .topArea {

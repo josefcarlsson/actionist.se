@@ -210,7 +210,7 @@ endif; ?>
 </section>
 
 <!------------------------------- presentation ------------------------------>
-<section id="presentation" class="presentation widthWrapper preanimation">
+<section id="presentation" class="presentation widthWrapper preanimation introtext">
 	<span class="preheading underline"><?php echo $presentationTopHeader ?></span>
 	<h2 class="heading"><?php echo $presentationBigHeader ?></h2>
 	<span class="dot"></span>
@@ -253,7 +253,7 @@ endif; ?>
 </section>
 
 <!------------------------------- uspar ------------------------------>
-<section id="uspar" class="group section">
+<section id="uspar" class="group section maxwidth">
 	<div class="uspNewsWrapper col span_4_of_12">
 		<h2>Nyhet</h2>
 		<?php query_posts( array ( 'posts_per_page' => -1 ) ); ?>

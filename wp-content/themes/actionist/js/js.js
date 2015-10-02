@@ -326,7 +326,7 @@ function initNews(){
 	$newsOverflowControl.height(maxHeightNews + 40);
 	var max = previousLeft - newsItemWidth - newsItemPadding - endSpace;
 	$('input[type="range"]').rangeslider('destroy');
-	$('input[type="range"]').attr('value', max).attr('max',max).rangeslider({polyfill: false, onSlide: function(position, value) {adjustNews(value)}, onSlideEnd: function(position, value) {snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPadding)}});
+	$('input[type="range"]').attr('value', max).attr('max',max + (max*0.06)).rangeslider({polyfill: false, onSlide: function(position, value) {adjustNews(value)}, onSlideEnd: function(position, value) {snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPadding)}});
 	$('input[type="range"]').val(max).change();
 	adjustNews(leftPositionIndex[newsCount - 1]);
 	$('.rangeslider__handle').hammer().bind("pan", function(){
