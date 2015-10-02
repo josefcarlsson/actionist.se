@@ -401,7 +401,10 @@ function initNews(){
 	$('input[type="range"]').rangeslider('destroy');
 	$('input[type="range"]').attr('value', max).attr('max',max + (max*0.06)).rangeslider({polyfill: false, onSlide: function(position, value) {adjustNews(value)}, onSlideEnd: function(position, value) {snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPadding)}});
 	$('input[type="range"]').val(max).change();
+	$('.rangeslider__handle').append('<div class="date"></div>');
 	adjustNews(leftPositionIndex[newsCount - 1]);
+	var newsDate = $('.newsoverflow').find('.post').eq(newsCount - 1).data('date');
+		$('body').find('.rangeslider__handle .date').html(newsDate);
 	$('.rangeslider__handle').hammer().bind("pan", function(){
 		$newsBlock.removeClass('animate');
 		$('.rangeslider__handle').removeClass('animate');
@@ -422,7 +425,7 @@ function snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPa
 			newsOnTheLeft = i;
 		}
 	}
-
+	
 	var goLeft = leftPositionIndex[newsOnTheLeft];
 	var goRight = leftPositionIndex[newsOnTheLeft+1];
 
@@ -436,10 +439,15 @@ function snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPa
 		if (goLeftDifference > goRightDifference){
 			$('input[type="range"]').val(goRight).change();
 			adjustNews(goRight);
+			newsOnTheLeft++;
 		} else{
 			$('input[type="range"]').val(goLeft).change();
 			adjustNews(goLeft);
+
 		}
+
+		var newsDate = $('.newsoverflow').find('.post').eq(newsOnTheLeft).data('date');
+		$('body').find('.rangeslider__handle .date').html(newsDate);
 	}, 100);
 }
 

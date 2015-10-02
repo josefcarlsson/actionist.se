@@ -1,4 +1,3 @@
-/* variables */
 .page {
   padding-top: 100px; }
   .page.home {
@@ -10,10 +9,14 @@
     .page .topimage img {
       width: 100%; }
 
+.error404 {
+  padding-top: 100px; }
+
 .maxwidth {
   max-width: 1300px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  padding: 0 20px; }
 
 .section {
   clear: both;
@@ -108,6 +111,14 @@ h1, .heading {
   color: #ff3200;
   line-height: 1.2em;
   margin-bottom: 15px; }
+  @media screen and (max-width: 780px) {
+    h1, .heading {
+      font-size: 32px;
+      line-height: 1.3em; } }
+  @media screen and (max-width: 500px) {
+    h1, .heading {
+      font-size: 25px;
+      line-height: 1.3em; } }
 
 .entry-title {
   color: black; }
@@ -755,6 +766,9 @@ button.square, a.button.square {
 #instafeed {
   padding-bottom: 33%;
   position: relative; }
+  @media only screen and (max-width: 500px) {
+    #instafeed {
+      padding-bottom: 100%; } }
   #instafeed .istagramImg {
     left: 0px;
     right: 0px;
@@ -791,7 +805,8 @@ button.square, a.button.square {
         display: block;
         height: 100%;
         background: url("images/toning_left.png") repeat-y left top;
-        width: 105px;
+        background-size: 100% 100%;
+        width: 10px;
         position: absolute;
         top: 0;
         left: 0;
@@ -801,7 +816,8 @@ button.square, a.button.square {
         display: block;
         height: 100%;
         background: url("images/toning_right.png") repeat-y right top;
-        width: 105px;
+        background-size: 100% 100%;
+        width: 10px;
         position: absolute;
         top: 0;
         right: 0;
@@ -829,15 +845,20 @@ button.square, a.button.square {
 /*************************** instagram ***********************************************/
 .spotify {
   position: relative; }
+  @media only screen and (max-width: 500px) {
+    .spotify {
+      padding-bottom: 100%; } }
   .spotify img {
     position: absolute;
     width: 100%; }
-  .spotify .lastfmlive_song_title {
+  .spotify .lastfmlive_song_info {
     position: absolute;
     z-index: 1;
-    top: 20px;
+    bottom: 20px;
     left: 20px;
-    width: calc(100% - 40px); }
+    width: 100%;
+    vertical-align: bottom;
+    display: inline-block; }
   .spotify .lastfmlive_recently_played.noimage {
     background: url("images/default_spotify.jpg");
     background-size: 100%;
@@ -850,6 +871,9 @@ button.square, a.button.square {
 #uspar .uspNewsWrapper {
   background: #b3f0e9;
   padding-bottom: 33.333333%; }
+  @media only screen and (max-width: 500px) {
+    #uspar .uspNewsWrapper {
+      padding-bottom: 100%; } }
   #uspar .uspNewsWrapper h3 {
     position: absolute;
     max-width: 100%;
@@ -869,28 +893,36 @@ button.square, a.button.square {
   color: #fff;
   display: inline;
   top: 25px;
-  left: 32px;
+  left: 25px;
   padding: 1px 9px;
-  line-height: 1.4em;
   white-space: pre-wrap;
-  line-height: 1.3em;
-  padding-left: 0px;
-  box-shadow: -8px 0 0 #001dd9; }
-#uspar .bluebox {
-  position: absolute;
-  top: 25px;
-  left: 32px;
-  z-index: 2; }
-  #uspar .bluebox h2 {
-    position: static;
-    top: auto;
-    left: auto; }
+  line-height: 1.3em; }
+  @media only screen and (max-width: 1100px) {
+    #uspar h2 {
+      font-size: 24px; } }
+  @media only screen and (max-width: 780px) {
+    #uspar h2 {
+      left: 10px;
+      top: 10px;
+      font-size: 18px;
+      line-height: 1.3em; } }
+  @media only screen and (max-width: 500px) {
+    #uspar h2 {
+      left: 20px;
+      top: 20px;
+      font-size: 24px;
+      line-height: 1.3em; } }
 #uspar #lastfmlive_recent_tracks {
   overflow: hidden; }
   #uspar #lastfmlive_recent_tracks .lastfmlive_song_info {
     position: absolute;
-    bottom: -100px;
-    left: 0; }
+    bottom: 0px;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
 
 /***************************clients************************************************/
 #clients {
@@ -1027,7 +1059,6 @@ button.square, a.button.square {
 
 /************* Contact page ***************/
 #contact {
-  padding-top: 120px;
   max-width: 1300px; }
   #contact .thinWrapper {
     padding-top: 20px;
@@ -1120,13 +1151,21 @@ button.square, a.button.square {
 
 /*************************** ABOUT ***********************************************/
 #about-tools {
-  margin-top: 120px; }
+  margin-top: 120px;
+  padding-bottom: 70px; }
   #about-tools ul {
     padding-top: 30px; }
     #about-tools ul li {
       text-align: left; }
       #about-tools ul li img {
         margin-bottom: 40px; }
+      #about-tools ul li h2 {
+        font-size: 18px;
+        line-height: 1.3em;
+        margin-bottom: 15px;
+        text-transform: uppercase; }
+      #about-tools ul li p {
+        line-height: 1.5em; }
 
 /*************************** CASE OVERVIEW ***********************************************/
 .topArea {
@@ -1305,7 +1344,7 @@ button.square, a.button.square {
   height: 100vh; }
 
 /*  GO FULL WIDTH BELOW 480 PIXELS */
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 500px) {
   .col {
     margin: 1% 0 1% 0%; }
 
@@ -1393,14 +1432,13 @@ button.square, a.button.square {
   -webkit-border-radius: 50%;
   border-radius: 50%;*/ }
 
-.rangeslider__handle:before {
+.rangeslider__handle .date {
   display: inline-block;
-  content: '4 juni';
-  width: 100px;
+  width: 200px;
   text-align: center;
   position: absolute;
   top: -35px;
-  left: -15px;
+  left: -65px;
   color: #ff3200; }
 
 .rangeslider__handle:active {

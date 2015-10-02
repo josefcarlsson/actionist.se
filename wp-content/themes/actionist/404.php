@@ -9,22 +9,13 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'twentyfifteen' ); ?></h1>
-				</header><!-- .page-header -->
-
-				<div class="page-content">
-					<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'twentyfifteen' ); ?></p>
-
-					<?php get_search_form(); ?>
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
-
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
+<section id="error" class="maxwidth preanimation">
+	<div class="centercontent introtext">
+		<span class="preheading underline">Vad hände?</span>
+		<h1 class="heading">Oops! Sorry, något gick fel.</h1>
+		<div class="intro"><p>På grund utav internets outgrundliga mystik har något nu blivit fel i maskineriet. Därför ber vi dig gå tillbaka till 
+<a href="<?php get_site_url(); ?>">www.actionist.se</a> för att få hänga lite med oss igen.</p></div>
+	</div>
+</section>
 
 <?php get_footer(); ?>

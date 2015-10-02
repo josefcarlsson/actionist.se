@@ -21,7 +21,6 @@ get_header();
 		<img src="<?php the_field('toppbild'); ?>">
 	</div>
 <?php endif; ?>
-</div>
 <section id="about" class="maxwidth preanimation">
 	<div class="centercontent introtext">
 		<?php if(get_field('preheading')): ?>

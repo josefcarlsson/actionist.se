@@ -454,3 +454,68 @@ require get_template_directory() . '/inc/customizer.php';
 function remove_width_and_height_attribute( $html ) {
    return preg_replace( '/(height|width)="\d*"\s/', "", $html );
 }
+
+function cleanUpDate($type, $date){
+	if($type === 'day'){
+		if (substr($date, 0, 1) === '0'){
+			$date = substr($date, 1);
+		} else{}
+	} else{
+		switch ($date) {
+			case '01':
+				$date = 'januari';
+				break;
+
+			case '02':
+				$date = 'februari';
+				break;
+
+			case '03':
+				$date = 'mars';
+				break;
+
+			case '04':
+				$date = 'april';
+				break;
+
+			case '05':
+				$date = 'maj';
+				break;
+
+			case '06':
+				$date = 'juni';
+				break;
+
+			case '07':
+				$date = 'juli';
+				break;
+
+			case '08':
+				$date = 'augusti';
+				break;
+
+			case '09':
+				$date = 'september';
+				break;
+
+			case '10':
+				$date = 'oktober';
+				break;
+
+			case '11':
+				$date = 'november';
+				break;
+
+			case '12':
+				$date = 'december';
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+
+	}
+
+	return $date;
+}
