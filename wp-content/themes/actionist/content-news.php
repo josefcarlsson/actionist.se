@@ -8,8 +8,12 @@
  */
 ?>
 
+<?php $date = get_the_date();
+$month = cleanUpDate('month', substr($date, 5, 2));
+$day = cleanUpDate('day', substr($date, 8, 2));
 
-<article id="post-<?php the_ID(); ?>" data-date="<?php get_the_date(); ?>" <?php post_class(); ?>>
+?>
+<article id="post-<?php the_ID(); ?>" data-date="<?php print $day . " " . $month; ?>" <?php post_class(); ?>>
 		<?php the_title( '<h3 class="entry-title">', '</h3>' ); ?>
 		<div class="presentationText"><?php the_content(); ?></div>
 </article><!-- #post-## -->

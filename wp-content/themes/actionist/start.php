@@ -300,13 +300,13 @@ endif; ?>
 	</div>
 	
 	<div class="span_4_of_12 col spotify">
-		<div class="bluebox"><h2>Spelas på kontoret</h2></div>
+		<h2>Spelas på kontoret</h2>
 		
 		<?php dynamic_sidebar( 'spotify' );?>
 	</div>
 </section>
 
-<section id="clients" class="section">
+<section id="clients" class="maxwidth section">
 	
 
 		<h2 class="heading">Våra kunder</h2>
