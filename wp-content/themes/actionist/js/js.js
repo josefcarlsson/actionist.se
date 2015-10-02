@@ -13,7 +13,7 @@ $(window).load(function () {
   var numberOfCase = 1
   var isStartPage = false,
   animationPresentationDone = false;	
-
+  var numberOfcaseSlid = 0
   var $newsOverflowControl = $('.newsoverflow');
   var $newsBlock = $('.newsholder');    
   var project_overview = []
@@ -49,60 +49,39 @@ $(".case_preview_wrapper").each(function() {
 		
 		var yPosition = yCenter - ($(window).height()/2)
 		var xPosition = xCenter - ($(window).width()/2)
-		console.log(xPosition)
 		var obj = {id:casePreviewClass, x:xPosition, y:yPosition};
 		project_overview.push(obj);
 		casePreviewClass ++
 	})
 
-	
+$('.case').hammer().bind("swiperight", function(){
+	console.log(numberOfcaseSlid + 'ssssss' +JSON.parse($('.case:last-child').attr('id') - 1))
+	if(numberOfcaseSlid == 0){
+		console.log('s')
+	}
+	else{
+			caseSliderLeft()
+	}
+})	
 $('.left').click(function(){
-		var windowWidth = ($('.case').width() + 30);
-		var prev = $('.visable').attr('id');
-		var lastCase= JSON.parse($('.case:last-child').attr('id'));
-		var next = JSON.parse(prev) + 1
-		if($(window).width <= 1300){
-			switch (JSON.parse(next)) {
-			    case 2:
-					$(".case").each(function() {
-						$(this).css({
-							left: '-='+(windowWidth)
-						})
-					})
-			        break;
-			    case lastCase:
-					$(".case").each(function() {
-						$(this).css({
-							left: '-='+(windowWidth)
-						})
-					})
-			        break;
-			    default:
-				 	$(".case").each(function() {
-						$(this).css({
-							left: '-=' + windowWidth
-							})
-						})	
-				    break;
-			};
+		caseSliderLeft()
+	})
+
+function caseSliderLeft(){
+	numberOfcaseSlid = numberOfcaseSlid - 1
+		console.log(numberOfcaseSlid)
+		if($(window).width() <= 480){
+			var windowWidth = $('.case').width() + 35
 		}
 		else{
-			if(JSON.parse(next) == lastCase){
-				var next = JSON.parse($('.case:first-child').attr('id'))
-			}
+			var windowWidth = ($('.case').width() + 30);
 		}
-			$('#'+prev).removeClass('visable');
-			$('#'+next).addClass('visable');
-	})
-	
-$('.right').click(function(){
-		var windowWidth = ($('.case').width() + 30);
 		var prev = $('.visable').attr('id');
-		var lastCase= JSON.parse($('.case:first-child').attr('id') - 1);
+		var lastCase= JSON.parse($('.case:last-child').attr('id'));
 		var next = JSON.parse(prev) - 1
-		if($(window).width <= 1300){
+		if($(window).width() <= 1300){
 			switch (JSON.parse(next)) {
-			    case 1:
+			    case 2:
 					$(".case").each(function() {
 						$(this).css({
 							left: '+='+(windowWidth)
@@ -110,6 +89,7 @@ $('.right').click(function(){
 					})
 			        break;
 			    case lastCase:
+			    	numberOfcaseSlid = 0
 					$(".case").each(function() {
 						$(this).css({
 							left: '+='+(windowWidth)
@@ -126,15 +106,78 @@ $('.right').click(function(){
 			};
 		}
 		else{
-			if(JSON.parse(next) == lastCase){
+			var firstCase= JSON.parse($('.case:first-child').attr('id'));
+			console.log(JSON.parse(next + 1) +',first'+ firstCase)
+			if(JSON.parse(next + 1) == firstCase){
 				var next = JSON.parse($('.case:last-child').attr('id'))
+				numberOfcaseSlid = next
+				console.log(numberOfcaseSlid)
 			}
 		}
 			$('#'+prev).removeClass('visable');
 			$('#'+next).addClass('visable');
-	})
+}
+$('.case').hammer().bind("swipeleft", function(){
+	console.log(numberOfcaseSlid + 'f' +JSON.parse($('.case:last-child').attr('id') - 1))
 
+	if(numberOfcaseSlid == JSON.parse($('.case:last-child').attr('id') - 1)){
+	}
+	else{
+	caseSliderRight()
+		}
+})		
+$('.right').click(function(){
+		caseSliderRight()
+})
 
+function caseSliderRight(){
+	numberOfcaseSlid = numberOfcaseSlid + 1
+		console.log(numberOfcaseSlid)
+		if($(window).width() <= 480){
+			var windowWidth = $('.case').width() + 35
+		}
+		else{
+			var windowWidth = ($('.case').width() + 30);
+		}
+		var prev = $('.visable').attr('id');
+		var lastCase= JSON.parse($('.case:first-child').attr('id') - 1);
+		var next = JSON.parse(prev) + 1
+		if($(window).width() <= 1300){
+			switch (JSON.parse(next)) {
+			    case 0:
+					$(".case").each(function() {
+						$(this).css({
+							left: '-='+(windowWidth)
+						})
+					})
+			        break;
+			    case lastCase:
+			    	numberOfcaseSlid = 0
+					$(".case").each(function() {
+						$(this).css({
+							left: '-='+(windowWidth)
+						})
+					})
+			        break;
+			    default:
+				 	$(".case").each(function() {
+						$(this).css({
+							left: '-=' + windowWidth
+							})
+						})	
+				    break;
+			};
+		}
+		else{
+			if(JSON.parse(next) == JSON.parse($('.case:last-child').attr('id'))){
+				numberOfcaseSlid = 0
+				var next = JSON.parse($('.case:first-child').attr('id'))
+			}
+		}
+			$('#'+prev).removeClass('visable');
+			$('#'+next).addClass('visable');
+
+}
   	if($('body.home').length > 0){
   		isStartPage = true;
   		//resetStartPage();
@@ -266,25 +309,34 @@ function resetStartPage(){
 		$('#presentation').addClass('preanimation');
 	}, 500)
 }
+var resizeDone;
 $( window).resize(function(){
-	
-	  fitVidHeight()
-	          
-	var caseLocation = 0
-	$(".case").each(function() {
-		 $(this).css({
-			 left:caseLocation,
-		 })
-		 caseLocation = caseLocation + ($(window).width() - 50);
-		
-		 numberOfCase++
+	clearTimeout(resizeDone);
+	$('.case').css({
+		'opacity':0,
 	})
-		$('.case').removeClass('visable')
-	$('#1').addClass('visable');
-
+	$('.visable').css({
+		'opacity':1,
+	})	
+	resizeDone = setTimeout(doneResizing, 500);
+	  fitVidHeight()
+	         
 	initNews();
 		
 })
+function doneResizing(){
+	setTimeout(function(){
+	$('.case').css({
+		'top':0,
+		'opacity':1,
+	})
+	},800)
+	$('.visable').css({
+		'opacity':1,
+	})
+	var run = 1	
+  caseSlider(run);  
+}
 $( window ).scroll(function() {
    var scrollTop = $(window).scrollTop()
    menuScroll(scrollTop);
@@ -546,19 +598,36 @@ function setGreatingFrase(){
 	  
   }
   
-function caseSlider(){
-	var caseLocation = (($(window).width()/2) - ($('.case').width()/2))
+function caseSlider(run){
+	console.log('sss'+numberOfcaseSlid)
+	numberOfCase = 0
+	if(numberOfcaseSlid >= 0){
+		
+	}
+	else{
+		console.log('rwar'+numberOfcaseSlid)
+		numberOfcaseSlid = -(numberOfcaseSlid -2)
+	}
+	var caseLocation = (($(window).width()/2) - ($('.case').width()/2) - (numberOfcaseSlid * ($('.case').width() + 35)))
+	console.log('sdasda'+caseLocation)
 		 $(".case").each(function() {
 		 $(this).attr('id',numberOfCase);
-		 if($(window).width <= 1300){
+		 if($(window).width() <= 1300){
 			 $(this).css({
 				 left:caseLocation,
 		 		})
 		 	}
+		 else{
+			$(this).css({
+				 left:0,
+		 		})
+		 }
 		 caseLocation = caseLocation + ($('.case').width() + 35);
 		 numberOfCase++
 	})
-	$('#1').addClass('visable')
+	if(run != 1){
+		$('#0').addClass('visable')
+	}
 }
 function fitVidHeight(){
 		 if($('#playerWrapper').width() <= $(window).width()){
@@ -576,7 +645,7 @@ function fitVidHeight(){
 	  setGreatingFrase();
 	  startInstagramFeed();
 	  initNews();
-	  caseSlider(numberOfCase);
+	  caseSlider();
 	  setTimeout(function(){ 
 		   masonryGrid()
 		   changeQuats()

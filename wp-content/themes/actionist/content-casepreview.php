@@ -39,6 +39,7 @@
 				<p><?php echo $text ?></p>
 			</div>
 			<?php endwhile;?>
+		
 		</div><!-- .entry-content -->
-	</a>
-</li>
+					</a>
+				</li>
