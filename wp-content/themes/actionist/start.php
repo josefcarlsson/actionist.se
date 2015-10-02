@@ -14,6 +14,7 @@ Template Name: Index template
 get_header(); ?>
 <?php 
 	/*variables*/
+	$videoTopHeaderBackup = get_field('videoTopHeaderBackup');
 	$presentationTopHeader = get_field('presentationTopHeader');
 	$presentationBigHeader = get_field('presentationBigHeader');
 	$presentationText = get_field('presentationText');
@@ -189,9 +190,17 @@ onYouTubeIframeAPIReady = function () {
 		</script>
 	<?php endwhile;
 endif; ?>
-
-
-<section id="top" class="fullHeight">
+<section id="preloader">
+	<div class="preloaderImg">
+		<svg version="1.1"  id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 viewBox="0 0 887.8 821" enable-background="new 0 0 887.8 821" xml:space="preserve">
+		<circle fill="none" class="path" stroke="#000000" stroke-width="47" stroke-miterlimit="10" cx="446.5" cy="408.7" r="375.3"/>
+		</svg>
+		<img src="<?php echo get_template_directory_uri(); ?>/images/actionistA.svg" class="preloaderImg">
+	</div>
+</section>
+<div id="topWrapper"> 
+<section id="top" class="fullHeight" style="background-image: url(<?php echo $videoTopHeaderBackup['url']?>)">
 	<div id="playerWrapper">
 		<div id="player"></div>
 	</div>
@@ -208,7 +217,7 @@ endif; ?>
 		</div>
 	</div>
 </section>
-
+</div>
 <!------------------------------- presentation ------------------------------>
 <section id="presentation" class="presentation widthWrapper preanimation">
 	<span class="preheading underline"><?php echo $presentationTopHeader ?></span>
@@ -221,17 +230,30 @@ endif; ?>
 <!------------------------------- case ------------------------------>
 
 <section class="caseSection">
-	<div id="caseWrapper">
+	<div id="caseWrapperBigScreen" class="caseWrapper">
+		<button class="left caseNavigation" style="background-color:<?php echo $caseColor ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow.png" alt="arrow"/></button>
+		<button class="right caseNavigation" style="background-color:<?php echo $caseColor ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow.png" alt="arrow"/></button>
 		<ul>
 		<?php $loop = new WP_Query( array( 'post_type' => 'case', 'posts_per_page' => -1 ) ); ?>
+		<?php while ( $loop->have_posts() ) : $loop->the_post(); 
+			 if(get_field('showOnStart') == 'Ja') : ?>
+			 	<?php get_template_part( 'content', 'casepreview' );?>		
+				<?php endif;
+			endwhile;?>
+		<?php wp_reset_query();?>
+		</ul>
+	</div>
+	<div class="caseWrapper">
+		<!--<ul>
+		<?php /* $loop = new WP_Query( array( 'post_type' => 'case', 'posts_per_page' => -1 ) ); ?>
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); 
 			 if(get_field('showOnStart') == 'Ja') : ?>
 			 						<?php get_template_part( 'content', 'page' );?>		
 				<?php endif;
 			endwhile;?>
-		<?php wp_reset_query();?>
+		<?php wp_reset_query();*/?>
 		</ul>
-	</div>			
+	</div>-->
 </section>
 
 <!------------------------------- news ------------------------------>	

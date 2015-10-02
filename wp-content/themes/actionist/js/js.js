@@ -1,4 +1,11 @@
-
+$(window).load(function () {
+	$('.preloaderImg').animate({
+		'opacity': 0,
+	},200);
+	setTimeout(function(){
+		$('#preloader').fadeOut(200);
+	},800)
+})
   $(document).ready(function(){
 
   //Variables
@@ -54,29 +61,36 @@ $('.left').click(function(){
 		var prev = $('.visable').attr('id');
 		var lastCase= JSON.parse($('.case:last-child').attr('id'));
 		var next = JSON.parse(prev) + 1
-		switch (JSON.parse(next)) {
-		    case 2:
-				$(".case").each(function() {
-					$(this).css({
-						left: '-='+(windowWidth)
-					})
-				})
-		        break;
-		    case lastCase:
-				$(".case").each(function() {
-					$(this).css({
-						left: '-='+(windowWidth)
-					})
-				})
-		        break;
-		    default:
-			 	$(".case").each(function() {
-					$(this).css({
-						left: '-=' + windowWidth
+		if($(window).width <= 1300){
+			switch (JSON.parse(next)) {
+			    case 2:
+					$(".case").each(function() {
+						$(this).css({
+							left: '-='+(windowWidth)
 						})
-					})	
-			    break;
-		};
+					})
+			        break;
+			    case lastCase:
+					$(".case").each(function() {
+						$(this).css({
+							left: '-='+(windowWidth)
+						})
+					})
+			        break;
+			    default:
+				 	$(".case").each(function() {
+						$(this).css({
+							left: '-=' + windowWidth
+							})
+						})	
+				    break;
+			};
+		}
+		else{
+			if(JSON.parse(next) == lastCase){
+				var next = JSON.parse($('.case:first-child').attr('id'))
+			}
+		}
 			$('#'+prev).removeClass('visable');
 			$('#'+next).addClass('visable');
 	})
@@ -84,31 +98,38 @@ $('.left').click(function(){
 $('.right').click(function(){
 		var windowWidth = ($('.case').width() + 30);
 		var prev = $('.visable').attr('id');
-		var lastCase= JSON.parse($('.case:last-child').attr('id') - 1);
+		var lastCase= JSON.parse($('.case:first-child').attr('id') - 1);
 		var next = JSON.parse(prev) - 1
-		switch (JSON.parse(next)) {
-		    case 1:
-				$(".case").each(function() {
-					$(this).css({
-						left: '+='+(windowWidth)
-					})
-				})
-		        break;
-		    case lastCase:
-				$(".case").each(function() {
-					$(this).css({
-						left: '+='+(windowWidth)
-					})
-				})
-		        break;
-		    default:
-			 	$(".case").each(function() {
-					$(this).css({
-						left: '+=' + windowWidth
+		if($(window).width <= 1300){
+			switch (JSON.parse(next)) {
+			    case 1:
+					$(".case").each(function() {
+						$(this).css({
+							left: '+='+(windowWidth)
 						})
-					})	
-			    break;
-		};
+					})
+			        break;
+			    case lastCase:
+					$(".case").each(function() {
+						$(this).css({
+							left: '+='+(windowWidth)
+						})
+					})
+			        break;
+			    default:
+				 	$(".case").each(function() {
+						$(this).css({
+							left: '+=' + windowWidth
+							})
+						})	
+				    break;
+			};
+		}
+		else{
+			if(JSON.parse(next) == lastCase){
+				var next = JSON.parse($('.case:last-child').attr('id'))
+			}
+		}
 			$('#'+prev).removeClass('visable');
 			$('#'+next).addClass('visable');
 	})
@@ -520,11 +541,13 @@ function setGreatingFrase(){
   
 function caseSlider(){
 	var caseLocation = (($(window).width()/2) - ($('.case').width()/2))
-	$(".case").each(function() {
+		 $(".case").each(function() {
 		 $(this).attr('id',numberOfCase);
-		 $(this).css({
-			 left:caseLocation,
-		 })
+		 if($(window).width <= 1300){
+			 $(this).css({
+				 left:caseLocation,
+		 		})
+		 	}
 		 caseLocation = caseLocation + ($('.case').width() + 35);
 		 numberOfCase++
 	})

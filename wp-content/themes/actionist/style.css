@@ -328,13 +328,21 @@ button.square, a.button.square {
     background-position: right center; }
 
 /***************************TOP SECTION***********************************************/
+#topWrapper {
+  background-color: white;
+  overflow: hidden; }
+
 #top {
+  margin: 20px;
+  min-width: calc(100% - 40px);
+  max-height: calc(100vh - 40px);
   position: relative;
-  min-width: 100%;
-  min-height: 100%;
   overflow: hidden;
-  display: table; }
+  display: table;
+  background-size: cover;
+  background-position: center center; }
   #top #playerWrapper {
+    overflow: hidden;
     position: absolute;
     width: 100%;
     height: auto;
@@ -511,39 +519,59 @@ button.square, a.button.square {
     transform: scaleX(-1);
     filter: FlipH;
     -ms-filter: "FlipH"; }
-  .caseSection #caseWrapper {
+  @media only screen and (min-width: 1300px) {
+    .caseSection #caseWrapperBigScreen {
+      width: 100%;
+      position: relative; }
+      .caseSection #caseWrapperBigScreen .caseNavigation {
+        background-color: white; }
+      .caseSection #caseWrapperBigScreen .right {
+        right: calc(50% + 500px); }
+      .caseSection #caseWrapperBigScreen .left {
+        left: calc(50% + 500px); }
+      .caseSection #caseWrapperBigScreen ul {
+        position: relative;
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+        list-style: none; }
+      .caseSection #caseWrapperBigScreen .case {
+        display: block;
+        visibility: hidden;
+        left: calc(50% - 512px);
+        top: 0;
+        position: absolute; }
+        .caseSection #caseWrapperBigScreen .case img {
+          width: 100%;
+          margin-top: 1.6%; }
+        .caseSection #caseWrapperBigScreen .case .right {
+          display: none; }
+        .caseSection #caseWrapperBigScreen .case .left {
+          display: none; }
+      .caseSection #caseWrapperBigScreen .visable {
+        left: 0;
+        visibility: visible;
+        width: 1024px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative; } }
+  .caseSection .caseWrapper {
     width: 100000%; }
-    .caseSection #caseWrapper .caseNavigation {
+    .caseSection .caseWrapper .left {
+      display: none; }
+    .caseSection .caseWrapper .right {
+      display: none; }
+    .caseSection .caseWrapper .caseNavigation {
       top: calc(50% - 60px);
       position: absolute;
       z-index: 10;
       height: 120px;
       width: 50px;
       border: none; }
-      .caseSection #caseWrapper .caseNavigation img {
+      .caseSection .caseWrapper .caseNavigation img {
         width: 60%; }
-    .caseSection #caseWrapper .left {
-      -webkit-box-shadow: -3px 2px 3px -4px black;
-      -moz-box-shadow: -3px 2px 3px -4px black;
-      box-shadow: -3px 2px 3px -4px black;
-      left: -50px; }
-      .caseSection #caseWrapper .left img {
-        margin-left: 20%; }
-    .caseSection #caseWrapper .right {
-      -webkit-box-shadow: 3px 2px 3px -4px black;
-      -moz-box-shadow: 3px 2px 3px -4px black;
-      box-shadow: 3px 2px 3px -4px black;
-      right: -50px; }
-      .caseSection #caseWrapper .right img {
-        -moz-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-        filter: FlipH;
-        -ms-filter: "FlipH";
-        margin-right: 20%; }
-    .caseSection #caseWrapper .case {
-      opacity: 0.8;
+    .caseSection .caseWrapper .case {
+      opacity: 1;
       -webkit-transition: all 0.6s cubic-bezier(0.44, 0.88, 0.85, 1.11);
       -moz-transition: all 0.6s cubic-bezier(0.44, 0.88, 0.85, 1.11);
       transition: all 0.6s cubic-bezier(0.44, 0.88, 0.85, 1.11);
@@ -553,9 +581,31 @@ button.square, a.button.square {
       width: calc(100vw - 100px);
       display: inline-block;
       position: absolute; }
-      .caseSection #caseWrapper .case a {
+      .caseSection .caseWrapper .case a {
         text-decoration: none; }
-      .caseSection #caseWrapper .case .caseContent {
+      .caseSection .caseWrapper .case .left {
+        display: block;
+        -webkit-box-shadow: -3px 2px 3px -4px black;
+        -moz-box-shadow: -3px 2px 3px -4px black;
+        box-shadow: -3px 2px 3px -4px black;
+        left: -50px; }
+        .caseSection .caseWrapper .case .left img {
+          margin-left: 20%; }
+      .caseSection .caseWrapper .case .right {
+        display: block;
+        -webkit-box-shadow: 3px 2px 3px -4px black;
+        -moz-box-shadow: 3px 2px 3px -4px black;
+        box-shadow: 3px 2px 3px -4px black;
+        right: -50px; }
+        .caseSection .caseWrapper .case .right img {
+          -moz-transform: scaleX(-1);
+          -o-transform: scaleX(-1);
+          -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+          filter: FlipH;
+          -ms-filter: "FlipH";
+          margin-right: 20%; }
+      .caseSection .caseWrapper .case .caseContent {
         padding: 20px;
         -webkit-box-shadow: 1px 2px 6px -4px black;
         -moz-box-shadow: 1px 2px 6px -4px black;
@@ -563,14 +613,14 @@ button.square, a.button.square {
         max-width: 1024px;
         margin-left: auto;
         margin-right: auto; }
-        .caseSection #caseWrapper .case .caseContent .resultStat {
+        .caseSection .caseWrapper .case .caseContent .resultStat {
           text-align: center; }
-          .caseSection #caseWrapper .case .caseContent .resultStat img {
+          .caseSection .caseWrapper .case .caseContent .resultStat img {
             display: inline-block;
             height: 1em; }
-          .caseSection #caseWrapper .case .caseContent .resultStat h3 {
+          .caseSection .caseWrapper .case .caseContent .resultStat h3 {
             display: inline; }
-        .caseSection #caseWrapper .case .caseContent .presentationText div {
+        .caseSection .caseWrapper .case .caseContent .presentationText div {
           display: -webkit-box;
           max-width: 100%;
           height: 91px;
@@ -582,22 +632,22 @@ button.square, a.button.square {
           overflow: hidden;
           text-overflow: ellipsis;
           margin-bottom: 20px; }
-        .caseSection #caseWrapper .case .caseContent h3 {
+        .caseSection .caseWrapper .case .caseContent h3 {
           padding-top: 10px; }
-        .caseSection #caseWrapper .case .caseContent .img {
+        .caseSection .caseWrapper .case .caseContent .img {
           display: block;
           height: auto;
           width: 100%; }
-    .caseSection #caseWrapper .visable {
+    .caseSection .caseWrapper .visable {
       opacity: 1;
       -webkit-transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
       -moz-transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
       transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
       margin-bottom: 20px;
       position: relative; }
-      .caseSection #caseWrapper .visable .right {
+      .caseSection .caseWrapper .visable .right {
         display: none; }
-      .caseSection #caseWrapper .visable .left {
+      .caseSection .caseWrapper .visable .left {
         display: none; }
 
 .readMore::after {
@@ -1289,6 +1339,85 @@ input[type="range"]:focus + .rangeslider .rangeslider__handle {
   -webkit-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
   box-shadow: 0 0 8px rgba(255, 0, 255, 0.9); }
 
+/*************** Preloader ************************/
+#preloader {
+  width: 100%;
+  height: 100%;
+  background-color: #FFF2EA;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000; }
+  #preloader img {
+    animation: flick 5s cubic-bezier(0.44, 0.88, 0.85, 1.11) infinite forwards;
+    position: absolute;
+    top: calc(50% - 46px);
+    left: calc(50% - 46px);
+    width: 100px; }
+
+svg {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  height: 100px; }
+
+.path {
+  animation: dash 5s cubic-bezier(0.44, 0.88, 0.85, 1.11) infinite forwards;
+  stroke-dasharray: 3010;
+  stroke-dashoffset: -10; }
+
+.preloaderImg {
+  position: relative;
+  top: calc(50% - 50px);
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-transition: all 2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+  -moz-transition: all 2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+  transition: all 2s cubic-bezier(0.44, 0.88, 0.85, 1.11); }
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 5990; } }
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(720deg);
+    transform: rotate(720deg); } }
+@keyframes flick {
+  0% {
+    -webkit-transform: rotate(-14deg);
+    transform: rotate(-14deg); }
+  5% {
+    -webkit-transform: rotate(9deg);
+    transform: rotate(9deg); }
+  7% {
+    -webkit-transform: rotate(4deg);
+    transform: rotate(4deg); }
+  9% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  37% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  38% {
+    -webkit-transform: rotate(-9deg);
+    transform: rotate(-9deg); }
+  42% {
+    -webkit-transform: rotate(3deg);
+    transform: rotate(3deg); }
+  45% {
+    -webkit-transform: rotate(-1deg);
+    transform: rotate(-1deg); }
+  47% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); } }
 /*************** video player *********************/
 .mejs-container {
   max-height: 80vh; }
