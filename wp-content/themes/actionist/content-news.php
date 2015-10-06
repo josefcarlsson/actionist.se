@@ -8,12 +8,11 @@
  */
 ?>
 
-<?php $date = get_the_date();
+<?php $date = $news['date'];
 $month = cleanUpDate('month', substr($date, 5, 2));
 $day = cleanUpDate('day', substr($date, 8, 2));
-
+var_dump($news);
 ?>
-<article id="post-<?php the_ID(); ?>" data-date="<?php print $day . " " . $month; ?>" <?php post_class(); ?>>
-		<?php the_title( '<h3 class="entry-title">', '</h3>' ); ?>
-		<div class="presentationText"><?php the_content(); ?></div>
+<article id="post-<?php print $news['id']; ?>" data-date="<?php print $day . " " . $month; ?>">
+	<h3 class="entry-title"><?php print $news['title']; ?></h3>
 </article><!-- #post-## -->

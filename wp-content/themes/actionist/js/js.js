@@ -385,6 +385,8 @@ function menuScroll(scrollTop){
 var newsCount = 0;
 var padding = 0.1; //percent
 var newsWidth = 0.6; //percent
+var leftPositionIndex = [];
+var panAnimate = true;
 
 function initNews(){
 	newsCount = $('.newsoverflow .post').length;
@@ -393,12 +395,16 @@ function initNews(){
 		windowWidth = 1300;
 	}
 
+	if(windowWidth < 600){
+		newsWidth = 0.8;
+	}
+
 	var maxHeightNews = 0;
 	var newsItemWidth = windowWidth * newsWidth;
 	var newsItemPadding = windowWidth * padding;
 	var endSpace = windowWidth * (0.5 - (newsWidth/2) - padding);
 	var thisNewsNumber = 0;
-	var leftPositionIndex = [];
+	leftPositionIndex = [];
 	var previousLeft = endSpace;
 	var scrollToX = endSpace;
 	$('.newsoverflow .post').each(function(){
@@ -412,6 +418,10 @@ function initNews(){
 		if($this.height() > maxHeightNews){
 			maxHeightNews = $this.height();
 		}
+	});
+
+	$('.newsoverflow .post').each(function(){
+		$(this).height(maxHeightNews);
 	});
 
 	$newsBlock.width(previousLeft + endSpace);
@@ -430,6 +440,67 @@ function initNews(){
 		$('.rangeslider__fill').removeClass('animate');
 	});
 }
+
+$newsBlock.hammer().bind("swiperight", function(){
+	if(panAnimate){
+		panAnimate = false;
+		var x = 0;
+		var y = Math.abs(parseInt($newsBlock.css('left')));
+
+		if(y != 0){
+			for(var i=0; i<newsCount;i++){
+				if(y - 1 > leftPositionIndex[i]){
+					x = i;
+				}
+			}
+			adjustNews(leftPositionIndex[x]);
+			$('.rangeslider__handle').addClass('animate');
+			$('.rangeslider__fill').addClass('animate');
+			$('input[type="range"]').val(leftPositionIndex[x]).change();
+			var newsDate = $('.newsoverflow').find('.post').eq(x).data('date');
+			$('body').find('.rangeslider__handle .date').html(newsDate);
+
+			setTimeout(function(){
+				panAnimate = true;
+				$('.rangeslider__handle').removeClass('animate');
+				$('.rangeslider__fill').removeClass('animate');
+			}, 200);
+		}
+	}
+
+	setTimeout(function(){panAnimate = true;}, 200);
+});
+
+$newsBlock.hammer().bind("swipeleft", function(){
+	if(panAnimate){
+		panAnimate = false;
+		var x = 0;
+		var y = Math.abs(parseInt($newsBlock.css('left')));
+		
+		if(y < (leftPositionIndex[newsCount-1])){
+			for(var i=0; i<newsCount;i++){
+				if(y + 1 > leftPositionIndex[i]){
+					x = i;
+				}
+			}
+			if(leftPositionIndex[x+1]){
+				adjustNews(leftPositionIndex[x+1]);
+				$('.rangeslider__handle').addClass('animate');
+				$('.rangeslider__fill').addClass('animate');
+				$('input[type="range"]').val(leftPositionIndex[x+1]).change();
+				var newsDate = $('.newsoverflow').find('.post').eq(x+1).data('date');
+				$('body').find('.rangeslider__handle .date').html(newsDate);
+			}
+			setTimeout(function(){
+				panAnimate = true;
+				$('.rangeslider__handle').removeClass('animate');
+				$('.rangeslider__fill').removeClass('animate');
+			}, 200);
+		}	
+	}
+
+	setTimeout(function(){panAnimate = true;}, 200);
+});
 
 function adjustNews(value){
 	$newsBlock.addClass('animate');

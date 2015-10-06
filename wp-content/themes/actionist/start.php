@@ -262,13 +262,34 @@ endif; ?>
 	<h2 class="heading">Livet på Actionist</h2>
 	<div class="newsoverflow">
 		<div class="newsholder">
-		<?php query_posts( array ( 'posts_per_page' => -1, 'orderby' => 'date', 'order' => 'asc' ) ); ?>
-			<?php if (have_posts()) : ?><?php while (have_posts()) : the_post(); 	?>	
-					<!--<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">-->
-						<?php get_template_part( 'content', 'news' );?>		
-					<?php endwhile; ?>
-		<?php endif; 
+		<article id="" data-date="" class="post">
+			<h3 class="entry-title">Nyhetsarkiv</h3>
+			<p>Se fler nyheter <a href="#">här</a>
+		</article><!-- #post-## -->
+		<?php $newsArr = array();
+		$newsCount = 0;?>
+		<?php query_posts( array ( 'posts_per_page' => 10, 'orderby' => 'date', 'order' => 'desc' ) ); ?>
+			<?php if (have_posts()) : ?><?php while (have_posts()) : the_post(); 	?>
+				<?php 
+				$newsArr[$newsCount] = array('date' => get_the_date(), 'heading' => get_the_title(), 'text' => get_the_excerpt(), 'permalink' => get_permalink(), 'id'=>get_the_id());
+				$newsCount++?>
+			<?php endwhile; ?>
+		<?php endif;
 		wp_reset_query();?>
+		<?php
+		$reversedArr = array_reverse($newsArr);
+		foreach($reversedArr as $news):?>
+		<?php $date = $news['date'];
+			$month = cleanUpDate('month', substr($date, 5, 2));
+			$day = cleanUpDate('day', substr($date, 8, 2));
+			?>
+			
+			<article id="post-<?php print $news['id']; ?>" data-date="<?php print $day . " " . $month; ?>" class="post">
+				<h3 class="entry-title"><?php print $news['heading']; ?></h3>
+				<?php print $news['text']; ?>
+			</article><!-- #post-## -->
+
+		<?php endforeach; ?>
 		</div>
 	</div>
 	<input type="range" min="0" max="0" step="1" value="1" class="newsdragger">
