@@ -912,10 +912,12 @@ button.square, a.button.square{
 			background-color: white
 		}
 		.right{
-			right:calc(50% + 500px);
+			display: block;
+			left:calc(50% + 500px);
 		}
 		.left{
-			left:calc(50% + 500px);
+			display: block;
+			right:calc(50% + 500px);
 		}
 		ul{
 			position: relative;
@@ -925,6 +927,7 @@ button.square, a.button.square{
 			list-style: none;
 			}
 		.case{
+			top:0;
 			display: block;
 			visibility: hidden;
 			left:calc(50% - 512px);
@@ -974,7 +977,8 @@ button.square, a.button.square{
 	
 		}
 		.case{
-			opacity:1;
+			top:0;
+			opacity: 0.8;
 			-webkit-transition: all 0.6s cubic-bezier(0.44, 0.88, 0.85, 1.11);
 			-moz-transition: all  0.6s cubic-bezier(0.44, 0.88, 0.85, 1.11);
 			transition: all  0.6s cubic-bezier(0.44, 0.88, 0.85, 1.11);
@@ -989,29 +993,11 @@ button.square, a.button.square{
 			}
 			.left{
 				display: block;
-				-webkit-box-shadow:  -3px 2px 3px -4px black;
-				-moz-box-shadow:  -3px 2px 3px -4px black;
-				box-shadow:  -3px 2px 3px -4px black;
-				left: -50px;
-			img{
-				margin-left: 20%;
-			}
+				left:calc(100% - 20px);
 			}
 			.right{
+				left: -30px;
 				display: block;
-				-webkit-box-shadow:  3px 2px 3px -4px black;;
-				-moz-box-shadow:  3px 2px 3px -4px black;
-				box-shadow:  3px 2px 3px -4px black;
-				right:-50px;
-				img{
-					-moz-transform: scaleX(-1);
-			        -o-transform: scaleX(-1);
-			        -webkit-transform: scaleX(-1);
-			        transform: scaleX(-1);
-			        filter: FlipH;
-			        -ms-filter: "FlipH";
-			        margin-right: 20%;
-				}
 			}
 			.caseContent{
 				padding: 20px;
@@ -1035,7 +1021,6 @@ button.square, a.button.square{
 					}
 				}
 				.presentationText{
-					
 					div{
 					    display: -webkit-box;
 					    max-width: 100%;
@@ -1048,6 +1033,20 @@ button.square, a.button.square{
 					    overflow: hidden;
 					    text-overflow: ellipsis;
 					    margin-bottom: 20px;
+					}
+					.readMore::after{
+						content:" >";
+						font-weight: 800;
+					}
+					.readMore:hover:after{
+						-webkit-transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+						-moz-transition: all  0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+						transition: all  0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+						font-weight: 500;
+						-webkit-animation: pushRight 0.5s infinite alternate ease-out; /* Safari 4+ */
+					  	-moz-animation:    pushRight 0.5s infinite alternate ease-out; /* Fx 5+ */
+					  	-o-animation:      pushRight 0.5s infinite alternate ease-out; /* Opera 12+ */
+					    animation:         pushRight 0.5s infinite alternate ease-out;
 					}
 				}
 				h3{
@@ -1074,7 +1073,41 @@ button.square, a.button.square{
 			display: none;
 		}
 	}
-	
+	@media only screen and (max-width: 480px) {
+		.case{
+			top:0;
+			margin-right: 0px;
+			max-width: 100vw;
+			width: 100vw;
+			display: inline-block;
+			position: absolute;
+			a{
+				text-decoration: none;
+				}
+			.left{
+				display: none;
+				left:calc(100% - 20px);
+				}
+			.right{
+				left: -30px;
+				display: none;
+				}
+			}
+		.visable{
+			opacity: 1;
+			-webkit-transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+			-moz-transition: all  0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+			transition: all  0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+			 margin-bottom: 20px;
+			position: relative;
+			.right{
+				display: none;
+			}
+			.left{
+				display: none;
+			}
+		}	
+	}
 	}
 }
 .readMore::after{
