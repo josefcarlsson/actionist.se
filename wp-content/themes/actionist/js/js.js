@@ -226,6 +226,25 @@ function caseSliderRight(){
   		});
 	}
 
+	if($('body.page-template-om-oss').length > 0){
+  		setTimeout(function(){
+  				$('#about').removeClass('preanimation');
+       			//$('#contact').find('.dot').addClass('animation');
+  			}, 400);
+
+  		var employeeAnimTime = 300;
+
+  		$('section').find('li').each(function(){
+  			console.log('preanim');
+  			var $this = $(this);
+  			setTimeout(function(){
+  				$this.removeClass('preanimation');
+  				//console.log('now');
+  			}, employeeAnimTime);
+  			employeeAnimTime += 100;
+  		});
+	}
+
 
 	if($('.lastfmlive_recently_played').length > 0){
   		$(this).find('img').each(function(){
@@ -520,7 +539,6 @@ function changeQuats(){
  if(letterToDelete <= n){
 =======
 		if(letterToDelete <= n){
->>>>>>> cb97d4c149d62810d944fb64634e3de66bf6cc58
 			removeLetter(str);	
 		}
 		else{
@@ -556,6 +574,17 @@ function changeQuats(){
 	    letterState = 1
 		}
  }
+
+ //Navigation
+ var $hamburger = $('.hamburger');
+ var $close = $('.menus .close');
+ var $nav = $('nav');
+ $hamburger.on('click', function(){
+ 	$nav.toggleClass('mobilevisible');
+ });
+  $close.on('click', function(){
+ 	$nav.toggleClass('mobilevisible');
+ });
 
 
 //instagram
