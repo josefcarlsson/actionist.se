@@ -1,13 +1,22 @@
 .page {
   padding-top: 100px; }
+  @media screen and (max-width: 780px) {
+    .page {
+      padding-top: 50px; } }
   .page.home {
     padding-top: 0px; }
+    @media screen and (max-width: 780px) {
+      .page.home {
+        padding-top: 50px; } }
   .page .topimage {
     max-height: 80vh;
     overflow: hidden;
     margin-bottom: 80px; }
     .page .topimage img {
       width: 100%; }
+    @media screen and (max-width: 780px) {
+      .page .topimage {
+        margin-bottom: 20px; } }
 
 .error404 {
   padding-top: 100px; }
@@ -99,9 +108,13 @@ body {
   -moz-osx-font-smoothing: grayscale; }
   body.lock {
     overflow: hidden; }
+  @media screen and (max-width: 500px) {
+    body {
+      font-size: 15px;
+      line-height: 1.5em; } }
 
 p {
-  margin-bottom: 15px; }
+  margin-bottom: 20px; }
 
 h1, .heading {
   text-transform: uppercase;
@@ -134,6 +147,10 @@ h3 {
   font-size: 24px;
   line-height: 1.3em;
   margin-bottom: 5px; }
+  @media screen and (max-width: 500px) {
+    .preheading {
+      font-size: 18px;
+      line-height: 1.4em; } }
   .preheading.underline {
     border-bottom: 1px solid #ff3200;
     padding-bottom: 5px;
@@ -170,6 +187,10 @@ h3 {
   -moz-border-radius: 100px;
   border-radius: 100px;
   display: inline-block; }
+  @media screen and (max-width: 500px) {
+    .dot {
+      width: 8px;
+      height: 8px; } }
 
 button {
   cursor: pointer; }
@@ -188,17 +209,14 @@ video:focus {
 .home nav {
   top: calc(100%);
   position: absolute; }
+  @media screen and (max-width: 500px) {
+    .home nav {
+      position: fixed;
+      top: 0; } }
 
 .home .menuActive {
   position: fixed;
   top: 0; }
-
-#logo {
-  width: 188px;
-  height: 27px;
-  margin-left: 50px;
-  margin-top: 35px;
-  display: inline-block; }
 
 nav {
   position: fixed;
@@ -206,7 +224,6 @@ nav {
   top: 0px;
   width: 100%;
   height: 100px;
-  text-align: right;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
@@ -214,10 +231,21 @@ nav {
     width: 100%;
     height: 100%;
     background-color: #ffffff;
-    padding-right: 25px;
+    padding-right: 20px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
+  nav #logo {
+    width: 188px;
+    height: 27px;
+    margin-left: 50px;
+    margin-top: 15px;
+    display: inline-block; }
+    nav #logo img {
+      width: 100%;
+      height: auto; }
+  nav .hamburger, nav .close {
+    display: none; }
   nav a {
     color: #000;
     text-decoration: none; }
@@ -226,6 +254,11 @@ nav {
     height: 60px;
     display: inline-block;
     float: left; }
+  nav .menus {
+    display: inline-block;
+    float: right;
+    -webkit-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1); }
   nav ul.mainnav {
     display: inline-block;
     margin-bottom: 20px;
@@ -287,6 +320,127 @@ nav {
             -webkit-transform: scale(1.3);
             /* Safari */
             transform: scale(1.3); } }
+  @media screen and (max-width: 500px) {
+    nav {
+      height: 63px; }
+      nav.mobilevisible .menus {
+        right: 0; }
+        nav.mobilevisible .menus .close::before {
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg); }
+        nav.mobilevisible .menus .close::after {
+          -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg); }
+      nav.mobilevisible ul.mainnav li {
+        opacity: 1;
+        -webkit-transform: translate(0px, 0px);
+        /* Safari */
+        transform: translate(0px, 0px); }
+      nav.mobilevisible ul.social li {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        /* Safari */
+        transform: scale(1); }
+      nav #logo {
+        width: 150px;
+        margin-left: 20px;
+        margin-top: 0px; }
+      nav .hamburger, nav .close {
+        display: block;
+        position: absolute;
+        top: 21px;
+        right: 20px;
+        border: 0;
+        -webkit-appearance: none;
+        width: 30px;
+        height: 25px;
+        background: none; }
+        nav .hamburger div, nav .close div {
+          background: #ff3200;
+          width: 100%;
+          height: 2px;
+          margin-bottom: 4px; }
+      nav .close {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        overflow: hidden; }
+        nav .close::before, nav .close::after {
+          content: '';
+          position: absolute;
+          height: 3px;
+          width: 100%;
+          top: 50%;
+          left: 0;
+          margin-top: -2px;
+          background: #fff;
+          -webkit-transition: all 300ms ease-in-out .5s;
+          transition: all 300ms ease-in-out .5s;
+          /* easeOutExpo */ }
+        nav .close::before {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg); }
+        nav .close::after {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg); }
+      nav .menus {
+        background: #ff3200;
+        height: 100vh;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        right: -100%;
+        z-index: 100; }
+      nav ul.mainnav {
+        margin-top: 50px;
+        display: block; }
+        nav ul.mainnav li {
+          width: 100%;
+          text-align: center;
+          display: block;
+          font-size: 35px;
+          line-height: 1.3em;
+          opacity: 0;
+          -webkit-transform: translate(5px, 0px);
+          /* Safari */
+          transform: translate(5px, 0px);
+          -webkit-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s;
+          transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s; }
+          nav ul.mainnav li + li {
+            -webkit-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1) 0.7s;
+            transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1) 0.7s; }
+          nav ul.mainnav li + li + li {
+            -webkit-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1) 0.9s;
+            transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1) 0.9s; }
+          nav ul.mainnav li + li + li + li {
+            -webkit-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1) 1.1s;
+            transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1) 1.1s; }
+          nav ul.mainnav li + li + li + li + li {
+            -webkit-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1) 1.3s;
+            transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1) 1.3s; }
+          nav ul.mainnav li:after {
+            display: none; }
+          nav ul.mainnav li a {
+            color: #fff; }
+      nav ul.social {
+        display: block;
+        padding-right: 0px;
+        text-align: center; }
+        nav ul.social li {
+          display: inline-block;
+          padding: 5px;
+          -webkit-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1) 1s;
+          transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1) 1s;
+          opacity: 0;
+          -webkit-transform: scale(0.1);
+          /* Safari */
+          transform: scale(0.1); }
+          nav ul.social li + li {
+            -webkit-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1) 1.2s;
+            transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1) 1.2s; }
+          nav ul.social li a {
+            width: 50px;
+            height: 50px; } }
 
 /*************************** FOOTER *****************************************************/
 footer {
@@ -297,13 +451,15 @@ footer {
   padding-bottom: 50px;
   position: relative;
   bottom: 0px; }
+  @media only screen and (max-width: 500px) {
+    footer {
+      padding: 20px; } }
   footer h4 {
     text-transform: uppercase;
     color: black;
     font-size: 20px;
     font-weight: 800; }
   footer ul.social {
-    float: right;
     margin-bottom: 20px;
     vertical-align: top;
     text-align: right;
@@ -361,6 +517,9 @@ button.square, a.button.square {
 #topWrapper {
   background-color: white;
   overflow: hidden; }
+  @media screen and (max-width: 780px) {
+    #topWrapper {
+      display: none; } }
 
 #top {
   margin: 20px;
@@ -464,6 +623,10 @@ button.square, a.button.square {
   .introtext#presentation {
     padding-top: 170px;
     padding-bottom: 80px; }
+    @media screen and (max-width: 500px) {
+      .introtext#presentation {
+        padding-top: 50px;
+        padding-bottom: 30px; } }
   .introtext .preheading {
     -webkit-transition: all 700ms ease-out 0.3s;
     transition: all 700ms ease-out .3s; }
@@ -474,28 +637,29 @@ button.square, a.button.square {
   .introtext p {
     -webkit-transition: all 700ms ease-out 0.7s;
     transition: all 700ms ease-out .7s; }
-  .introtext .dot {
-    margin-bottom: 25px;
-    -webkit-transition: all 700ms ease-out 0s;
-    transition: all 700ms ease-out 0s;
-    opacity: 0; }
-    .introtext .dot.animation {
-      -webkit-animation-name: dotGrow;
-      -webkit-animation-duration: .5s;
-      -webkit-animation-iteration-count: 1;
-      -webkit-animation-timing-function: cubic-bezier(0.17, 1.67, 0.55, 1.7);
-      -webkit-animation-delay: 1.4s;
-      -webkit-animation-fill-mode: forwards;
-      animation-name: dotGrow;
-      animation-duration: .5s;
-      animation-iteration-count: 1;
-      animation-timing-function: cubic-bezier(0.17, 1.67, 0.55, 1.7);
-      animation-delay: 1.4s;
-      animation-fill-mode: forwards; }
   .introtext button {
     margin-top: 35px;
     -webkit-transition: -webkit-transform 700ms ease-out 1s, background-position 400ms ease-out, opacity 700ms ease-out 1s;
     transition: transform 700ms ease-out 1s, background-position 400ms ease-out, opacity 700ms ease-out 1s; }
+
+.dot {
+  margin-bottom: 25px;
+  -webkit-transition: all 700ms ease-out 0s;
+  transition: all 700ms ease-out 0s;
+  opacity: 0; }
+  .dot.animation {
+    -webkit-animation-name: dotGrow;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: cubic-bezier(0.17, 1.67, 0.55, 1.7);
+    -webkit-animation-delay: 1.4s;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: dotGrow;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.17, 1.67, 0.55, 1.7);
+    animation-delay: 1.4s;
+    animation-fill-mode: forwards; }
 
 .js .introtext.preanimation .preheading, .js .introtext.preanimation .heading, .js .introtext.preanimation p, .js .introtext.preanimation button {
   opacity: 0;
@@ -734,7 +898,7 @@ button.square, a.button.square {
     padding-left: 0px; } }
 /*************************** instagram ***********************************************/
 #instafeed {
-  padding-bottom: 33%;
+  padding-bottom: 32.3%;
   position: relative; }
   @media only screen and (max-width: 500px) {
     #instafeed {
@@ -751,11 +915,14 @@ button.square, a.button.square {
       word-break: break-word;
       top: 0; }
     #instafeed .istagramImg .instagramText {
+      display: none;
       top: 1.7em; }
     #instafeed .istagramImg img {
       width: 100%; }
   #instafeed .current {
     visibility: visible; }
+  #instafeed .likes, #instafeed .user {
+    display: none; }
 
 /***************************news************************************************/
 #news {
@@ -809,12 +976,16 @@ button.square, a.button.square {
     #news article h3 {
       font-weight: 700;
       margin-bottom: 10px; }
+      @media only screen and (max-width: 500px) {
+        #news article h3 {
+          font-size: 20px; } }
   #news .heading {
     margin-bottom: 30px; }
 
 /*************************** instagram ***********************************************/
 .spotify {
-  position: relative; }
+  position: relative;
+  padding-bottom: 32.3%; }
   @media only screen and (max-width: 500px) {
     .spotify {
       padding-bottom: 100%; } }
@@ -840,7 +1011,7 @@ button.square, a.button.square {
   position: relative; }
 #uspar .uspNewsWrapper {
   background: #b3f0e9;
-  padding-bottom: 33.333333%; }
+  padding-bottom: 32.3%; }
   @media only screen and (max-width: 500px) {
     #uspar .uspNewsWrapper {
       padding-bottom: 100%; } }
@@ -848,12 +1019,23 @@ button.square, a.button.square {
     position: absolute;
     max-width: 100%;
     padding: 30px;
-    font-size: 3vmin;
+    font-size: 45px;
     color: #000;
     font-weight: 900;
     left: 0;
     top: 76px;
     text-transform: uppercase; }
+    @media only screen and (max-width: 780px) {
+      #uspar .uspNewsWrapper h3 {
+        padding: 0px 20px;
+        font-size: 25px;
+        line-height: 1.3em; } }
+    @media only screen and (max-width: 780px) {
+      #uspar .uspNewsWrapper h3 {
+        padding: 0px 20px;
+        font-size: 28px;
+        line-height: 1.3em;
+        top: 50px; } }
 #uspar h2 {
   position: absolute;
   background: #001dd9;
@@ -1043,13 +1225,16 @@ button.square, a.button.square {
     float: none !important;
     height: 600px !important;
     margin-bottom: 1.6%; }
-  #contact .intro p {
+  #contact .intro {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 70px;
     -webkit-transition: all 700ms ease-out 0.7s;
     transition: all 700ms ease-out .7s; }
+    @media only screen and (max-width: 500px) {
+      #contact .intro {
+        margin-bottom: 30px; } }
   #contact .weareactionist {
     list-style-type: none;
     text-align: left;
@@ -1075,15 +1260,6 @@ button.square, a.button.square {
       @media only screen and (max-width: 650px) {
         #contact .weareactionist li {
           width: 45%; } }
-      @media only screen and (max-width: 400px) {
-        #contact .weareactionist li {
-          width: 95%; }
-          #contact .weareactionist li h2 {
-            font-size: 20px;
-            line-height: 1.2em; }
-          #contact .weareactionist li .title {
-            font-size: 15px;
-            line-height: 1.3em; } }
       #contact .weareactionist li img {
         width: 100%;
         margin-bottom: 5px; }
@@ -1102,7 +1278,7 @@ button.square, a.button.square {
       font-family: 'Cardo', 'serif';
       display: block; }
 
-.js #contact.preanimation .preheading, .js #contact.preanimation .heading, .js #contact.preanimation .intro p {
+.js #contact.preanimation .preheading, .js #contact.preanimation .heading, .js #contact.preanimation .intro p, .js #about.preanimation .preheading, .js #about.preanimation .heading, .js #about.preanimation .intro p {
   opacity: 0;
   -webkit-transform: translate(0px, -10px);
   /* Safari */
@@ -1123,6 +1299,9 @@ button.square, a.button.square {
 #about-tools {
   margin-top: 120px;
   padding-bottom: 70px; }
+  @media only screen and (max-width: 500px) {
+    #about-tools {
+      margin-top: 50px; } }
   #about-tools ul {
     padding-top: 30px; }
     #about-tools ul li {

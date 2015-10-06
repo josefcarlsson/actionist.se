@@ -36,14 +36,26 @@
 <!------------------------------- MENU ------------------------------>
 <nav>
 	<div class="navWrapper">
-		<a href="<?php print get_home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/actionistlogo.png" alt="actionist" id="logo"></a>
-		<ul class="mainnav">
-		<?php wp_nav_menu(); ?>
-		</ul>
+		<a href="<?php print get_home_url(); ?>" id="logo"><img src="<?php echo get_template_directory_uri(); ?>/images/actionistlogo.png" alt="actionist"></a>
+		<button class="hamburger">
+			<div></div>
+			<div></div>
+			<div></div>
+		</button>
+		<div class="menus">
+			<button class="close">
+				<div></div>
+				<div></div>
+				<div></div>
+			</button>
+			<ul class="mainnav">
+				<?php wp_nav_menu(); ?>
+			</ul>
 	
-		<ul class="social">
-			<li class="linkedin"><a href="#"></a></li>
-			<li class="instagram"><a href="#"></a></li>
-		</ul>
+			<ul class="social">
+				<li class="linkedin"><a href="#"></a></li>
+				<li class="instagram"><a href="#"></a></li>
+			</ul>
+		</div>
 	</div>
 </nav>

@@ -276,13 +276,13 @@ endif; ?>
 
 <!------------------------------- uspar ------------------------------>
 <section id="uspar" class="group section maxwidth">
-	<div class="uspNewsWrapper col span_4_of_12">
-		<h2>Nyhet</h2>
-		<?php query_posts( array ( 'posts_per_page' => -1 ) ); ?>
+	<div class="uspNewsWrapper col span_4_of_12"><!--
+		--><h2>Nyhet</h2>
+		<?php query_posts( array ( 'posts_per_page' => -1, 'orderby' => 'date', 'order' => 'desc' ) ); ?>
 			<?php $count = 0; ?>
 			<?php if (have_posts()) : 
 				 while (have_posts()) : the_post(); 	?>	
-				<?php if(get_field('showOnStart') != 'Ja' && $count < 1): ?>
+				<?php if(get_field('showOnStart') === 'Ja' && $count < 1): ?>
 					<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
 						<?php get_template_part( 'content', 'usp' );?>		
 					</a>
@@ -292,7 +292,6 @@ endif; ?>
 		<?php endwhile; ?>
 		<?php endif; 
 	wp_reset_query();?>
-		
 	</div>
 	
 	<div class="span_4_of_12 col instagram" id="instafeed">
