@@ -26,8 +26,8 @@ $(window).load(function () {
 	  var mouseX = currentMousePos.x - ($(window).width()/2)
 	  var mouseY = currentMousePos.y - ($(window).height()/2)
 		for (i = 0; i < project_overview.length; i++) { 
-			var Xperspective = (mouseX - project_overview[i].x) /140
-			var Yperspective = (mouseY - project_overview[i].y) /-140
+			var Xperspective = (mouseX - project_overview[i].x) /100
+			var Yperspective = (mouseY - project_overview[i].y) /-100
 	    	$('#'+project_overview[i].id).css({
 		    	  transform: 'rotateX('+ Yperspective +'deg)rotateY('+ Xperspective +'deg)',
 		    	   MozTransform: 'rotateX('+ Yperspective +'deg)rotateY('+ Xperspective +'deg)',
@@ -55,9 +55,7 @@ $(".case_preview_wrapper").each(function() {
 	})
 
 $('.case').hammer().bind("swiperight", function(){
-	console.log(numberOfcaseSlid + 'ssssss' +JSON.parse($('.case:last-child').attr('id') - 1))
 	if(numberOfcaseSlid == 0){
-		console.log('s')
 	}
 	else{
 			caseSliderLeft()
@@ -118,8 +116,6 @@ function caseSliderLeft(){
 			$('#'+next).addClass('visable');
 }
 $('.case').hammer().bind("swipeleft", function(){
-	console.log(numberOfcaseSlid + 'f' +JSON.parse($('.case:last-child').attr('id') - 1))
-
 	if(numberOfcaseSlid == JSON.parse($('.case:last-child').attr('id') - 1)){
 	}
 	else{
@@ -249,7 +245,7 @@ function caseSliderRight(){
 	if($('.lastfmlive_recently_played').length > 0){
   		$(this).find('img').each(function(){
   			if($(this).attr('src') === 'http://cdn.last.fm/flatness/catalogue/noimage/2/default_artist_small.png'){
-  				$('.lastfmlive_recently_played').addClass('noimage');
+  				$(this).attr('src','');
   			}
   		});
 	}
@@ -338,7 +334,8 @@ $( window).resize(function(){
 		'opacity':1,
 	})	
 	resizeDone = setTimeout(doneResizing, 500);
-	  fitVidHeight()
+	  fitVidHeight(window)
+	  
 	         
 	initNews();
 		
@@ -354,7 +351,8 @@ function doneResizing(){
 		'opacity':1,
 	})
 	var run = 1	
-  caseSlider(run);  
+  caseSlider(run); 
+   
 }
 $( window ).scroll(function() {
    var scrollTop = $(window).scrollTop()
@@ -636,7 +634,6 @@ function setGreatingFrase(){
   }
   
 function caseSlider(run){
-	console.log('sss'+numberOfcaseSlid)
 	numberOfCase = 0
 	if(numberOfcaseSlid >= 0){
 		
@@ -646,7 +643,7 @@ function caseSlider(run){
 		numberOfcaseSlid = -(numberOfcaseSlid -2)
 	}
 	var caseLocation = (($(window).width()/2) - ($('.case').width()/2) - (numberOfcaseSlid * ($('.case').width() + 35)))
-	console.log('sdasda'+caseLocation)
+	console.log(caseLocation)
 		 $(".case").each(function() {
 		 $(this).attr('id',numberOfCase);
 		 if($(window).width() <= 1300){
@@ -655,9 +652,11 @@ function caseSlider(run){
 		 		})
 		 	}
 		 else{
-			$(this).css({
+			 if(run == 1){
+				$(this).css({
 				 left:0,
-		 		})
+		 		})	 
+			 }
 		 }
 		 caseLocation = caseLocation + ($('.case').width() + 35);
 		 numberOfCase++
