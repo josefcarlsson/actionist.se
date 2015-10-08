@@ -127,6 +127,10 @@ h1, .heading {
   color: #ff3200;
   line-height: 1.2em;
   margin-bottom: 15px; }
+  @media screen and (min-width: 1300px) {
+    h1, .heading {
+      font-size: 55px;
+      line-height: 1.3em; } }
   @media screen and (max-width: 780px) {
     h1, .heading {
       font-size: 32px;
@@ -134,7 +138,8 @@ h1, .heading {
   @media screen and (max-width: 500px) {
     h1, .heading {
       font-size: 25px;
-      line-height: 1.3em; } }
+      line-height: 1.3em;
+      margin-bottom: 5px; } }
 
 .entry-title {
   color: black; }
@@ -189,11 +194,29 @@ h3 {
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
   border-radius: 100px;
-  display: inline-block; }
+  display: inline-block;
+  margin-bottom: 25px;
+  -webkit-transition: all 700ms ease-out 0s;
+  transition: all 700ms ease-out 0s;
+  opacity: 0; }
+  .dot.animation {
+    -webkit-animation-name: dotGrow;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: cubic-bezier(0.17, 1.67, 0.55, 1.7);
+    -webkit-animation-delay: 1.4s;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: dotGrow;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.17, 1.67, 0.55, 1.7);
+    animation-delay: 1.4s;
+    animation-fill-mode: forwards; }
   @media screen and (max-width: 500px) {
     .dot {
       width: 8px;
-      height: 8px; } }
+      height: 8px;
+      margin-bottom: 15px; } }
 
 button {
   cursor: pointer; }
@@ -213,6 +236,10 @@ video:focus {
   top: calc(100%);
   position: absolute; }
   @media handheld {
+    .home nav {
+      position: fixed;
+      top: 0; } }
+  @media screen and (max-width: 780px) {
     .home nav {
       position: fixed;
       top: 0; } }
@@ -243,10 +270,14 @@ nav {
     height: 27px;
     margin-left: 50px;
     margin-top: 15px;
-    display: inline-block; }
+    display: inline-block;
+    border: 0; }
     nav #logo img {
       width: 100%;
       height: auto; }
+    @media screen and (max-width: 1025px) {
+      nav #logo {
+        margin-left: 30px; } }
   nav .hamburger, nav .close {
     display: none; }
   nav a {
@@ -298,6 +329,9 @@ nav {
     margin-top: 29px;
     display: inline-block;
     padding-right: 40px; }
+    @media screen and (max-width: 1025px) {
+      nav ul.social {
+        padding-right: 0px; } }
     nav ul.social li {
       display: inline-block;
       padding: 5px; }
@@ -520,8 +554,12 @@ button.square, a.button.square {
     border: 3px solid #001dd9; }
   button.square:focus, a.button.square:focus {
     outline: none; }
-  button.square:hover, a.button.square:hover {
-    background-position: right center; }
+  @media screen and (min-width: 1025px) {
+    button.square:hover, a.button.square:hover {
+      background-position: right center; } }
+  button.square:active, a.button.square:active {
+    background: #001dd9;
+    color: #fff; }
 
 /***************************TOP SECTION***********************************************/
 #topWrapper {
@@ -644,6 +682,9 @@ button.square, a.button.square {
     margin-bottom: 25px;
     -webkit-transition: all 700ms ease-out 0.5s;
     transition: all 700ms ease-out .5s; }
+    @media screen and (max-width: 500px) {
+      .introtext .heading {
+        margin-bottom: 15px; } }
   .introtext p {
     -webkit-transition: all 700ms ease-out 0.7s;
     transition: all 700ms ease-out .7s; }
@@ -651,25 +692,6 @@ button.square, a.button.square {
     margin-top: 35px;
     -webkit-transition: -webkit-transform 700ms ease-out 1s, background-position 400ms ease-out, opacity 700ms ease-out 1s;
     transition: transform 700ms ease-out 1s, background-position 400ms ease-out, opacity 700ms ease-out 1s; }
-
-.dot {
-  margin-bottom: 25px;
-  -webkit-transition: all 700ms ease-out 0s;
-  transition: all 700ms ease-out 0s;
-  opacity: 0; }
-  .dot.animation {
-    -webkit-animation-name: dotGrow;
-    -webkit-animation-duration: .5s;
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-timing-function: cubic-bezier(0.17, 1.67, 0.55, 1.7);
-    -webkit-animation-delay: 1.4s;
-    -webkit-animation-fill-mode: forwards;
-    animation-name: dotGrow;
-    animation-duration: .5s;
-    animation-iteration-count: 1;
-    animation-timing-function: cubic-bezier(0.17, 1.67, 0.55, 1.7);
-    animation-delay: 1.4s;
-    animation-fill-mode: forwards; }
 
 .js .introtext.preanimation .preheading, .js .introtext.preanimation .heading, .js .introtext.preanimation p, .js .introtext.preanimation button {
   opacity: 0;
@@ -1383,7 +1405,7 @@ button.square, a.button.square {
     list-style-type: none;
     text-align: left;
     max-width: 1000px;
-    margin: 0 auto; }
+    margin: 0 auto 70px; }
     #contact .weareactionist a {
       color: #000;
       text-decoration: none; }
@@ -1400,10 +1422,10 @@ button.square, a.button.square {
       font-size: 17px; }
       @media only screen and (max-width: 1024px) {
         #contact .weareactionist li {
-          width: 28.33%; } }
+          width: 31.1%; } }
       @media only screen and (max-width: 650px) {
         #contact .weareactionist li {
-          width: 45%; } }
+          width: 47.8%; } }
       #contact .weareactionist li img {
         width: 100%;
         margin-bottom: 5px; }
@@ -1421,6 +1443,8 @@ button.square, a.button.square {
     #contact .weareactionist .email, #contact .weareactionist .telephone {
       font-family: 'Cardo', 'serif';
       display: block; }
+  #contact #wpgmza_map {
+    margin-bottom: 40px; }
 
 .js #contact.preanimation .preheading, .js #contact.preanimation .heading, .js #contact.preanimation .intro p, .js #about.preanimation .preheading, .js #about.preanimation .heading, .js #about.preanimation .intro p {
   opacity: 0;
@@ -1449,6 +1473,11 @@ button.square, a.button.square {
       text-align: left; }
       #about-tools ul li img {
         margin-bottom: 40px; }
+        @media only screen and (max-width: 500px) {
+          #about-tools ul li img {
+            margin-bottom: 60px;
+            float: left;
+            margin-right: 10px; } }
       #about-tools ul li h2 {
         font-size: 18px;
         line-height: 1.3em;

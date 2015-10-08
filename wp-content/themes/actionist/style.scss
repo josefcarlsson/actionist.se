@@ -172,6 +172,11 @@ h1, .heading{
 	line-height: 1.2em;
 	margin-bottom: 15px;
 
+	@media screen and (min-width: 1300px) {
+		font-size: 55px;
+		line-height: 1.3em;
+	}
+
 	@media screen and (max-width: $iPadWidth) {
 		font-size: 32px;
 		line-height: 1.3em;
@@ -180,6 +185,7 @@ h1, .heading{
 	@media screen and (max-width: $mobileWidth) {
 		font-size: 25px;
 		line-height: 1.3em;
+		margin-bottom: 5px;
 	}	
 }
 .entry-title{
@@ -243,10 +249,30 @@ h3{
 	-moz-border-radius: 100px;
 	border-radius: 100px;
 	display: inline-block;
+	margin-bottom: 25px;
+	-webkit-transition: all 700ms ease-out 0s;
+    transition: all 700ms ease-out 0s;
+    opacity: 0;
+
+    &.animation{
+	    -webkit-animation-name: dotGrow;
+	    -webkit-animation-duration: .5s;
+	    -webkit-animation-iteration-count: 1;
+	    -webkit-animation-timing-function: cubic-bezier(.17,1.67,.55,1.7);
+	    -webkit-animation-delay: 1.4s;
+	    -webkit-animation-fill-mode: forwards;
+	    animation-name: dotGrow;
+	    animation-duration: .5s;
+	    animation-iteration-count: 1;
+	    animation-timing-function: cubic-bezier(.17,1.67,.55,1.7);
+	    animation-delay: 1.4s;
+	    animation-fill-mode: forwards;
+    }
 
 	@media screen and (max-width: $mobileWidth) {
 		width: 8px;
 		height: 8px;
+		margin-bottom: 15px;
 	}
 }
 button{
@@ -267,7 +293,12 @@ video:focus{
 	top: calc(100%);
 	position: absolute;	
 
-	@media handheld {
+	@media handheld{
+		position: fixed;
+		top: 0;
+	}
+
+	@media screen and (max-width: $iPadWidth){
 		position: fixed;
 		top: 0;
 	}
@@ -304,10 +335,15 @@ nav{
 		margin-left: 50px;
 		margin-top: 15px;
 		display: inline-block;
+		border: 0;
 
 		img{
 			width: 100%;
 			height: auto;
+		}
+
+		@media screen and (max-width: $iPadLandscape){
+			margin-left: 30px;
 		}
 	}
 
@@ -322,7 +358,7 @@ nav{
 
 	img{
 		margin-top: 20px;
-		height:60px;
+		height: 60px;
 		display: inline-block;
 		float: left;
 	}
@@ -381,6 +417,11 @@ nav{
 		margin-top: 29px;
 		display: inline-block;
 		padding-right: 40px;
+
+		@media screen and (max-width: $iPadLandscape){
+			padding-right: 0px;
+		}
+
 		li{
 			display: inline-block;
 			padding: 5px;
@@ -696,7 +737,14 @@ button.square, a.button.square{
 	}
 	
 	&:hover{
-		background-position: right center;
+		@media screen and (min-width: $iPadLandscape) {
+			background-position: right center;
+		}
+	}
+
+	&:active{
+		background: $blue;
+		color: #fff;
 	}
 }
 
@@ -833,6 +881,10 @@ button.square, a.button.square{
 		margin-bottom: 25px;
 		-webkit-transition: all 700ms ease-out.5s;
 	    transition: all 700ms ease-out .5s;
+
+	    @media screen and (max-width: $mobileWidth) {
+			margin-bottom: 15px;
+		}
 	}
 
 	p{
@@ -845,28 +897,6 @@ button.square, a.button.square{
 		-webkit-transition: -webkit-transform 700ms ease-out 1s, background-position 400ms ease-out, opacity 700ms ease-out 1s;
 	    transition: transform 700ms ease-out 1s, background-position 400ms ease-out, opacity 700ms ease-out 1s;
 	}
-}
-
-.dot{
-	margin-bottom: 25px;
-	-webkit-transition: all 700ms ease-out 0s;
-    transition: all 700ms ease-out 0s;
-    opacity: 0;
-
-    &.animation{
-	    -webkit-animation-name: dotGrow;
-	    -webkit-animation-duration: .5s;
-	    -webkit-animation-iteration-count: 1;
-	    -webkit-animation-timing-function: cubic-bezier(.17,1.67,.55,1.7);
-	    -webkit-animation-delay: 1.4s;
-	    -webkit-animation-fill-mode: forwards;
-	    animation-name: dotGrow;
-	    animation-duration: .5s;
-	    animation-iteration-count: 1;
-	    animation-timing-function: cubic-bezier(.17,1.67,.55,1.7);
-	    animation-delay: 1.4s;
-	    animation-fill-mode: forwards;
-    }
 }
 
 .js .introtext.preanimation{
@@ -1776,7 +1806,7 @@ button.square, a.button.square{
 		list-style-type: none;
 		text-align: left;
 		max-width: 1000px;
-		margin: 0 auto;
+		margin: 0 auto 70px;
 
 		a{
 			color: #000;
@@ -1797,11 +1827,11 @@ button.square, a.button.square{
 	    	font-size: 17px;
 
 	    	@media only screen and (max-width: 1024px) {
-	    		width: 28.33%;
+	    		width: 31.1%;
 	    	}
 
 	    	@media only screen and (max-width: 650px) {
-	    		width: 45%;
+	    		width: 47.8%;
 	    	}
 
 	    	@media only screen and (max-width: $mobileWidth) {
@@ -1845,6 +1875,10 @@ button.square, a.button.square{
 		}
 
 	}
+
+	#wpgmza_map{
+		margin-bottom: 40px;
+	}
 }
 
 .js #contact.preanimation, .js #about.preanimation{
@@ -1875,13 +1909,6 @@ button.square, a.button.square{
 #about-tools{
 	margin-top: 120px;
 
-	@media only screen and (max-width: $mobileWidth) {
-		//margin-top: 50px;
-		//.span_3_of_12{
-		//	width: 49.2%;
-		//}
-	}
-
 	ul{
 		padding-top: 30px;
 		
@@ -1890,6 +1917,12 @@ button.square, a.button.square{
 
 			img{
 				margin-bottom: 40px;
+
+				@media only screen and (max-width: $mobileWidth) {
+					margin-bottom: 60px;
+				    float: left;
+				    margin-right: 10px;
+				}
 			}
 
 			h2{
