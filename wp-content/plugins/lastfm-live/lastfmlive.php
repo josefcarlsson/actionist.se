@@ -167,7 +167,6 @@ class LastFM_LiveRecentTracks extends WP_Widget {
 				$tpl->assign("ALBUM_IMAGE", $image);
 				$tpl->assign("ALBUM_TEXT", $track['album']['#text']);
 				$tpl->assign("SONG_NAME", $track['name']);
-				$tpl->assign("SONG_TITLE", $track['name']);
 				$tpl->assign("ARTIST_TITLE",$track['artist']['#text']);
 				$tpl->assign("SONG_URL", $track['url']);
 				$tpl->assign("ARTIST_URL", "http://www.last.fm/music/".urlencode($track['artist']['#text']));

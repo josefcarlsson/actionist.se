@@ -7,7 +7,6 @@ $(window).load(function () {
 	},800)
 })
   $(document).ready(function(){
-
   //Variables
   var caseVisable = 1
   var numberOfCase = 1
@@ -126,6 +125,14 @@ $('.right').click(function(){
 		caseSliderRight()
 })
 
+$(".spotify").hover(
+  function () {
+    $(this).children().children().children().children('.lastfmlive_song_info').addClass("lastfmlive_song_info_active");
+  },
+  function () {
+    $(this).children().children().children().children('.lastfmlive_song_info').removeClass("lastfmlive_song_info_active");
+  }
+);
 function caseSliderRight(){
 	numberOfcaseSlid = numberOfcaseSlid + 1
 		console.log(numberOfcaseSlid)
@@ -245,8 +252,10 @@ function caseSliderRight(){
 	if($('.lastfmlive_recently_played').length > 0){
   		$(this).find('img').each(function(){
   			if($(this).attr('src') === 'http://cdn.last.fm/flatness/catalogue/noimage/2/default_artist_small.png'){
-  				$(this).attr('src','');
-  			}
+  				$(this).parent().addClass('noimage')
+  				$(this).remove()
+  				
+  	  			}
   		});
 	}
 
@@ -590,11 +599,11 @@ function startInstagramFeed(){
  	var feed = new Instafeed({
 	  	get: 'tagged',
 	    limit: '11',
-	    tagName: 'awsome',
+	    tagName: 'actionist',
 	    sortBy: 'none',
 	    clientId: 'ab762af7ca2a4c368d310632077367f9',
 	    resolution: 'standard_resolution',
-	    template: '</div><div class="istagramImg"><div class="instagramImgContent"><p class="likes"><img src=""> {{comments}} <img src=""> {{likes}}</p><a href="{{link}}"><img src="{{image}}" /><p class="user">{{model.user.username}}</p><p class="instagramText"> {{caption}}<br>{{model.comments.data[0].text}}<br>{{model.comments.data[1].text}}<br>{{model.comments.data[2].text}}</p></a></div></div>',
+	    template: '<div class="istagramImg"><div class="instagramImgContent"><p class="likes"><img src=""> {{comments}} <img src=""> {{likes}}</p><a href="{{link}}"><img src="{{image}}" /><p class="instagramText"><strong class="user">{{model.user.username}}</strong><b> {{caption}}</b></p></a></div></div>',
 	    after: function() {
 		    instagramSlider()
 	      }

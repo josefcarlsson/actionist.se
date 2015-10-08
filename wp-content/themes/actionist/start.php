@@ -204,7 +204,7 @@ endif; ?>
 	<div id="playerWrapper">
 		<div id="player"></div>
 	</div>
-	<button class="exit-start-view">Ta en titt</button>
+	<button class="exit-start-view">Ta en titt<br><img src="<?php echo get_template_directory_uri(); ?>/images/arrowDown.svg"></button>
 	<!--<video width="100%" height="100%" autoplay="" muted="" id="video" loop="">
 		<source src="<?php echo get_template_directory_uri(); ?>/images/movie.mp4" type="video/mp4">
 		<source src="<?php echo get_template_directory_uri(); ?>/images/movie.ogv" type="video/ogv">
@@ -294,8 +294,8 @@ endif; ?>
 	wp_reset_query();?>
 	</div>
 	
-	<div class="span_4_of_12 col instagram" id="instafeed">
-	<h2>#actionist</h2>
+	<div class="span_4_of_12 col instagram">
+		<div id="instafeed"><h2>#actionist</h2></div>
 	</div>
 	
 	<div class="span_4_of_12 col spotify">
