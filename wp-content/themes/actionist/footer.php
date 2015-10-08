@@ -32,8 +32,8 @@
 		</div>
 		<div class="col span_3_of_12">
 			<ul class="social">
-				<li class="linkedin"><a href="<?php echo $linkedinlink ?>"></a></li>
-				<li class="instagram"><a href="<?php echo $instagramlink ?>"></a></li>
+				<li class="linkedin"><a href="<?php the_field('linkedinlink', 2); ?>" target="_blank"></a></li>
+				<li class="instagram"><a href="<?php the_field('instagramlink', 2); ?>" target="_blank"></a></li>
 			</ul>
 		</div>
 	</footer><!-- .site-footer -->

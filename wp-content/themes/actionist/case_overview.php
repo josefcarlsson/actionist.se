@@ -17,9 +17,9 @@ get_header(); ?>
 	$text = get_field( "text" );
 	
 ?>
-<section class="case_section"> 
-	<h3 class="ingress"><span><?php echo $text?></span></h3>
-	<h1><?php echo $header?></h1>
+<section class="case_section sectionVpadding"> 
+	<span class="preheading underline"><?php echo $text?></span>
+	<h1 class="heading"><?php echo $header?></h1>
 </section>
 <section class="group section case_section">
 	<?php $loop = new WP_Query( array( 'post_type' => 'case', 'posts_per_page' => -1 ) ); ?>

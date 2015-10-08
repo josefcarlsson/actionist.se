@@ -61,6 +61,10 @@ get_header();
 		<span class="telephone"><?php the_field('telefon-folk'); ?></span>
 		</li><?php endif; ?>
 	</ul>
+	<div class="thinWrapper centercontent">
+		<h2 class="heading"><?php the_field('hittahitrubrik'); ?></h2>
+		<div class="adress"><?php the_field('adress'); ?></div>
+	</div>
 	<?php the_field('karta'); ?>
 </section>
 

@@ -53,8 +53,8 @@
 			</ul>
 	
 			<ul class="social">
-				<li class="linkedin"><a href="#"></a></li>
-				<li class="instagram"><a href="#"></a></li>
+				<li class="linkedin"><a href="<?php the_field('linkedinlink', 2); ?>" target="_blank"></a></li>
+				<li class="instagram"><a href="<?php the_field('instagramlink', 2); ?>" target="_blank"></a></li>
 			</ul>
 		</div>
 	</div>
