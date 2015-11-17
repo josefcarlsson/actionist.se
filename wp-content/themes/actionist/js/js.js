@@ -53,77 +53,6 @@ $(".case_preview_wrapper").each(function() {
 		casePreviewClass ++
 	})
 
-$('.case').hammer().bind("swiperight", function(){
-	if(numberOfcaseSlid == 0){
-	}
-	else{
-			caseSliderLeft()
-	}
-})	
-$('.left').click(function(){
-		caseSliderLeft()
-	})
-
-function caseSliderLeft(){
-	numberOfcaseSlid = numberOfcaseSlid - 1
-		console.log(numberOfcaseSlid)
-		if($(window).width() <= 480){
-			var windowWidth = $('.case').width() + 35
-		}
-		else{
-			var windowWidth = ($('.case').width() + 30);
-		}
-		var prev = $('.visable').attr('id');
-		var lastCase= JSON.parse($('.case:last-child').attr('id'));
-		var next = JSON.parse(prev) - 1
-		if($(window).width() <= 1300){
-			switch (JSON.parse(next)) {
-			    case 2:
-					$(".case").each(function() {
-						$(this).css({
-							left: '+='+(windowWidth)
-						})
-					})
-			        break;
-			    case lastCase:
-			    	numberOfcaseSlid = 0
-					$(".case").each(function() {
-						$(this).css({
-							left: '+='+(windowWidth)
-						})
-					})
-			        break;
-			    default:
-				 	$(".case").each(function() {
-						$(this).css({
-							left: '+=' + windowWidth
-							})
-						})	
-				    break;
-			};
-		}
-		else{
-			var firstCase= JSON.parse($('.case:first-child').attr('id'));
-			console.log(JSON.parse(next + 1) +',first'+ firstCase)
-			if(JSON.parse(next + 1) == firstCase){
-				var next = JSON.parse($('.case:last-child').attr('id'))
-				numberOfcaseSlid = next
-				console.log(numberOfcaseSlid)
-			}
-		}
-			$('#'+prev).removeClass('visable');
-			$('#'+next).addClass('visable');
-}
-$('.case').hammer().bind("swipeleft", function(){
-	if(numberOfcaseSlid == JSON.parse($('.case:last-child').attr('id') - 1)){
-	}
-	else{
-	caseSliderRight()
-		}
-})		
-$('.right').click(function(){
-		caseSliderRight()
-})
 
 $(".spotify").hover(
   function () {
@@ -133,54 +62,7 @@ $(".spotify").hover(
     $(this).children().children().children().children('.lastfmlive_song_info').removeClass("lastfmlive_song_info_active");
   }
 );
-function caseSliderRight(){
-	numberOfcaseSlid = numberOfcaseSlid + 1
-		console.log(numberOfcaseSlid)
-		if($(window).width() <= 480){
-			var windowWidth = $('.case').width() + 35
-		}
-		else{
-			var windowWidth = ($('.case').width() + 30);
-		}
-		var prev = $('.visable').attr('id');
-		var lastCase= JSON.parse($('.case:first-child').attr('id') - 1);
-		var next = JSON.parse(prev) + 1
-		if($(window).width() <= 1300){
-			switch (JSON.parse(next)) {
-			    case 0:
-					$(".case").each(function() {
-						$(this).css({
-							left: '-='+(windowWidth)
-						})
-					})
-			        break;
-			    case lastCase:
-			    	numberOfcaseSlid = 0
-					$(".case").each(function() {
-						$(this).css({
-							left: '-='+(windowWidth)
-						})
-					})
-			        break;
-			    default:
-				 	$(".case").each(function() {
-						$(this).css({
-							left: '-=' + windowWidth
-							})
-						})	
-				    break;
-			};
-		}
-		else{
-			if(JSON.parse(next) == JSON.parse($('.case:last-child').attr('id'))){
-				numberOfcaseSlid = 0
-				var next = JSON.parse($('.case:first-child').attr('id'))
-			}
-		}
-			$('#'+prev).removeClass('visable');
-			$('#'+next).addClass('visable');
 
-}
   	if($('body.home').length > 0){
   		isStartPage = true;
   		//resetStartPage();
@@ -266,7 +148,7 @@ $('#loadMoreCase').click(function(){
 		var time = 0.1
 		$(".case_preview").each(function() {
 			console.log(numberOfLoadedCase+'s'+(numberClicked * 4))
-			if(numberOfLoadedCase >= (numberClicked * 4) && numberOfLoadedCase <= ((2*(numberClicked)) * 4)){
+			if(numberOfLoadedCase >= (numberClicked * 5) && numberOfLoadedCase <= ((2*(numberClicked)) * 4)){
 				$(this).css({
 					'-webkit-transition-delay': (time/5)+'s',
 					'-moz-transition-delay': (time/5)+'s',
@@ -283,8 +165,8 @@ $('#loadMoreCase').click(function(){
 	if($(window).width() < 1300 && $(window).width() > 768){
 			var time = 0.1
 			$(".case_preview").each(function() {
-				console.log(numberOfLoadedCase+'s'+(numberClicked * 3))
-				if(numberOfLoadedCase >= (numberClicked * 3) && numberOfLoadedCase < ((2*(numberClicked)) * 3)){
+				console.log(numberOfLoadedCase+'sss'+(numberClicked * 3))
+				if(numberOfLoadedCase >= (numberClicked * 4) && numberOfLoadedCase < ((2*(numberClicked)) * 4)){
 					$(this).css({
 						'-webkit-transition-delay': (time/5)+'s',
 						'-moz-transition-delay': (time/5)+'s',
@@ -301,7 +183,7 @@ $('#loadMoreCase').click(function(){
 	if($(window).width() < 768){
 			var time = 0.1
 			$(".case_preview").each(function() {
-				console.log(numberOfLoadedCase+'s'+(numberClicked * 2))
+				console.log(numberOfLoadedCase+'sssss'+(numberClicked * 2))
 				if(numberOfLoadedCase >= (numberClicked * 2) && numberOfLoadedCase < ((2*(numberClicked)) * 2)){
 					$(this).css({
 						'-webkit-transition-delay': (time/5)+'s',
@@ -319,7 +201,6 @@ $('#loadMoreCase').click(function(){
 
 	numberClicked++
 })
-
 function goToByScroll(div){
     var offset = $(div).offset();
     var scrolltoY = offset.top;
@@ -350,6 +231,7 @@ $( window).resize(function(){
 		
 })
 function doneResizing(){
+	productDetail()
 	setTimeout(function(){
 	$('.case').css({
 		'top':0,
@@ -394,7 +276,93 @@ var padding = 0.1; //percent
 var newsWidth = 0.6; //percent
 var leftPositionIndex = [];
 var panAnimate = true;
+var animationOK = true
 
+$('.left').click(function(){
+	if(animationOK == true){
+		animationOKFunction()
+		var current = $('.visable').attr('id');
+		var windowWidth = $('.case').width();
+		$('.right').css({
+				display:'block'
+			})
+		var prev = JSON.parse(current) - 1;
+		if(prev <= 0){
+			$('.left').css({
+				display:'none'
+			})
+		}
+		else{
+			$('.left').css({
+				display:'block'
+			})
+		}
+		if(prev == -1){
+			
+			//$('#'+(numberOfCase - 1)).addClass('visable');
+			}
+		else{
+			$('#'+prev).addClass('visable')
+			$('.caseSection ul').css({
+				marginLeft: '+='+(windowWidth),
+				})
+			$('#'+current).removeClass('visable');
+		}
+	}
+	else{
+		
+	}
+});
+$('.right').click(function(){
+	if(animationOK == true){
+		var direction = 'right';
+		animationOKFunction(direction)
+					$('.left').css({
+				display:'block'
+			})
+		var windowWidth = $('.case').width();
+		var current = $('.visable').attr('id');
+		var next = JSON.parse(current) + 1
+		if(next >= (numberOfCase - 1)){
+			$('.right').css({
+				display:'none'
+			})
+		}
+		else{
+			$('.right').css({
+				display:'block'
+			})
+		}
+		if(next == numberOfCase){
+			//$('#0').addClass('visable');
+		}
+		else{
+			$(this).addClass('navigationPressed');
+			
+			$('.caseSection ul').css({
+				marginLeft: '-='+(windowWidth),
+				})
+			$('#'+current).removeClass('visable');
+			$('#' + next).addClass('visable');	
+		}
+	}
+	else{
+		
+	}
+	
+});
+function animationOKFunction(direction){
+	console.log(direction)
+	animationOK = false;
+	setTimeout(function(direction){
+		console.log(direction)
+			if(direction == 'right'){
+				console.log('ds')
+				$('.right').removeClass('navigationPressed')
+			}
+			animationOK = true;
+			}, 500);
+}
 function initNews(){
 	newsCount = $('.newsoverflow .post').length;
 	var windowWidth = $(window).width();
@@ -560,6 +528,15 @@ function snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPa
 		});
  }
  
+function productDetail(){
+		var container = document.querySelector('.maxwidthNews');
+	    var msnry = new Masonry( container, {
+	      	itemSelector : '.productDetailElement',
+		  	columnWidth: '.grid-sizer',
+		  	percentPosition: true,
+		});
+ }
+ 
  
  
  
@@ -712,33 +689,14 @@ function setGreatingFrase(){
 	  }
 	  
   }
-  
+numberOfCase = 0
 function caseSlider(run){
-	numberOfCase = 0
-	if(numberOfcaseSlid >= 0){
-		
-	}
-	else{
-		console.log('rwar'+numberOfcaseSlid)
-		numberOfcaseSlid = -(numberOfcaseSlid -2)
-	}
-	var caseLocation = (($(window).width()/2) - ($('.case').width()/2) - (numberOfcaseSlid * ($('.case').width() + 35)))
-	console.log(caseLocation)
+
 		 $(".case").each(function() {
 		 $(this).attr('id',numberOfCase);
-		 if($(window).width() <= 1300){
-			 $(this).css({
-				 left:caseLocation,
-		 		})
-		 	}
-		 else{
-			 if(run == 1){
-				$(this).css({
-				 left:0,
-		 		})	 
-			 }
-		 }
-		 caseLocation = caseLocation + ($('.case').width() + 35);
+		/* $(this).css({
+			 left:numberOfCase * $(window).width(),
+		 })*/
 		 numberOfCase++
 	})
 	if(run != 1){
@@ -757,6 +715,9 @@ function fitVidHeight(){
 
   // functions that runs on load
   	  menuScroll();
+  if($('.productDetailElement').length > 0){
+		   productDetail()
+		   }
   if(typeof quats !== 'undefined'){
 	  setGreatingFrase();
 	  startInstagramFeed();

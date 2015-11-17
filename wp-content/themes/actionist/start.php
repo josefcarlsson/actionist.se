@@ -230,7 +230,6 @@ endif; ?>
 <!------------------------------- case ------------------------------>
 
 <section class="caseSection">
-	<div id="caseWrapperBigScreen" class="caseWrapper">
 		<button class="left caseNavigation" style="background-color:<?php echo $caseColor ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow.png" alt="arrow"/></button>
 		<button class="right caseNavigation" style="background-color:<?php echo $caseColor ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow.png" alt="arrow"/></button>
 		<ul>
@@ -243,17 +242,6 @@ endif; ?>
 		<?php wp_reset_query();?>
 		</ul>
 	</div>
-	<div class="caseWrapper">
-		<!--<ul>
-		<?php /* $loop = new WP_Query( array( 'post_type' => 'case', 'posts_per_page' => -1 ) ); ?>
-		<?php while ( $loop->have_posts() ) : $loop->the_post(); 
-			 if(get_field('showOnStart') == 'Ja') : ?>
-			 						<?php get_template_part( 'content', 'page' );?>		
-				<?php endif;
-			endwhile;?>
-		<?php wp_reset_query();*/?>
-		</ul>
-	</div>-->
 </section>
 
 <!------------------------------- news ------------------------------>	

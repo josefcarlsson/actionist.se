@@ -9,13 +9,16 @@
  * @since Twenty Fifteen 1.0
  */
 ?>
-
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php
-		// Post thumbnail.
-		twentyfifteen_post_thumbnail();
-	?>
-
+<?php
+	$top_bild = get_field('top_bild');
+?>
+<div class="top_bild">
+		<img src="<?php echo $top_bild['url']?>">
+</div>
+<div class="maxwidthNewsWrapper">
+<div class="maxwidthNews">
+			 <div class="grid-sizer"></div>
+<article id="post-<?php the_ID(); ?>" class="textWrapper productDetailElement">
 	<header class="entry-header">
 		<?php
 			if ( is_single() ) :
@@ -33,28 +36,18 @@
 				__( 'Continue reading %s', 'twentyfifteen' ),
 				the_title( '<span class="screen-reader-text">', '</span>', false )
 			) );
-
-			wp_link_pages( array(
-				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfifteen' ) . '</span>',
-				'after'       => '</div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-				'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>%',
-				'separator'   => '<span class="screen-reader-text">, </span>',
-			) );
 		?>
 	</div><!-- .entry-content -->
-
-	<?php
-		// Author bio.
-		if ( is_single() && get_the_author_meta( 'description' ) ) :
-			get_template_part( 'author-bio' );
-		endif;
-	?>
-
-	<footer class="entry-footer">
-		<?php twentyfifteen_entry_meta(); ?>
-		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
-	</footer><!-- .entry-footer -->
-
 </article><!-- #post-## -->
+	 <?php if( have_rows('bilder') ): 
+	 while( have_rows('bilder') ): the_row(); 
+		 $bild = get_sub_field('bild');
+		 $format = get_sub_field('format');
+		 ?>
+		 <div class="<?php echo $format ?> productDetailElement">
+			<img src="<?php echo $bild['url'] ?>" class="newsImg">
+		 </div>
+	<?php endwhile;
+	endif; ?>
+</div>
+</div>

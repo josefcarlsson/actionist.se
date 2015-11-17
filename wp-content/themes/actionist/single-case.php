@@ -17,7 +17,6 @@ get_header();
 		
 ?>
 <script src="<?php echo get_template_directory_uri(); ?>/js/case.js"></script>
-topvideo
 <main id="main" class="site-main case-detail" role="main">
 	
 		<?php
