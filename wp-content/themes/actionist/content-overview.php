@@ -16,7 +16,6 @@
 		$caseColor = get_field( "caseColor" );
 		$ranColor = array("#B3F0E9", "#F0D234", "#FDC6CC", "#FDC6CC");
 		$rand_keys = array_rand($ranColor, 2);
-
 	?>
 	
 <div class="col span_4_of_12 case_preview" >

@@ -142,6 +142,11 @@ $(".spotify").hover(
 	}
 
 var numberClicked = 1
+function checkdottactive(next){
+	$('.case-dott').removeClass('active');
+	var next = (next + 1);
+	$('.case-dott:nth-child('+next+')').addClass('active')
+}
 $('#loadMoreCase').click(function(){
 	var numberOfLoadedCase = 0
 	if($(window).width() > 1300){
@@ -224,13 +229,16 @@ $( window).resize(function(){
 		'opacity':1,
 	})	
 	resizeDone = setTimeout(doneResizing, 500);
-	  fitVidHeight(window)
+	  //fitVidHeight(window)
 	  
 	         
 	initNews();
 		
 })
 function doneResizing(){
+	run = true;
+	caseSlider(run)
+	masonryGrid()
 	productDetail()
 	setTimeout(function(){
 	$('.case').css({
@@ -277,6 +285,70 @@ var newsWidth = 0.6; //percent
 var leftPositionIndex = [];
 var panAnimate = true;
 var animationOK = true
+
+
+$('.caseStartPreview').hammer().bind("swiperight", function(){
+	if(animationOK == true){
+		animationOKFunction()
+		var current = $('.visable').attr('id');
+		var windowWidth = $('.case').width();
+		var prev = JSON.parse(current) - 1;
+		checkdottactive(prev)
+		if(prev <= 0){
+
+		}
+		else{
+		}
+		if(prev == -1){
+			
+			//$('#'+(numberOfCase - 1)).addClass('visable');
+			}
+		else{
+			$('#'+prev).addClass('visable')
+			$('.caseSection ul').css({
+				marginLeft: '+='+(windowWidth),
+				})
+			$('#'+current).removeClass('visable');
+		}
+	}
+	else{
+		
+	}
+	});
+	
+$('.caseStartPreview').hammer().bind("swipeleft", function(){
+	if(animationOK == true){
+		var direction = 'right';
+		animationOKFunction(direction)
+		var windowWidth = $('.case').width();
+		var current = $('.visable').attr('id');
+		var next = JSON.parse(current) + 1
+		checkdottactive(next)
+		if(next >= (numberOfCase - 1)){
+			$('.right').css({
+				display:'none'
+			})
+		}
+		else{
+		}
+		if(next == numberOfCase){
+			//$('#0').addClass('visable');
+		}
+		else{
+			$(this).addClass('navigationPressed');
+			
+			$('.caseSection ul').css({
+				marginLeft: '-='+(windowWidth),
+				})
+			$('#'+current).removeClass('visable');
+			$('#' + next).addClass('visable');	
+		}
+	}
+	else{
+		
+	}
+	});
+
 
 $('.left').click(function(){
 	if(animationOK == true){
@@ -519,7 +591,6 @@ function snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPa
 //client logo grid
  function masonryGrid(){
 		var container = document.querySelector('.logoWrapper');
-
 	    var msnry = new Masonry( container, {
 	      	itemSelector : '.clientLogo',
 		  	columnWidth: '.grid-sizer',
@@ -547,7 +618,7 @@ function productDetail(){
  var letterToDelete = 1
 //quat top on startpage 
 
-var elementQuat = $('#quats');
+//var elementQuat = $('#quats');
 var activeStr = 0
 var letterState = 0
 var numberOfquat = 0
@@ -579,7 +650,7 @@ function changeQuats(){
 					if(letterPause == 1){
 						clearInterval(letter);
 						setTimeout(function(){ 
-							changeQuats()
+							//changeQuats()
 						}, 2000);
 					}
 					removeLetter(activeStr)
@@ -677,7 +748,6 @@ function instagramSlider(){
 function setGreatingFrase(){
 	  var date = new Date();
 	  var time = date.getHours();
-
 	  if(time <= 12){
 		  $('#timeOfDay').text('Godmorgon');
 	  }
@@ -692,25 +762,38 @@ function setGreatingFrase(){
 numberOfCase = 0
 function caseSlider(run){
 
+	console.log(run)
+	if(!run){
 		 $(".case").each(function() {
-		 $(this).attr('id',numberOfCase);
-		/* $(this).css({
-			 left:numberOfCase * $(window).width(),
-		 })*/
-		 numberOfCase++
-	})
+			 $(this).attr('id',numberOfCase);
+			 $('.number-of-case').append('<div class="case-dott"></div>')
+			/* $(this).css({
+				 left:numberOfCase * $(window).width(),
+			 })*/
+			 numberOfCase++
+		})
+	}
 	if(run != 1){
 		$('#0').addClass('visable')
+		$('.case-dott:first-child').addClass('active')
+	}
+	else{
+		var offset = $('.visable').offset().left
+		var marginLeft = JSON.parse($('.visable').parent('ul').css('margin-left').replace("px", ""))
+		console.log(marginLeft)
+		$('.visable').parent('ul').css({
+			marginLeft: (marginLeft - offset)
+		})
 	}
 }
-function fitVidHeight(){
+/*function fitVidHeight(){
 		 if($('#playerWrapper').width() <= $(window).width()){
 	           $('#playerWrapper').css({
 		        	width:$(window).width()
 	        	})
 	       		        	          }
 
-}
+}*/
 
 
   // functions that runs on load
@@ -718,14 +801,12 @@ function fitVidHeight(){
   if($('.productDetailElement').length > 0){
 		   productDetail()
 		   }
-  if(typeof quats !== 'undefined'){
 	  setGreatingFrase();
 	  startInstagramFeed();
 	  initNews();
 	  caseSlider();
 	  setTimeout(function(){ 
 		   masonryGrid()
-		   changeQuats()
+		   //changeQuats()
 		}, 100);
-	}
  });

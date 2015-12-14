@@ -19,6 +19,8 @@ get_header(); ?>
 	$presentationBigHeader = get_field('presentationBigHeader');
 	$presentationText = get_field('presentationText');
 	$presentationButton = get_field('presentationButton');
+	$presentationButtonLink = get_field('button_link');
+	
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +28,7 @@ get_header(); ?>
 <!------------------------------- presentation ------------------------------>
 
 <script>
-	var quats = []
+
 	var monday =[]
 	var thuesday =[]
 	var wednessday =[]
@@ -35,7 +37,7 @@ get_header(); ?>
 	var saturday =[]
 	var sunday =[]
 	var special =[]
-	window.quats= quats
+	//window.quats= quats
 
  //youtube script
  </script>
@@ -140,48 +142,12 @@ endif; ?>
 				var videoId = special[Math.floor(Math.random() * special.length)];
 			    break;
 		};
-		
+		window.videoId
 </script>
-<script>
-var tag = document.createElement('script');
-tag.src = "//www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-var player;
-
-onYouTubeIframeAPIReady = function () {
-    player = new YT.Player('player', {
-        videoId: videoId,	  // youtube video id
-        playerVars: {
-            'autoplay': 1,
-            'rel': 0,
-            'controls': 0, 
-            'showinfo': 0,
-            'autohide':1,
-            'loop' : 1,
-            'playlist': videoId
-        },
-        events: {
-            'onReady': onPlayerReady
-        }
-        
-    });
-}
-	 function onPlayerReady(event) {
-	 	$("#playerWrapper").fitVids();
-        event.target.mute();
-        if($('#playerWrapper').height() <= $(window).height()){
-	     	var ratio = $('#playerWrapper').width()/$('#playerWrapper').height()
-	        $('#playerWrapper').css({
-		        width:($(window).height() * ratio)
-	        })
-        }
-      }
-</script>
 	
 </section>	
-<?php if( have_rows('quats') ): 
+<!--<?php if( have_rows('quats') ): 
 	 while( have_rows('quats') ): the_row(); 
 		 $quat= get_sub_field('quat');?>
 		<script>
@@ -189,7 +155,7 @@ onYouTubeIframeAPIReady = function () {
 			quats.push(obj);
 		</script>
 	<?php endwhile;
-endif; ?>
+endif; ?>-->
 <section id="preloader">
 	<div class="preloaderImg">
 		<svg version="1.1"  id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -202,7 +168,12 @@ endif; ?>
 <div id="topWrapper"> 
 <section id="top" class="fullHeight" style="background-image: url(<?php echo $videoTopHeaderBackup['url']?>)">
 	<div id="playerWrapper">
-		<div id="player"></div>
+		<video id="player" autoplay muted>
+			  <source id="videoMp4" src="" type="video/mp4">
+			  			<script>
+				$('#videoMp4').attr('src','http://actionistdev.se/actionist_v2/video/'+videoId)
+			</script>
+		</video>
 	</div>
 	<button class="exit-start-view">Ta en titt<br><img src="<?php echo get_template_directory_uri(); ?>/images/arrowDown.svg"></button>
 	<!--<video width="100%" height="100%" autoplay="" muted="" id="video" loop="">
@@ -212,8 +183,8 @@ endif; ?>
 	</video>-->
 	<div class="verticalWrapper">
 		<div class="widthWrapper">
-			<h3><span id="timeOfDay"></span></h3>
-			<h1><span>Vi är:</span><span id="quats"></span></h1>
+			<h3><span id="timeOfDay"></span>,</h3>
+			<h1>Välkommen till<br> Actionist</h1>
 		</div>
 	</div>
 </section>
@@ -224,14 +195,16 @@ endif; ?>
 	<h2 class="heading"><?php echo $presentationBigHeader ?></h2>
 	<span class="dot"></span>
 	<div><?php echo $presentationText ?></div>
-	<button class="blue square"><?php echo $presentationButton ?></button>
+	<a href="<?php echo $presentationButtonLink?>"><button class="blue square"><?php echo $presentationButton ?></button></a>
 </section>
 
 <!------------------------------- case ------------------------------>
 
 <section class="caseSection">
-		<button class="left caseNavigation" style="background-color:<?php echo $caseColor ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow.png" alt="arrow"/></button>
-		<button class="right caseNavigation" style="background-color:<?php echo $caseColor ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow.png" alt="arrow"/></button>
+		<button class="left caseNavigation"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow.png" alt="arrow"/></button>
+		<button class="right caseNavigation" ><img src="<?php echo get_template_directory_uri(); ?>/images/arrow.png" alt="arrow"/></button>
+		<div class="number-of-case">
+		</div>
 		<ul>
 		<?php $loop = new WP_Query( array( 'post_type' => 'case', 'posts_per_page' => -1 ) ); ?>
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); 
@@ -292,9 +265,9 @@ endif; ?>
 			<?php if (have_posts()) : 
 				 while (have_posts()) : the_post(); 	?>	
 				<?php if(get_field('showOnStart') === 'Ja' && $count < 1): ?>
-					<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
+					<!--<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">-->
 						<?php get_template_part( 'content', 'usp' );?>		
-					</a>
+					<!--</a>-->
 					<?php $count++; ?>
 				<?php else : ?>
 			<?php endif; ?>
@@ -320,12 +293,12 @@ endif; ?>
 		<h2 class="heading">Våra kunder</h2>
 	<?php if( have_rows('clients') ): ?>
 		<div class="logoWrapper">
+			 <div class="gutter-sizer"></div>
+			 <div class="grid-sizer"></div>
 		 <?php while( have_rows('clients') ): the_row(); 
 			 $logo= get_sub_field('logo');
 			 $class = get_sub_field('clientsize');
 			 ?>
-			 <div class="gutter-sizer"></div>
-			 <div class="grid-sizer"></div>
 			 <div class="clientLogo <?php echo $class ?>" style="background-image:url(<?php echo $logo['url'] ?>)">
 				 <img src="<?php echo $logo['url'] ?>"></div>
 			<?php endwhile;?>

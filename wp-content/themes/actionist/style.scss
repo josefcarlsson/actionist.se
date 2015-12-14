@@ -313,7 +313,7 @@ nav{
 	z-index: 20;
 	top: 0px;
 	left:0px; 
-	width: 100vw;
+	width: 100%;
 	height:100px;
 	//text-align: right;
 	-webkit-box-sizing: border-box;
@@ -658,8 +658,11 @@ footer{
 	position: relative;
 	bottom:0px;
 
-	@media only screen and (max-width: $mobileWidth) {
+	@media only screen and (max-width: 700px) {
 		padding: $mobilePadding;
+		.span_3_of_12{
+			width: 100%;
+		}
 	}
 
 	h4{
@@ -770,23 +773,25 @@ button.square, a.button.square{
 	display: table;
 	background-size: cover;
 	background-position: center center;
-	
+
 #playerWrapper {
-	overflow:hidden;
-	position: absolute;
-    width: 100%;
-    height:auto;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translateX(-50%) translateY(-50%);
-	transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
 }
+
 #playerWrapper #player {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-}
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    min-height: 50%;
+    min-width: 50%;
+}	
 	#video{
 			position: absolute;
 			top: 50%;
@@ -800,13 +805,13 @@ button.square, a.button.square{
 			transform: translateX(-50%) translateY(-50%);
 		}
 	div{
+		text-align: center;
 		position: relative;
 		z-index: 2;
 	}
 	h1,h3{
 		span{
 			padding: 10px;
-			background-color: #FEF0EB;
 			}
 		}
 	h3{
@@ -814,20 +819,16 @@ button.square, a.button.square{
 		margin-bottom: 25px;
 	}
 	h1{
+		line-height: 1.1em;
+		text-transform: capitalize;
 		font-size: 70px;
 	}
 	#timeOfDay{
+		text-transform: capitalize;
 		font-weight: 500;
 		font-family: 'Cardo', serif;
 		margin-bottom: 5px;
-	}
-	#quats::after{
-	  	-webkit-animation: blink 1s infinite; /* Safari 4+ */
-	  	-moz-animation:    blink 1s infinite; /* Fx 5+ */
-	  	-o-animation:      blink 1s infinite; /* Opera 12+ */
-	    animation:         blink 1s infinite;
-		content: "|";
-		font-weight: 300;
+		font-size: 24px;
 	}
 	.exit-start-view{
 		text-align: center;
@@ -999,13 +1000,15 @@ button.square, a.button.square{
 
 .caseSection{
 	overflow: hidden;
-	max-height: 900px;
 	position: relative;
 	ul{
 		-webkit-transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
 		-moz-transition: all  0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
 		transition: all  0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
 		width: 900%;
+	}
+	.presentationText{
+		margin-left: 0px;
 	}
 	.caseStartPreview{
 		vertical-align: top;
@@ -1017,7 +1020,7 @@ button.square, a.button.square{
 		display: inline-block;
 		margin-right: -4px;
 		.caseContent{
-			max-width: 780px;
+			max-width: 1000px;
 			margin-left: auto;
 			margin-right: auto;
 			.img{
@@ -1030,24 +1033,51 @@ button.square, a.button.square{
 		position: absolute;
 		background-color: rgba(255,255,255,0);
 		border:none;
-		height: 50px;
-		width: 30px;
+		height: 80px;
+		width: 60px;
+		background-color: #fff;
 		top:calc(50% - 100px);
+
+		padding: 10px;
+		@media only screen and (max-width: 770px) {
+				display: none;
+			}
 		img{
-			width: 100%;
-			height: 100%;
+			-webkit-transition: all 0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+			-moz-transition: all 0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+			transition: all 0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+			margin-left: auto;
+			margin-right: auto;
+			width: calc(100% - 10px);
+			height: calc(100% - 10px);
 		}
 		&.left{
+			display: none;
 			-moz-transform: scaleX(-1);
 			-o-transform: scaleX(-1);
 			-webkit-transform: scaleX(-1);
 			transform: scaleX(-1);
 			filter: FlipH;
 			-ms-filter: "FlipH";
-			left:calc(50% - 500px);
+			left:calc(50% - 600px);
+			@media only screen and (max-width: 1200px) {
+				left:10px;
+			}
 		}
 		&.right{
-			right:calc(50% - 500px);
+			right:calc(50% - 600px);
+			@media only screen and (max-width: 1200px) {
+				right:10px;
+			}
+			
+		}
+	}
+	.caseNavigation:active{
+		border:none;
+		border-top:2px solid rgba(0,0,0,0.2);
+		border-left: 2px solid rgba(0,0,0,0.2);
+		img{
+			width: 20px;
 		}
 	}
 	.visable{
@@ -1102,10 +1132,6 @@ button.square, a.button.square{
 	left:0px;
 	right:0px;
 	z-index: 4;
-	@media only screen and (max-width: $mobileWidth) {
-		padding-bottom: 100%;
-		position: relative;
-	}
 	.istagramImg{
 		left: 0px;
 		right: 0px;
@@ -1205,6 +1231,8 @@ button.square, a.button.square{
 	padding-top: 70px;
 	padding-bottom: 70px;
 	max-width: 1300px;
+	position: relative;
+	overflow: hidden;
 	margin: 0 auto;
 	@media only screen and (max-width: $mobileWidth) {
 		padding-top: 20px;
@@ -1325,7 +1353,8 @@ button.square, a.button.square{
 		padding-bottom:32.26%
 	}
 		@media only screen and (max-width: $mobileWidth) {
-		padding-bottom: 100%;
+		padding-bottom: 50%;
+		max-width: 50%;
 		max-height: 420px;
 	}
 	img{
@@ -1463,7 +1492,11 @@ button.square, a.button.square{
 	.col{
 		position: relative;
 	}
-
+	.span_4_of_12{
+		@media only screen and (max-width: $mobileWidth) {
+			width: 50%;
+		}
+	}
 	.uspNewsWrapper{
 		background: $turquoise;
 		padding-bottom: 32.3%;
@@ -1472,6 +1505,7 @@ button.square, a.button.square{
 		transition: all  0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
 		@media only screen and (max-width: $mobileWidth) {
 			padding-bottom: 100%;
+			display: none;
 		}
 		h3{
 			display: -webkit-box;
@@ -1594,8 +1628,8 @@ button.square, a.button.square{
 		}
 
 		@media only screen and (max-width: $mobileWidth) {
-			left: $mobilePadding;
-			top: $mobilePadding;
+			left: 0px;
+			top: 0px;
 			font-size: 24px;
 			line-height: 1.3em;
 		}
@@ -1611,10 +1645,10 @@ button.square, a.button.square{
 }
 
 .logoWrapper{
-	width: 100%;
+	width: calc(100% - 10px);
 
 	.gutter-sizer{
-		width: 50px;
+		width: 10px;
 	}
 	.grid-sizer,
 	.clientLogo { 
@@ -1624,11 +1658,19 @@ button.square, a.button.square{
 		width: calc(2.5%);
 		margin-bottom: 50px; 
 		background-repeat: no-repeat;
+		@media only screen and (max-width: 1024px) {
+				background-size: 70% auto;
+				margin-bottom: 20px; 
+			}
+		@media only screen and (max-width: 500px) {
+				background-size: 90% auto;
+				margin-bottom: 20px; 
+			}
 		img{
 			width: 100%;
 			opacity: 0;
 		}
-		}
+	}
 	/* 2 columns */
 	.tall{
 		width: calc(5%)
@@ -1657,20 +1699,56 @@ button.square, a.button.square{
 	padding-bottom:$paddingBottom;
 	text-align: center;
 }
+.number-of-case{
+	top:0px;
+	left:0px;
+	height: 4px;
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	display: none;
+	@media only screen and (max-width: 770px) {
+		display: table;
+		}
+		.case-dott{
+			-webkit-transition: all 0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+			-moz-transition: all  0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+			transition: all  0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+			background-color: #FF2F00;
+			display: table-cell;
+			opacity: 0;
+			&.active{
+				opacity: 1;
+			}
+		}
+}
 .caseContent{
 	text-align: left;
 	padding-bottom: $paddingBottom;
+	@media only screen and (max-width: 500px) {
+		text-align: center;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.preheading{
+		display: block;
+	}
 	.resultWrapper{
+		  margin-left: 20px;
+		  width: calc(49.2% - 20px);
 		float: left;
+		@media only screen and (max-width: 720px) {
+				display: none;
+			}
 		.resultStat{
 			float: right;
-			min-width: 200px;
-			width: calc(50% - 80px);
+			min-width: 100px;
+			width: calc(50% - 35px);
 			max-width: 300px;
 			img{
 				display: inline;
 				vertical-align: middle;
-				height:2em;
+				height:1em;
 			}
 			h3{
 				font-size: 30px;
@@ -1681,7 +1759,7 @@ button.square, a.button.square{
 			p{
 				margin-top: 5px;
 				padding-top: 5px;
-				border-top:4px solid #FF2E00;
+				//border-top:4px solid #FF2E00;
 			}
 		}
 		.resultStat:nth-child(2n +2){
@@ -2318,7 +2396,7 @@ button.square, a.button.square{
   background: $red;
   display: block;
   height: 4px;
-  width: 80%;
+  width: 90%;
   margin: auto;
 
   &.animate{

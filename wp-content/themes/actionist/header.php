@@ -17,6 +17,7 @@
 	<meta name="viewport" content="width=device-width,user-scalable=no">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/images/fav-icon.png" sizes="32x32">
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.fitvids.js"></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/masonry.pkgd.min.js"></script>
