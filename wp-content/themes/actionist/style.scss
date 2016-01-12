@@ -966,7 +966,7 @@ button.square, a.button.square{
 		padding-bottom: 80px;
 
 		@media screen and (max-width: $mobileWidth) {
-			padding-top: 50px;
+			padding-top: 10px;
 			padding-bottom: 30px;
 		}
 	}
@@ -1548,12 +1548,12 @@ button.square, a.button.square{
 		position: relative;
 	}
 	.span_4_of_12{
-		@media only screen and (max-width: $mobileWidth) {
+		@media only screen and (max-width: 600px) {
 			width: 100%;
 		}
 	}
 
-	@media only screen and (max-width: $mobileWidth) {
+	@media only screen and (max-width: 600px) {
 		.instagram, .spotify{
 			display: none;
 		}
@@ -1564,10 +1564,15 @@ button.square, a.button.square{
 		-webkit-transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
 		-moz-transition: all  0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
 		transition: all  0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
-		@media only screen and (max-width: $mobileWidth) {
-			padding-bottom: 0%;
+		@media only screen and (max-width: 600px) {
+			padding-bottom: 0;
 			//display: none;
 		}
+
+		a{
+			text-decoration: none;
+		}
+
 		h3{
 			display: -webkit-box;
 			max-width: 100%;
@@ -1602,18 +1607,20 @@ button.square, a.button.square{
 			}
 
 			@media only screen and (max-width: $iPadLandscape) {
-				padding: 0px 0px;
 				font-size: 25px;
 				line-height: 1.3em;
+				padding: 0px 20px;
 			}
-
-			@media only screen and (max-width: $iPadLandscape) {
-				padding: 0px 20px;}
 			@media only screen and (max-width: $iPadWidth) {
 				padding: 20px 20px;
 				font-size: 28px;
 				line-height: 1.3em;
 				top: 20px;
+			}
+
+			@media only screen and (max-width: 600px) {
+				position: static;
+				padding: 50px 20px;
 			}
 		}
 	}
@@ -1638,20 +1645,30 @@ button.square, a.button.square{
 			margin: 10px;
 		}
 	}
-	@media only screen and (max-width: $mobileWidth) {
+	@media only screen and (max-width: 600px) {
 		.uspNewsWrapper{
 			h3{
-				max-height: 210px;
+				//max-height: 210px;
 				font-size: 30px;
-				-webkit-line-clamp: 4;
-				-webkit-box-orient: vertical;
-				overflow: hidden;			
-				text-overflow: ellipsis;
+				//-webkit-line-clamp: 4;
+				//-webkit-box-orient: vertical;
+				//overflow: hidden;			
+				//text-overflow: ellipsis;
 				margin: 10px;	
+				text-align: center;
+				text-transform: none;
 			}
 		}
 	}
+
+	@media screen and (max-width: $mobileWidth) {
+		.uspNewsWrapper{
+			h3{
+				font-size: 25px;
+			}
+		}
 	}
+}
 
 	h2{
 		position: absolute;
@@ -1688,9 +1705,9 @@ button.square, a.button.square{
 			line-height: 1.3em;
 		}
 
-		@media only screen and (max-width: $mobileWidth) {
-			left: 0px;
-			top: 0px;
+		@media only screen and (max-width: 600px) {
+			left: 10px;
+			top: 10px;
 			font-size: 24px;
 			line-height: 1.3em;
 		}
@@ -1702,7 +1719,9 @@ button.square, a.button.square{
 /***************************clients************************************************/
 
 #clients{
-	padding-top: 50px;
+	@media only screen and (min-width: $mobileWidth) {
+		padding-top: 20px;
+	}
 
 	h2{
 		text-align: center;
