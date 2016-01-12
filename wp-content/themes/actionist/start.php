@@ -195,7 +195,7 @@ endif; ?>-->
 	<h2 class="heading"><?php echo $presentationBigHeader ?></h2>
 	<span class="dot"></span>
 	<div><?php echo $presentationText ?></div>
-	<a href="<?php echo $presentationButtonLink?>"><button class="blue square"><?php echo $presentationButton ?></button></a>
+	<?php if(1===2): ?><a href="<?php echo $presentationButtonLink?>"><button class="blue square"><?php echo $presentationButton ?></button></a><?php endif; ?>
 </section>
 
 <!------------------------------- case ------------------------------>
@@ -223,16 +223,16 @@ endif; ?>-->
 	<h2 class="heading">Livet på Actionist</h2>
 	<div class="newsoverflow">
 		<div class="newsholder">
-		<article id="" data-date="" class="post">
+		<?php if(1===2): ?><article id="" data-date="" class="post">
 			<h3 class="entry-title">Nyhetsarkiv</h3>
 			<p>Se fler nyheter <a href="#">här</a>
-		</article><!-- #post-## -->
+		</article><!-- #post-## --><?php endif; ?>
 		<?php $newsArr = array();
 		$newsCount = 0;?>
 		<?php query_posts( array ( 'posts_per_page' => 10, 'orderby' => 'date', 'order' => 'desc' ) ); ?>
 			<?php if (have_posts()) : ?><?php while (have_posts()) : the_post(); 	?>
 				<?php 
-				$newsArr[$newsCount] = array('date' => get_the_date(), 'heading' => get_the_title(), 'text' => get_the_excerpt(), 'permalink' => get_permalink(), 'id'=>get_the_id());
+				$newsArr[$newsCount] = array('date' => get_the_date(), 'heading' => get_the_title(), 'text' => get_the_content(), 'permalink' => get_permalink(), 'id'=>get_the_id());
 				$newsCount++?>
 			<?php endwhile; ?>
 		<?php endif;
@@ -292,17 +292,15 @@ endif; ?>-->
 
 		<h2 class="heading">Våra kunder</h2>
 	<?php if( have_rows('clients') ): ?>
-		<div class="logoWrapper">
-			 <div class="gutter-sizer"></div>
-			 <div class="grid-sizer"></div>
+		<ul class="logoWrapper">
 		 <?php while( have_rows('clients') ): the_row(); 
-			 $logo= get_sub_field('logo');
-			 $class = get_sub_field('clientsize');
-			 ?>
-			 <div class="clientLogo <?php echo $class ?>" style="background-image:url(<?php echo $logo['url'] ?>)">
-				 <img src="<?php echo $logo['url'] ?>"></div>
-			<?php endwhile;?>
-		</div>
+			 ?><li>
+				<?php $image = get_sub_field('logo');
+				if( $image ) {
+					print "<img src='" . $image['sizes']['client'] . "'>";
+				} ?>
+			</li><?php endwhile;?>
+		</ul>
 	<?php endif; ?>	
 	
 </section>

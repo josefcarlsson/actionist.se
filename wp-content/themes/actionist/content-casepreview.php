@@ -20,7 +20,7 @@
 		<div class="contentText">
 			<h3 class="preheading"><?php echo $caseCustomer ?></h3>
 		<div class="presentationText col span_6_of_12">
-			<?php the_title( '<h1 class="entry-title">- ', '</h1>' ); ?>
+			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 			<div><?php the_content(); ?></div>
 			<!--<a href="<?php the_permalink() ?>" class="readMore"rel= "bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">Läs mer här</a></div>-->
 		</div>

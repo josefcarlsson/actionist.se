@@ -238,7 +238,7 @@ $( window).resize(function(){
 function doneResizing(){
 	run = true;
 	caseSlider(run)
-	masonryGrid()
+	//masonryGrid()
 	productDetail()
 	setTimeout(function(){
 	$('.case').css({
@@ -806,7 +806,7 @@ function caseSlider(run){
 	  initNews();
 	  caseSlider();
 	  setTimeout(function(){ 
-		   masonryGrid()
+		   //masonryGrid()
 		   //changeQuats()
 		}, 100);
  });
