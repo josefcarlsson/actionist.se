@@ -835,6 +835,7 @@ function caseSlider(run){
 	  startInstagramFeed();
 	  initNews();
 	  caseSlider();
+	  setGreatingFrase();
 	 }, 100)
 	}
 
