@@ -277,7 +277,7 @@ endif; ?>-->
 	</div>
 	
 	<div class="span_4_of_12 col instagram">
-		<div id="instafeed"><h2>#actionist</h2></div>
+		<div id="instafeed"><h2>#actioniststhlm</h2></div>
 	</div>
 	
 	<div class="span_4_of_12 col spotify">

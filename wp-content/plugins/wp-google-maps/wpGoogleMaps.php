@@ -632,15 +632,16 @@ function wpgmaps_admin_edit_marker_javascript() {
             bounds: null
         }
         MYMAP.init = function(selector, latLng, zoom) {
+	        
             var myOptions = {
                 zoom:zoom,
                 center: latLng,
-                zoomControl: true,
-                panControl: true,
+                zoomControl: false,
+                panControl: false,
                 mapTypeControl: true,
                 draggable: true,
                 disableDoubleClickZoom: false,
-                scrollwheel: true,
+                scrollwheel: false,
                 streetViewControl: false,
                 mapTypeId: google.maps.MapTypeId.<?php echo $wpgmza_map_type; ?>
             }
@@ -1643,7 +1644,7 @@ function wpgmaps_user_javascript_basic() {
                     streetViewControl: <?php if (isset($wpgmza_settings['wpgmza_settings_map_streetview']) && $wpgmza_settings['wpgmza_settings_map_streetview'] == "yes") { echo "false"; } else { echo "true"; } ?>,
                     draggable: <?php if (isset($wpgmza_settings['wpgmza_settings_map_draggable']) && $wpgmza_settings['wpgmza_settings_map_draggable'] == "yes") { echo "false"; } else { echo "true"; } ?>,
                     disableDoubleClickZoom: <?php if (isset($wpgmza_settings['wpgmza_settings_map_clickzoom']) && $wpgmza_settings['wpgmza_settings_map_clickzoom'] == "yes") { echo "true"; } else { echo "false"; } ?>,
-                    scrollwheel: <?php if (isset($wpgmza_settings['wpgmza_settings_map_scroll']) && $wpgmza_settings['wpgmza_settings_map_scroll'] == "yes") { echo "false"; } else { echo "true"; } ?>,
+                    scrollwheel: <?php if (isset($wpgmza_settings['wpgmza_settings_map_scroll']) && $wpgmza_settings['wpgmza_settings_map_scroll'] == "yes") { echo "false"; } else { echo "false"; } ?>,
                     mapTypeId: google.maps.MapTypeId.<?php echo $wpgmza_map_type; ?>
                 }
 

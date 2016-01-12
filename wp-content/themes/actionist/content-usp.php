@@ -10,6 +10,8 @@
 
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<a href="http://www.dn.se">
 		<h3><?php the_title(); ?></h4>
 		<!--<div class="presentationText"><?php the_content(); ?></div>-->
+		</a>
 </article><!-- #post-## -->

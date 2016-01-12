@@ -1,8 +1,7 @@
 function checkContent(element, content){
-	console.log('d')
 }
 function youTubePlayer(){
-		console.log('dd')
+	
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
