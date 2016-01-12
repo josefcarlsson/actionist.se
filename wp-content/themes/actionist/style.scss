@@ -76,6 +76,9 @@ img{
 	margin: 1% 0 1% 1.6%;
 }
 .col:first-child { margin-left: 0; }
+@media only screen and (max-width: $mobileWidth) {
+	footer .col { margin-left: 0; }
+}
 
 /*  GROUPING  */
 .group:before,
@@ -969,7 +972,7 @@ button.square, a.button.square{
 		padding-bottom: 80px;
 
 		@media screen and (max-width: $mobileWidth) {
-			padding-top: 10px;
+			padding-top: 40px;
 			padding-bottom: 30px;
 		}
 	}
@@ -1954,6 +1957,10 @@ button.square, a.button.square{
 #contact{
 	max-width: 1300px;
 	margin-bottom: 50px;
+
+	@media only screen and (max-width: $mobileWidth) {
+		padding-top: 20px;
+	}
 
 	.thinWrapper{
 		padding: 20px 10px;

@@ -48,6 +48,9 @@ img {
 .col:first-child {
   margin-left: 0; }
 
+@media only screen and (max-width: 500px) {
+  footer .col {
+    margin-left: 0; } }
 /*  GROUPING  */
 .group:before,
 .group:after {
@@ -779,7 +782,7 @@ button.square, a.button.square {
     padding-bottom: 80px; }
     @media screen and (max-width: 500px) {
       .introtext#presentation {
-        padding-top: 10px;
+        padding-top: 40px;
         padding-bottom: 30px; } }
   .introtext .preheading {
     -webkit-transition: all 700ms ease-out 0.3s;
@@ -1554,6 +1557,9 @@ button.square, a.button.square {
 #contact {
   max-width: 1300px;
   margin-bottom: 50px; }
+  @media only screen and (max-width: 500px) {
+    #contact {
+      padding-top: 20px; } }
   #contact .thinWrapper {
     padding: 20px 10px; }
   #contact .preheading {
