@@ -237,7 +237,6 @@ $( window).resize(function(){
 })
 function doneResizing(){
 	run = true;
-	caseSlider(run)
 	masonryGrid()
 	productDetail()
 	setTimeout(function(){
@@ -250,7 +249,10 @@ function doneResizing(){
 		'opacity':1,
 	})
 	var run = 1	
-  caseSlider(run); 
+  if($('body.home').length > 0){
+	   caseSlider(run);  
+  }
+
    
 }
 $( window ).scroll(function() {
@@ -293,11 +295,25 @@ $('.caseStartPreview').hammer().bind("swiperight", function(){
 		var current = $('.visable').attr('id');
 		var windowWidth = $('.case').width();
 		var prev = JSON.parse(current) - 1;
-		checkdottactive(prev)
+		if(prev <= -1){
+			console.log(prev + 'fes')
+		}
+		else{
+			checkdottactive(prev)
+		}
 		if(prev <= 0){
+			$('.left').css({
+				display:'none'
+			})
 
 		}
 		else{
+			$('.left').css({
+				display:'block'
+			})
+			$('.right').css({
+				display:'block'
+			})
 		}
 		if(prev == -1){
 			
@@ -315,6 +331,7 @@ $('.caseStartPreview').hammer().bind("swiperight", function(){
 		
 	}
 	});
+
 	
 $('.caseStartPreview').hammer().bind("swipeleft", function(){
 	if(animationOK == true){
@@ -323,18 +340,24 @@ $('.caseStartPreview').hammer().bind("swipeleft", function(){
 		var windowWidth = $('.case').width();
 		var current = $('.visable').attr('id');
 		var next = JSON.parse(current) + 1
-		checkdottactive(next)
 		if(next >= (numberOfCase - 1)){
 			$('.right').css({
 				display:'none'
 			})
 		}
 		else{
+			$('.left').css({
+				display:'block'
+			})
+			$('.right').css({
+				display:'block'
+			})
 		}
 		if(next == numberOfCase){
 			//$('#0').addClass('visable');
 		}
 		else{
+			checkdottactive(next)
 			$(this).addClass('navigationPressed');
 			
 			$('.caseSection ul').css({
@@ -359,6 +382,7 @@ $('.left').click(function(){
 				display:'block'
 			})
 		var prev = JSON.parse(current) - 1;
+		checkdottactive(prev)
 		if(prev <= 0){
 			$('.left').css({
 				display:'none'
@@ -395,6 +419,7 @@ $('.right').click(function(){
 		var windowWidth = $('.case').width();
 		var current = $('.visable').attr('id');
 		var next = JSON.parse(current) + 1
+		checkdottactive(next)
 		if(next >= (numberOfCase - 1)){
 			$('.right').css({
 				display:'none'
@@ -718,7 +743,7 @@ function startInstagramFeed(){
  	var feed = new Instafeed({
 	  	get: 'tagged',
 	    limit: '11',
-	    tagName: 'actionist',
+	    tagName: 'actioniststhlm',
 	    sortBy: 'none',
 	    clientId: 'ab762af7ca2a4c368d310632077367f9',
 	    resolution: 'standard_resolution',
@@ -802,11 +827,16 @@ function caseSlider(run){
 		   productDetail()
 		   }
 	  setGreatingFrase();
-	  startInstagramFeed();
-	  initNews();
-	  caseSlider();
-	  setTimeout(function(){ 
+  if($('body.home').length > 0){
+	 	  startInstagramFeed();
+	 	  	  setTimeout(function(){ 
 		   masonryGrid()
 		   //changeQuats()
 		}, 100);
+	  caseSlider();
+	  initNews();
+	 }
+	
+
+
  });

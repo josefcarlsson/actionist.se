@@ -250,9 +250,19 @@ video:focus {
 
 .home .menuActive {
   position: fixed;
-  top: 0; }
+  top: 0;
+  height: 60px; }
+  .home .menuActive #logo {
+    margin-top: -5px; }
+  .home .menuActive .mainnav {
+    margin-top: 3px; }
+  .home .menuActive .social {
+    margin-top: 10px; }
 
 nav {
+  -webkit-transition: height 0.3s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+  -moz-transition: height 0.3s cubic-bezier(0.44, 0.88, 0.85, 1.11);
+  transition: height 0.3s cubic-bezier(0.44, 0.88, 0.85, 1.11);
   position: fixed;
   z-index: 20;
   top: 0px;
@@ -810,6 +820,7 @@ button.square, a.button.square {
     opacity: 1; } }
 /*************************** case ***********************************************/
 .caseSection {
+  background-color: #fff;
   overflow: hidden;
   position: relative; }
   .caseSection ul {
@@ -838,7 +849,7 @@ button.square, a.button.square {
     display: inline-block;
     margin-right: -4px; }
     .caseSection .caseStartPreview .caseContent {
-      max-width: 1000px;
+      max-width: 700px;
       margin-left: auto;
       margin-right: auto; }
       .caseSection .caseStartPreview .caseContent .img {
@@ -848,14 +859,15 @@ button.square, a.button.square {
     position: absolute;
     background-color: rgba(255, 255, 255, 0);
     border: none;
-    height: 80px;
-    width: 60px;
-    background-color: #fff;
-    top: calc(50% - 100px);
+    height: 70px;
+    width: 55px;
+    top: 153px;
     padding: 10px; }
     @media only screen and (max-width: 770px) {
       .caseSection .caseNavigation {
-        display: none; } }
+        height: 40px;
+        width: 33px;
+        top: calc(100% - 40px); } }
     .caseSection .caseNavigation img {
       -webkit-transition: all 0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
       -moz-transition: all 0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
@@ -864,6 +876,10 @@ button.square, a.button.square {
       margin-right: auto;
       width: calc(100% - 10px);
       height: calc(100% - 10px); }
+      @media only screen and (max-width: 770px) {
+        .caseSection .caseNavigation img {
+          height: 100%;
+          width: 100%; } }
     .caseSection .caseNavigation.left {
       display: none;
       -moz-transform: scaleX(-1);
@@ -872,21 +888,28 @@ button.square, a.button.square {
       transform: scaleX(-1);
       filter: FlipH;
       -ms-filter: "FlipH";
-      left: calc(50% - 600px); }
-      @media only screen and (max-width: 1200px) {
+      left: calc(50% - 430px); }
+      @media only screen and (max-width: 1000px) {
         .caseSection .caseNavigation.left {
           left: 10px; } }
+      @media only screen and (max-width: 770px) {
+        .caseSection .caseNavigation.left {
+          left: 25%; } }
     .caseSection .caseNavigation.right {
-      right: calc(50% - 600px); }
-      @media only screen and (max-width: 1200px) {
+      right: calc(50% - 430px); }
+      @media only screen and (max-width: 1000px) {
         .caseSection .caseNavigation.right {
           right: 10px; } }
+      @media only screen and (max-width: 770px) {
+        .caseSection .caseNavigation.right {
+          right: 25%; } }
   .caseSection .caseNavigation:active {
-    border: none;
-    border-top: 2px solid rgba(0, 0, 0, 0.2);
-    border-left: 2px solid rgba(0, 0, 0, 0.2); }
+    border: none; }
     .caseSection .caseNavigation:active img {
       width: 20px; }
+      @media only screen and (max-width: 770px) {
+        .caseSection .caseNavigation:active img {
+          width: 10px; } }
   .caseSection .visable {
     top: 0;
     position: relative; }
@@ -968,6 +991,7 @@ button.square, a.button.square {
       position: absolute;
       margin-bottom: 0px;
       padding: 20px;
+      width: calc(100% - 40px);
       background-color: #FF2E00;
       visibility: hidden;
       top: 0;
@@ -1006,10 +1030,8 @@ button.square, a.button.square {
       #instafeed .istagramImg .instagramText .user {
         font-size: 20px;
         font-weight: 900;
-        padding-bottom: 10px;
-        display: block;
-        border-bottom: 2px solid white;
-        margin-bottom: 10px; }
+        padding-bottom: 0px;
+        display: block; }
     #instafeed .istagramImg img {
       width: 100%; }
   @media only screen and (min-width: 1025px) {
@@ -1399,12 +1421,13 @@ button.square, a.button.square {
   text-align: center; }
 
 .number-of-case {
-  top: 0px;
-  left: 0px;
-  height: 4px;
+  bottom: 10px;
+  left: 25%;
+  height: 10px;
   position: absolute;
   z-index: 2;
-  width: 100%;
+  text-align: center;
+  width: 50%;
   display: none; }
   @media only screen and (max-width: 770px) {
     .number-of-case {
@@ -1413,10 +1436,15 @@ button.square, a.button.square {
     -webkit-transition: all 0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
     -moz-transition: all 0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
     transition: all 0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
-    background-color: #FF2F00;
-    display: table-cell;
-    opacity: 0; }
+    background-color: #FBEEE6;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 100px; }
     .number-of-case .case-dott.active {
+      background-color: #FF2F00;
       opacity: 1; }
 
 .caseContent {
@@ -1431,7 +1459,7 @@ button.square, a.button.square {
     display: block; }
   .caseContent .resultWrapper {
     margin-left: 20px;
-    width: calc(49.2% - 20px);
+    width: calc(42.3% - 20px);
     float: left; }
     @media only screen and (max-width: 720px) {
       .caseContent .resultWrapper {
@@ -1439,7 +1467,7 @@ button.square, a.button.square {
     .caseContent .resultWrapper .resultStat {
       float: right;
       min-width: 100px;
-      width: calc(50% - 35px);
+      width: calc(100% - 35px);
       max-width: 300px; }
       .caseContent .resultWrapper .resultStat img {
         display: inline;
@@ -1451,10 +1479,9 @@ button.square, a.button.square {
         display: inline;
         vertical-align: middle; }
       .caseContent .resultWrapper .resultStat p {
+        font-weight: 600;
         margin-top: 5px;
         padding-top: 5px; }
-    .caseContent .resultWrapper .resultStat:nth-child(2n +2) {
-      margin-right: 12%; }
 
 @media only screen and (max-width: 1000px) {
   .caseContent .resultWrapper .resultStat {
