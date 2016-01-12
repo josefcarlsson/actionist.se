@@ -158,10 +158,10 @@ endif; ?>
 endif; ?>-->
 <section id="preloader">
 	<div class="preloaderImg">
-		<svg version="1.1"  id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		<div id="svg"><svg version="1.1"  id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 		 viewBox="0 0 887.8 821" enable-background="new 0 0 887.8 821" xml:space="preserve">
 		<circle fill="none" class="path" stroke="#000000" stroke-width="47" stroke-miterlimit="10" cx="446.5" cy="408.7" r="375.3"/>
-		</svg>
+		</svg></div>
 		<img src="<?php echo get_template_directory_uri(); ?>/images/actionistA.svg" class="preloaderImg">
 	</div>
 </section>
@@ -181,11 +181,13 @@ endif; ?>-->
 		<source src="<?php echo get_template_directory_uri(); ?>/images/movie.ogv" type="video/ogv">
 		  Your browser does not support the video tag.
 	</video>-->
+	<div class="top_center">
 	<div class="verticalWrapper">
 		<div class="widthWrapper">
 			<h3><span id="timeOfDay"></span>!</h3>
 			<h1>Välkommen till<br> Actionist</h1>
 		</div>
+	</div>
 	</div>
 </section>
 </div>
