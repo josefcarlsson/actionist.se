@@ -183,7 +183,7 @@ endif; ?>-->
 	</video>-->
 	<div class="verticalWrapper">
 		<div class="widthWrapper">
-			<h3><span id="timeOfDay"></span>,</h3>
+			<h3><span id="timeOfDay"></span>!</h3>
 			<h1>Välkommen till<br> Actionist</h1>
 		</div>
 	</div>

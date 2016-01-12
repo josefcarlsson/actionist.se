@@ -752,10 +752,10 @@ function setGreatingFrase(){
 		  $('#timeOfDay').text('Godmorgon');
 	  }
 	  if(time >= 12 && time < 17){
-		  $('#timeOfDay').text('glad eftermiddag');
+		  $('#timeOfDay').text('Glad eftermiddag');
 	  }
 	  if(time >= 17){
-		  $('#timeOfDay').text('god kväll');
+		  $('#timeOfDay').text('God kväll');
 	  }
 	  
   }

@@ -106,7 +106,7 @@ html, body {
 
 body {
   font-family: "Raleway", sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
@@ -130,7 +130,7 @@ h1, .heading {
   margin-bottom: 15px; }
   @media screen and (min-width: 1300px) {
     h1, .heading {
-      font-size: 55px;
+      font-size: 42px;
       line-height: 1.3em; } }
   @media screen and (max-width: 780px) {
     h1, .heading {
@@ -141,6 +141,9 @@ h1, .heading {
       font-size: 25px;
       line-height: 1.3em;
       margin-bottom: 5px; } }
+
+h1 {
+  text-transform: none; }
 
 .entry-title {
   color: black; }
@@ -613,16 +616,15 @@ button.square, a.button.square {
     position: relative;
     z-index: 2; }
   #top h1 span, #top h3 span {
-    padding: 10px; }
+    padding: 10px 0; }
   #top h3 {
     color: #ff3200;
-    margin-bottom: 25px; }
+    margin-bottom: 0px; }
   #top h1 {
     line-height: 1.1em;
-    text-transform: capitalize;
-    font-size: 70px; }
+    font-size: 70px;
+    text-transform: none; }
   #top #timeOfDay {
-    text-transform: capitalize;
     font-weight: 500;
     font-family: 'Cardo', serif;
     margin-bottom: 5px;
@@ -816,7 +818,16 @@ button.square, a.button.square {
     transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
     width: 900%; }
   .caseSection .presentationText {
-    margin-left: 0px; }
+    margin-left: 0px;
+    margin-top: 0px; }
+  .caseSection .contentText {
+    padding-left: 20px;
+    padding-top: 15px; }
+    .caseSection .contentText .preheading {
+      margin-bottom: 0; }
+    @media screen and (max-width: 500px) {
+      .caseSection .contentText {
+        padding-left: 0px; } }
   .caseSection .caseStartPreview {
     vertical-align: top;
     position: relative;

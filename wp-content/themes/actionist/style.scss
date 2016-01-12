@@ -140,7 +140,7 @@ html,body{
 
 body{
 	font-family: $raleway;
-	font-size: 17px;
+	font-size: 16px;
 	line-height: 1.5em;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -173,7 +173,7 @@ h1, .heading{
 	margin-bottom: 15px;
 
 	@media screen and (min-width: 1300px) {
-		font-size: 55px;
+		font-size: 42px;
 		line-height: 1.3em;
 	}
 
@@ -188,6 +188,11 @@ h1, .heading{
 		margin-bottom: 5px;
 	}	
 }
+
+h1{
+	text-transform: none;
+}
+
 .entry-title{
 	color:black;
 }
@@ -811,20 +816,19 @@ button.square, a.button.square{
 	}
 	h1,h3{
 		span{
-			padding: 10px;
+			padding: 10px 0;
 			}
 		}
 	h3{
 		color: $red;
-		margin-bottom: 25px;
+		margin-bottom: 0px;
 	}
 	h1{
 		line-height: 1.1em;
-		text-transform: capitalize;
 		font-size: 70px;
+		text-transform: none;
 	}
 	#timeOfDay{
-		text-transform: capitalize;
 		font-weight: 500;
 		font-family: 'Cardo', serif;
 		margin-bottom: 5px;
@@ -1009,7 +1013,21 @@ button.square, a.button.square{
 	}
 	.presentationText{
 		margin-left: 0px;
+		margin-top: 0px;
 	}
+
+	.contentText{
+		padding-left: 20px;
+		padding-top: 15px;
+		.preheading{
+			margin-bottom: 0;
+		}
+
+		@media screen and (max-width: $mobileWidth) {
+			padding-left: 0px;
+		}
+	}
+
 	.caseStartPreview{
 		vertical-align: top;
 		position: relative;
