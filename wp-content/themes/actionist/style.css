@@ -256,15 +256,15 @@ video:focus {
       position: fixed;
       top: 0; } }
 
-.home .menuActive {
+.page .menuActive {
   position: fixed;
   top: 0;
   height: 60px; }
-  .home .menuActive #logo {
+  .page .menuActive #logo {
     margin-top: -5px; }
-  .home .menuActive .mainnav {
+  .page .menuActive .mainnav {
     margin-top: 3px; }
-  .home .menuActive .social {
+  .page .menuActive .social {
     margin-top: 10px; }
 
 nav {
