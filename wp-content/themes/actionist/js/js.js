@@ -257,7 +257,10 @@ function doneResizing(){
 }
 $( window ).scroll(function() {
    var scrollTop = $(window).scrollTop()
-   menuScroll(scrollTop);
+     if($('body.home').length > 0){
+	        menuScroll(scrollTop);
+     }
+
    
    /*if(isStartPage && !animationPresentationDone){
    		presentationAnimation(scrollTop);
@@ -824,11 +827,12 @@ function caseSlider(run){
 
 
   // functions that runs on load
-  	  menuScroll();
+
   if($('.productDetailElement').length > 0){
 		   productDetail()
 		   }
   if($('body.home').length > 0){
+	    	  menuScroll();
 	 	  startInstagramFeed();
 	 	  	  setTimeout(function(){ 
 	
@@ -837,6 +841,9 @@ function caseSlider(run){
 	  caseSlider();
 	  setGreatingFrase();
 	 }, 100)
+	}
+	else{
+		$('nav').addClass('menuActive');
 	}
 
 
