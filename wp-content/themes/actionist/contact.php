@@ -16,7 +16,7 @@ get_header();
 ?>
 
 <!------------------------------- presentation ------------------------------>
-<section id="contact" class="section preanimation">
+<section id="contact" class="section"> <!-- Lägg till class Preanimation för att starta animeringarna -->
 	<div class="thinWrapper centercontent">
 		<?php if(get_field('pre-heading')): ?>
 			<span class="preheading underline"><?php the_field('pre-heading'); ?></span>
@@ -27,7 +27,7 @@ get_header();
 
 	<ul class="weareactionist">
 		<?php $loop = new WP_Query( array( 'post_type' => 'Personal', 'posts_per_page' => -1 ) ); ?>
-		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?><li class="preanimation">
+		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?><li class=""><!--preanimation -->
 			<?php $image = get_field('bild');
 				$size = 'portrait';
 
@@ -42,9 +42,7 @@ get_header();
 					<p class="title"><?php the_field('titel'); ?></p>
 					<a href="mailto:<?php the_field('email'); ?>" class="email"><?php the_field('email'); ?></a>
 					<span class="telephone"><?php the_field('telefon'); ?></span>
-		</li><?php endwhile; wp_reset_query(); ?><!--
-		--><?php if(get_field('visa-vi-soker-folk')): ?>
-		<li class="preanimation">
+		</li><?php endwhile; wp_reset_query(); ?><?php if(get_field('visa-vi-soker-folk')): ?><li class=""><!--preanimation -->
 		<?php $image = get_field('bild-folk');
 				$size = 'portrait';
 

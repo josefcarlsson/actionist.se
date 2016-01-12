@@ -231,13 +231,12 @@ $( window).resize(function(){
 	resizeDone = setTimeout(doneResizing, 500);
 	  //fitVidHeight(window)
 	  
-	         
-	initNews();
 		
 })
 function doneResizing(){
 	run = true;
-	caseSlider(run)
+	caseSlider(run);
+	initNews();
 	//masonryGrid()
 	productDetail()
 	setTimeout(function(){
@@ -264,7 +263,6 @@ $( window ).scroll(function() {
 
 //stick the menu to top
 function menuScroll(scrollTop){
-	console.log('ds')
 	var menuTop = $(window).height();
 	if(menuTop <= scrollTop){	
 		$('nav').addClass('menuActive')
@@ -436,6 +434,9 @@ function animationOKFunction(direction){
 			}, 500);
 }
 function initNews(){
+	$('.newsoverflow .post').each(function(){
+		$(this).height('auto');
+	});
 	newsCount = $('.newsoverflow .post').length;
 	var windowWidth = $(window).width();
 	if(windowWidth > 1300){
@@ -472,7 +473,7 @@ function initNews(){
 	});
 
 	$newsBlock.width(previousLeft + endSpace);
-	$newsOverflowControl.height(maxHeightNews + 40);
+	$newsOverflowControl.height(maxHeightNews + 90);
 	var max = previousLeft - newsItemWidth - newsItemPadding - endSpace;
 	$('input[type="range"]').rangeslider('destroy');
 	$('input[type="range"]').attr('value', max).attr('max',max + (max*0.06)).rangeslider({polyfill: false, onSlide: function(position, value) {adjustNews(value)}, onSlideEnd: function(position, value) {snapNews(value, leftPositionIndex, newsCount, newsItemWidth, newsItemPadding)}});

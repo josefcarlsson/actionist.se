@@ -189,7 +189,9 @@ h3 {
 .thinWrapper {
   text-align: center;
   max-width: 830px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px; }
 
 .centercontent {
   text-align: center; }
@@ -1046,7 +1048,6 @@ button.square, a.button.square {
   #news .newsoverflow {
     width: 100%;
     position: relative;
-    min-height: 300px;
     overflow: hidden; }
     @media only screen and (min-width: 1300px) {
       #news .newsoverflow:before {
@@ -1238,7 +1239,10 @@ button.square, a.button.square {
   position: relative; }
 @media only screen and (max-width: 500px) {
   #uspar .span_4_of_12 {
-    width: 50%; } }
+    width: 100%; } }
+@media only screen and (max-width: 500px) {
+  #uspar .instagram, #uspar .spotify {
+    display: none; } }
 #uspar .uspNewsWrapper {
   background: #b3f0e9;
   padding-bottom: 32.3%;
@@ -1247,8 +1251,7 @@ button.square, a.button.square {
   transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11); }
   @media only screen and (max-width: 500px) {
     #uspar .uspNewsWrapper {
-      padding-bottom: 100%;
-      display: none; } }
+      padding-bottom: 0%; } }
   #uspar .uspNewsWrapper h3 {
     display: -webkit-box;
     max-width: 100%;
@@ -1515,10 +1518,10 @@ button.square, a.button.square {
 
 /************* Contact page ***************/
 #contact {
-  max-width: 1300px; }
+  max-width: 1300px;
+  margin-bottom: 50px; }
   #contact .thinWrapper {
-    padding-top: 20px;
-    padding-bottom: 20px; }
+    padding: 20px 10px; }
   #contact .preheading {
     -webkit-transition: all 700ms ease-out 0.2s;
     transition: all 700ms ease-out .2s; }
