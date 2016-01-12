@@ -779,7 +779,7 @@ button.square, a.button.square {
     padding-bottom: 80px; }
     @media screen and (max-width: 500px) {
       .introtext#presentation {
-        padding-top: 50px;
+        padding-top: 10px;
         padding-bottom: 30px; } }
   .introtext .preheading {
     -webkit-transition: all 700ms ease-out 0.3s;
@@ -1262,10 +1262,10 @@ button.square, a.button.square {
     margin-top: 100px; } }
 #uspar .col {
   position: relative; }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   #uspar .span_4_of_12 {
     width: 100%; } }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   #uspar .instagram, #uspar .spotify {
     display: none; } }
 #uspar .uspNewsWrapper {
@@ -1274,9 +1274,11 @@ button.square, a.button.square {
   -webkit-transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
   -moz-transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11);
   transition: all 0.5s cubic-bezier(0.44, 0.88, 0.85, 1.11); }
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 600px) {
     #uspar .uspNewsWrapper {
-      padding-bottom: 0%; } }
+      padding-bottom: 0; } }
+  #uspar .uspNewsWrapper a {
+    text-decoration: none; }
   #uspar .uspNewsWrapper h3 {
     display: -webkit-box;
     max-width: 100%;
@@ -1309,11 +1311,8 @@ button.square, a.button.square {
         line-height: 1.3em; } }
     @media only screen and (max-width: 1025px) {
       #uspar .uspNewsWrapper h3 {
-        padding: 0px 0px;
         font-size: 25px;
-        line-height: 1.3em; } }
-    @media only screen and (max-width: 1025px) {
-      #uspar .uspNewsWrapper h3 {
+        line-height: 1.3em;
         padding: 0px 20px; } }
     @media only screen and (max-width: 780px) {
       #uspar .uspNewsWrapper h3 {
@@ -1321,6 +1320,10 @@ button.square, a.button.square {
         font-size: 28px;
         line-height: 1.3em;
         top: 20px; } }
+    @media only screen and (max-width: 600px) {
+      #uspar .uspNewsWrapper h3 {
+        position: static;
+        padding: 50px 20px; } }
 @media only screen and (min-width: 1025px) {
   #uspar .uspNewsWrapper:hover {
     background-color: #FF2E00;
@@ -1336,15 +1339,15 @@ button.square, a.button.square {
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 10px; } }
+@media only screen and (max-width: 1025px) and (max-width: 600px) {
+  #uspar .uspNewsWrapper h3 {
+    font-size: 30px;
+    margin: 10px;
+    text-align: center;
+    text-transform: none; } }
 @media only screen and (max-width: 1025px) and (max-width: 500px) {
   #uspar .uspNewsWrapper h3 {
-    max-height: 210px;
-    font-size: 30px;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 10px; } }
+    font-size: 25px; } }
 
 #uspar h2 {
   position: absolute;
@@ -1374,19 +1377,20 @@ button.square, a.button.square {
       top: 10px;
       font-size: 18px;
       line-height: 1.3em; } }
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 600px) {
     #uspar h2 {
-      left: 0px;
-      top: 0px;
+      left: 10px;
+      top: 10px;
       font-size: 24px;
       line-height: 1.3em; } }
 
 /***************************clients************************************************/
-#clients {
-  padding-top: 50px; }
-  #clients h2 {
-    text-align: center;
-    margin-top: 40px; }
+@media only screen and (min-width: 500px) {
+  #clients {
+    padding-top: 20px; } }
+#clients h2 {
+  text-align: center;
+  margin-top: 40px; }
 
 .logoWrapper {
   list-style-type: none;
