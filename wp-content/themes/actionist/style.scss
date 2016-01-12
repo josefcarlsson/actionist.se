@@ -1074,30 +1074,17 @@ button.square, a.button.square{
 		position: absolute;
 		background-color: rgba(255,255,255,0);
 		border:none;
-<<<<<<< HEAD
+
 		height: 70px;
 		width: 55px;
 		top:153px;
-
-=======
-		height: 80px;
-		width: 60px;
-		background-color: #fff;
-		top:calc(50% - 100px);
->>>>>>> d958329cca603fab746df85cadc0034a6395ca1f
 		padding: 10px;
 
 		@media only screen and (max-width: 770px) {
-<<<<<<< HEAD
 				height: 40px;
 				width: 33px;
 				top:calc(100% - 40px);
 			}
-=======
-			display: none;
-		}
-
->>>>>>> d958329cca603fab746df85cadc0034a6395ca1f
 		img{
 			-webkit-transition: all 0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);
 			-moz-transition: all 0.2s cubic-bezier(0.44, 0.88, 0.85, 1.11);

@@ -237,12 +237,6 @@ $( window).resize(function(){
 })
 function doneResizing(){
 	run = true;
-<<<<<<< HEAD
-	masonryGrid()
-=======
-	caseSlider(run)
-	//masonryGrid()
->>>>>>> d958329cca603fab746df85cadc0034a6395ca1f
 	productDetail()
 	setTimeout(function(){
 	$('.case').css({
@@ -831,25 +825,15 @@ function caseSlider(run){
   if($('.productDetailElement').length > 0){
 		   productDetail()
 		   }
-	  setGreatingFrase();
-<<<<<<< HEAD
   if($('body.home').length > 0){
 	 	  startInstagramFeed();
 	 	  	  setTimeout(function(){ 
-		   masonryGrid()
-=======
+	
 	  startInstagramFeed();
 	  initNews();
 	  caseSlider();
-	  setTimeout(function(){ 
-		   //masonryGrid()
->>>>>>> d958329cca603fab746df85cadc0034a6395ca1f
-		   //changeQuats()
-		}, 100);
-	  caseSlider();
-	  initNews();
-	 }
-	
+	 }, 100)
+	}
 
 
  });
