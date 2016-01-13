@@ -30,6 +30,12 @@
 	<script src="<?php echo get_template_directory_uri(); ?>/js/js.js"></script>
 	<script src="http://www.youtube.com/player_api?enablejsapi=1&version=3"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+		<meta name="description" content='Actionist är en online action marketing-byrå som skapar taktiska aktiviteter med mätbara resultat'>
+	<meta property="og:description" content='Actionist är en online action marketing-byrå som skapar taktiska aktiviteter med mätbara resultat'>
+	<meta property="og:title" content="Välkommen till Actionist">
+	<meta property="og:url" content="http://www.actionist.se/">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="http://www.actionist.se/actionist_share.jpg">
 	<!--[if lt IE 9]>
 	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5.js"></script>
 	<![endif]-->
@@ -56,8 +62,8 @@
 			</ul>
 	
 			<ul class="social">
-				<li class="linkedin"><a href="<?php the_field('linkedinlink', 2); ?>" target="_blank"></a></li>
-				<li class="instagram"><a href="<?php the_field('instagramlink', 2); ?>" target="_blank"></a></li>
+				<li class="linkedin mobileVisible"><a href="<?php the_field('linkedinlink', 2); ?>" target="_blank"></a></li>
+				<li class="instagram mobileVisible"><a href="<?php the_field('instagramlink', 2); ?>" target="_blank"></a></li>
 			</ul>
 		</div>
 	</div>

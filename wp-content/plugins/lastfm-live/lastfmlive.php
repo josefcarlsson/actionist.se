@@ -152,16 +152,18 @@ class LastFM_LiveRecentTracks extends WP_Widget {
 			while($t > $i){
 				$track =  $recent_tracks['recenttracks']['track'][$i];
 				$time = !$track['@attr']['nowplaying'] ? $this->fuzzytime($track['date']['uts']) : $livetxt;
-				if(sizeof($track['image'][3]['#text']) > 0){
+				
+				if(strlen($track['image'][3]['#text']) > 0){
 					$image = $track['image'][3]['#text'];
 				} else {
-					$artist_images = $this->apiRequest('artist.getimages&artist='.urlencode($track['artist']['#text']), 1);
+					//$artist_images = $this->apiRequest('artist.getimages&artist='.urlencode($track['artist']['#text']), 1);
 					// echo "<pre>";print_r($artist_images);echo "</pre>";
 					// exit();
-					if(!empty($artist_images['images']['image']['sizes']['size'][3]['#text'])){
-						$image = $artist_images['images']['image']['sizes']['size'][3]['#text'];
-					} else {
-						$image = "images/actionist_a.jpg";
+					if(1==2){
+						//$image = $artist_images['images']['image']['sizes']['size'][3]['#text'];
+					} 
+					else {
+						$image = "http://www.actionistdev.se/actionist_v2/wp-content/themes/actionist/images/actionist_a.jpg";
 					}
 				}
 				$tpl->assign("ALBUM_IMAGE", $image);

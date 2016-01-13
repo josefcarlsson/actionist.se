@@ -35,6 +35,34 @@ $(window).load(function () {
 		  	    	})
 		}
    });
+   
+$('.NewsMenu').click(function(e){
+	e.preventDefault()
+	if($('body.home').length > 0){
+	}
+	else{
+		window.location = '../#news';
+	}
+	goToByScroll('#news')
+})
+$('.caseMenu').click(function(e){
+	e.preventDefault()
+	if($('body.home').length > 0){
+	}
+	else{
+		window.location = '../#casesSection';
+	}
+	goToByScroll('#casesSection')
+})
+$('.aboutMenu').click(function(e){
+	e.preventDefault()
+	if($('body.home').length > 0){
+	}
+	else{
+		window.location = '../#presentation';
+	}
+	goToByScroll('#presentation')
+})
 var casePreviewClass = 1
 $(".case_preview_wrapper").each(function() {
 		$(this).attr('id',casePreviewClass)
@@ -100,11 +128,9 @@ $(".spotify").hover(
   		var employeeAnimTime = 300;
 
   		$('.weareactionist').find('li').each(function(){
-  			console.log('preanim');
   			var $this = $(this);
   			setTimeout(function(){
   				$this.removeClass('preanimation');
-  				console.log('now');
        			//$('#contact').find('.dot').addClass('animation');
   			}, employeeAnimTime);
   			employeeAnimTime += 100;
@@ -120,11 +146,9 @@ $(".spotify").hover(
   		var employeeAnimTime = 300;
 
   		$('section').find('li').each(function(){
-  			console.log('preanim');
   			var $this = $(this);
   			setTimeout(function(){
   				$this.removeClass('preanimation');
-  				//console.log('now');
   			}, employeeAnimTime);
   			employeeAnimTime += 100;
   		});
@@ -152,7 +176,6 @@ $('#loadMoreCase').click(function(){
 	if($(window).width() > 1300){
 		var time = 0.1
 		$(".case_preview").each(function() {
-			console.log(numberOfLoadedCase+'s'+(numberClicked * 4))
 			if(numberOfLoadedCase >= (numberClicked * 5) && numberOfLoadedCase <= ((2*(numberClicked)) * 4)){
 				$(this).css({
 					'-webkit-transition-delay': (time/5)+'s',
@@ -170,7 +193,6 @@ $('#loadMoreCase').click(function(){
 	if($(window).width() < 1300 && $(window).width() > 768){
 			var time = 0.1
 			$(".case_preview").each(function() {
-				console.log(numberOfLoadedCase+'sss'+(numberClicked * 3))
 				if(numberOfLoadedCase >= (numberClicked * 4) && numberOfLoadedCase < ((2*(numberClicked)) * 4)){
 					$(this).css({
 						'-webkit-transition-delay': (time/5)+'s',
@@ -188,7 +210,6 @@ $('#loadMoreCase').click(function(){
 	if($(window).width() < 768){
 			var time = 0.1
 			$(".case_preview").each(function() {
-				console.log(numberOfLoadedCase+'sssss'+(numberClicked * 2))
 				if(numberOfLoadedCase >= (numberClicked * 2) && numberOfLoadedCase < ((2*(numberClicked)) * 2)){
 					$(this).css({
 						'-webkit-transition-delay': (time/5)+'s',
@@ -208,7 +229,7 @@ $('#loadMoreCase').click(function(){
 })
 function goToByScroll(div){
     var offset = $(div).offset();
-    var scrolltoY = offset.top;
+    var scrolltoY = (offset.top - 80);
 
     $('html,body').animate({ scrollTop: scrolltoY }, 500);
 } 
@@ -238,7 +259,7 @@ function doneResizing(){
 	caseSlider(run);
 	initNews();
 	//masonryGrid()
-	productDetail()
+	//productDetail()
 	setTimeout(function(){
 	$('.case').css({
 		'top':0,
@@ -255,13 +276,40 @@ function doneResizing(){
 
    
 }
+var scrollTimeout = null;
+var scrollendDelay = 500; // ms
+   var counterScroll = 0
+   
+
 $( window ).scroll(function() {
    var scrollTop = $(window).scrollTop()
+   
+   if ( scrollTimeout === null ) {
+
+    } else {
+        clearTimeout( scrollTimeout );
+    }
+    scrollTimeout = setTimeout( scrollendHandler, scrollendDelay );
+    
      if($('body.home').length > 0){
 	        menuScroll(scrollTop);
+
      }
 
-   
+   function scrollendHandler() {
+    // this code executes on "scrollend"
+     if($('body.home').length > 0){
+    	        if(scrollTop > $(window).height()){
+		        counterScroll++
+	        }
+	        if(scrollTop < $(window).height() && counterScroll < 1){
+		        goToByScroll('nav')
+		        counterScroll++
+	        }
+	    }
+    scrollTimeout = null;
+    
+}
    /*if(isStartPage && !animationPresentationDone){
    		presentationAnimation(scrollTop);
    }*/
@@ -298,7 +346,6 @@ $('.caseStartPreview').hammer().bind("swiperight", function(){
 		var windowWidth = $('.case').width();
 		var prev = JSON.parse(current) - 1;
 		if(prev <= -1){
-			console.log(prev + 'fes')
 		}
 		else{
 			checkdottactive(prev)
@@ -451,12 +498,11 @@ $('.right').click(function(){
 	
 });
 function animationOKFunction(direction){
-	console.log(direction)
+
 	animationOK = false;
 	setTimeout(function(direction){
-		console.log(direction)
 			if(direction == 'right'){
-				console.log('ds')
+
 				$('.right').removeClass('navigationPressed')
 			}
 			animationOK = true;
@@ -752,7 +798,7 @@ function startInstagramFeed(){
 	    sortBy: 'none',
 	    clientId: 'ab762af7ca2a4c368d310632077367f9',
 	    resolution: 'standard_resolution',
-	    template: '<div class="istagramImg"><div class="instagramImgContent"><p class="likes"><img src=""> {{comments}} <img src=""> {{likes}}</p><a href="{{link}}"><img src="{{image}}" /><p class="instagramText"><strong class="user">{{model.user.username}}</strong><b> {{caption}}</b></p></a></div></div>',
+	    template: '<div class="istagramImg"><div class="instagramImgContent"><a href="{{link}}"><img src="{{image}}" /><p class="instagramText"><strong class="user">{{model.user.username}}</strong><b> {{caption}}</b></p></a></div></div>',
 	    after: function() {
 		    instagramSlider()
 	      }
@@ -785,14 +831,13 @@ function setGreatingFrase(){
 		  $('#timeOfDay').text('Glad eftermiddag');
 	  }
 	  if(time >= 17){
-		  $('#timeOfDay').text('God kväll');
+		  $('#timeOfDay').text('Trevlig kväll');
 	  }
 	  
   }
 numberOfCase = 0
 function caseSlider(run){
 
-	console.log(run)
 	if(!run){
 		 $(".case").each(function() {
 			 $(this).attr('id',numberOfCase);
@@ -802,6 +847,11 @@ function caseSlider(run){
 			 })*/
 			 numberOfCase++
 		})
+		var dotHolderWidth = (numberOfCase * 20) + 80
+		$('.dotholder').css({
+			marginLeft: -(dotHolderWidth/2),
+			width:dotHolderWidth,
+		})
 	}
 	if(run != 1){
 		$('#0').addClass('visable')
@@ -810,7 +860,6 @@ function caseSlider(run){
 	else{
 		var offset = $('.visable').offset().left
 		var marginLeft = JSON.parse($('.visable').parent('ul').css('margin-left').replace("px", ""))
-		console.log(marginLeft)
 		$('.visable').parent('ul').css({
 			marginLeft: (marginLeft - offset)
 		})
@@ -829,11 +878,10 @@ function caseSlider(run){
   // functions that runs on load
 
   if($('.productDetailElement').length > 0){
-		   productDetail()
+		   //productDetail()
 		   }
   if($('body.home').length > 0){
 	    	  menuScroll();
-	 	  startInstagramFeed();
 	 	  	  setTimeout(function(){ 
 	
 	  startInstagramFeed();

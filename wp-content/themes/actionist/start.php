@@ -168,7 +168,7 @@ endif; ?>-->
 <div id="topWrapper"> 
 <section id="top" class="fullHeight" style="background-image: url(<?php echo $videoTopHeaderBackup['url']?>)">
 	<div id="playerWrapper">
-		<video id="player" autoplay muted>
+		<video id="player" autoplay muted loop>
 			  <source id="videoMp4" src="" type="video/mp4">
 			  			<script>
 				$('#videoMp4').attr('src','http://actionistdev.se/actionist_v2/video/'+videoId)
@@ -202,11 +202,13 @@ endif; ?>-->
 
 <!------------------------------- case ------------------------------>
 
-<section class="caseSection">
-		<button class="left caseNavigation"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow.png" alt="arrow"/></button>
-		<button class="right caseNavigation" ><img src="<?php echo get_template_directory_uri(); ?>/images/arrow.png" alt="arrow"/></button>
-		<div class="number-of-case">
-		</div>
+<section class="caseSection" id="casesSection">
+<div class="dotholder">
+            <button class="left caseNavigation"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow.png" alt="arrow"/></button>
+            <button class="right caseNavigation" ><img src="<?php echo get_template_directory_uri(); ?>/images/arrow.png" alt="arrow"/></button>
+            <div class="number-of-case">
+            </div>
+        </div>
 		<ul>
 		<?php $loop = new WP_Query( array( 'post_type' => 'case', 'posts_per_page' => -1 ) ); ?>
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); 
