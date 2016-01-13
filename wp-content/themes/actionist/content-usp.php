@@ -10,7 +10,7 @@
 
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<a href="http://www.dn.se">
+		<a href="mailto:toby@actionist.com?Subject=Hejsan!" target="_top">
 		<h3><?php the_title(); ?></h4>
 		<!--<div class="presentationText"><?php the_content(); ?></div>-->
 		</a>
